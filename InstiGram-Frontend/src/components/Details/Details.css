@@ -1,0 +1,122 @@
+
+
+.daughter-2{
+ 
+    display: inline-block; 
+    
+    vertical-align: top;
+    color: white;
+}
+
+.head{
+    padding-bottom: 0px ;
+    
+}
+
+.username{
+    display: inline-block;
+    padding-right: 10%;
+}
+
+.follow-button, .message-button{
+    background-color:#363636;
+    color: white;
+    display: inline-block;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 1.5rem;
+}
+
+.list li{
+    margin-right:  4vw;
+    display: inline-block;
+    width: 17%;
+    
+}
+
+.show-following{
+    padding-right: 0%;
+    margin-right: 0%;
+    /* margin-left: 3%; */
+}
+.list{
+    padding-bottom: 25px;
+}
+
+.name{
+    font-size: 17px;
+}
+
+.bio{
+    padding-right: 17%;
+}
+
+ul{
+    padding-left: 0;
+}
+.break-line-1{
+    display: none;
+}
+@media (max-width: 1250px){
+    .container{
+        padding-left: 5%;
+        
+    }
+    .daughter-2{
+        margin-left: 3rem;
+    }
+}
+
+
+
+@media (max-width: 760px){
+    .daughter-2 .break-line-1{
+        display: block;
+    }
+   
+    .daughter-2 .username{
+        padding-right: 0%;       
+    } 
+    .daughter-2{
+        margin: 0;
+    }
+    .container{
+        display: block;
+        text-align: center;
+        margin: 0;
+        padding: 0%;
+    }
+    .container .head{
+        margin: 0%;
+    }
+    .message-button{
+        margin: 0;
+    }
+    .show-following{
+        margin: 0;
+    }
+
+
+    .bio{
+        width: 75vw; 
+    
+    }
+}
+
+@media (max-width: 430px){
+    
+    .list{
+        padding: 0%;
+    }
+    .daughter-2 ul{
+        margin: 10px;
+        font-size: 13px;
+    }
+    .bio p{
+        margin: 10px;
+        font-size: 13px;
+    }
+
+}

@@ -1,0 +1,45 @@
+:root {
+    --input-background-color: white;
+    --input-background-color-dark: #7f7e7e;
+}
+
+#image {
+    display: none;
+}
+
+#profile-img {
+    height: 140px;
+    width: 140px;
+
+    position: relative;
+    top: 1.5rem;
+
+    border: 1px solid black;
+    border-radius: 50%;
+
+    background-color: var(--input-background-color);
+    background-image: url('../../assets/user-regular.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+}
+
+#profile-img.dark {
+    border: 1px solid white;
+
+    background-color: var(--input-background-color-dark);
+    background-image: url('../../assets//user-regular-dark.svg');
+}
+
+#profile-img:hover {
+    cursor: pointer;
+}
+
+.selected-img {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}

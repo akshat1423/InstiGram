@@ -1,0 +1,89 @@
+.signup {
+    margin: 2rem;
+}
+
+.signup-title {
+    font-size: 2rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--underline-color);
+    text-underline-offset: 5px;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 2rem 0;
+}
+
+.signup-title.dark {
+    text-decoration-color: var(--underline-color-dark);
+}
+
+.submit-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 1rem;
+}
+
+.submit {
+    font-size: 1.1rem;
+
+    padding: 0.5rem;
+
+    opacity: 0.7;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+
+    transition: 0.2s;
+}
+
+.submit.dark {
+    background-color: var(--button-dark-color);
+}
+
+.submit:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.text-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0.5rem 0;
+}
+
+.text {
+    margin-right: 5px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.error {
+    border: 1px red solid;
+}
+
+.error.dark {
+    border: 1px red solid;
+}
+
+#prohibited:hover {
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+}

@@ -1,0 +1,35 @@
+.details {
+    display: flex;
+    flex-direction: row;
+}
+
+.submit-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 1rem;
+}
+
+.submit {
+    font-size: 1.1rem;
+
+    padding: 0.5rem;
+
+    opacity: 0.7;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+
+    transition: 0.2s;
+}
+
+.submit.dark {
+    background-color: var(--button-dark-color);
+}
+
+.submit:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: 1;
+}

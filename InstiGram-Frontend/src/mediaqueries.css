@@ -1,0 +1,19 @@
+@media (max-width: 350px) {
+    #signup-card {
+        width: 250px;
+    }
+
+    #login-card {
+        width: 250px;
+    }
+}
+
+@media (max-width: 500px) {
+    .text-div {
+        flex-direction: column;
+    }
+
+    .text {
+        margin-bottom: 0.5rem;
+    }
+}
