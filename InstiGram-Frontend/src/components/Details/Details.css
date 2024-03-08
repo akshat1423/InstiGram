@@ -6,6 +6,7 @@
     
     vertical-align: top;
     color: white;
+    width: 400px;
 }
 
 .head{
@@ -15,10 +16,13 @@
 
 .username{
     display: inline-block;
-    padding-right: 10%;
+    padding-right: 5%;
+    max-width: 120px;
+    margin-bottom: 10px;
+    margin-left: 2px;
 }
 
-.follow-button, .message-button{
+.unfollow-button, .follow-button, .message-button{
     background-color:#363636;
     color: white;
     display: inline-block;
@@ -29,11 +33,19 @@
     margin-right: 1.5rem;
 }
 
+.unfollow-button{
+    background-color: black;
+    border: solid 2px white;
+}
+
 .list li{
-    margin-right:  4vw;
     display: inline-block;
     width: 17%;
     
+}
+
+.show-posts{
+    margin-right: 1.5vw;
 }
 
 .show-following{
@@ -43,6 +55,7 @@
 }
 .list{
     padding-bottom: 25px;
+    margin-top: 6px;
 }
 
 .name{
@@ -59,6 +72,11 @@ ul{
 .break-line-1{
     display: none;
 }
+
+.show-followers{
+    margin-right: 2.5vw;
+}
+
 @media (max-width: 1250px){
     .container{
         padding-left: 5%;

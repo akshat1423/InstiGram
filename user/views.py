@@ -64,40 +64,44 @@ def index(request):
 def settings(request):
     data = json.loads(request.body)
     user_auth= data.get('userId')
-    print(user_auth)
+    # print(user_auth)
     user_profile= Profile.objects.get(user_id= int(user_auth))
-    print(user_profile)
+    # print(user_profile)
     if request.method== 'POST':
 
-        if request.FILES.get('image')== None:
+        # if request.FILES.get('image')== None:
             
-            image= user_profile.profileimg
-            bio= data.get('bio')
-            department= data.get('department')
-            degree= data.get('degree')
-            year= data.get('year')
-            # location= data.get['location']
+        #     image= user_profile.profileimg
+        #     bio= data.get('bio')
+        #     department= data.get('department')
+        #     degree= data.get('degree')
+        #     year= data.get('year')
+        #     # location= data.get['location']
 
-            user_profile.profileimg= image
-            user_profile.bio= bio
-            user_profile.degree= degree
-            user_profile.year= year
-            user_profile.department= department
-            # user_profile.location= location
-            user_profile.save()
+        #     user_profile.profileimg= image
+        #     user_profile.bio= bio
+        #     user_profile.degree= degree
+        #     user_profile.year= year
+        #     user_profile.department= department
+        #     # user_profile.location= location
+        #     user_profile.save()
 
-        if request.FILES.get('image') != None:
-            image= request.FILES.get('image')
-            bio= data.get('bio')
-            # location= data.get['location']
+        # if request.FILES.get('image') != None:
+        image= data.get('profileImage')
+        bio= data.get('bio')
+        department= data.get('department')
+        degree= data.get('degree')
+        year= data.get('year')
+        
+        # location= data.get['location']
 
-            user_profile.profileimg= image
-            user_profile.bio= bio
-            user_profile.degree= degree
-            user_profile.year= year
-            user_profile.department= department
-            # user_profile.location= location
-            user_profile.save()
+        user_profile.profileimg= image
+        user_profile.bio= bio
+        user_profile.degree= degree
+        user_profile.year= year
+        user_profile.department= department
+        # user_profile.location= location
+        user_profile.save()
         
     
     response_data = {'data': 'done'}
@@ -175,40 +179,54 @@ def comment(request):
 
 
 # @login_required(login_url='signin')
-def profile(request, pk):
-    user_object= User.objects.get(username=pk)
-    user_profile= Profile.objects.get(user=user_object)
+def profile(request):
+    data = json.loads(request.body)
+    # data = json.loads(request.body)
+    user_auth = data.get('userId')
+    user_object = User.objects.get(id=user_auth)
+    user_profile= Profile.objects.get(user_id= user_auth)
+    pk= user_object.username
     user_posts= Post.objects.filter(user=pk)
     user_post_length= len(user_posts)
 
     follower= request.user.username
-    interesties= request.user.username
+    # interesties= request.user.username
     user= pk
 
     if FollowersCount.objects.filter(follower=follower, user= user).first():
         button_text= 'Unfollow'
+        isFollowing= True
     else:
         button_text= 'Follow'
+        isFollowing= False
     
     user_followers= len(FollowersCount.objects.filter(user=pk))
     user_following= len(FollowersCount.objects.filter(follower=pk))
 
-    if ShowInterest.objects.filter(interesties=interesties, user= user).first():
-        interest_button_text= 'Not Interested'
-    else:
-        interest_button_text= 'Show interest'
+    # if ShowInterest.objects.filter(interesties=interesties, user= user).first():
+    #     interest_button_text= 'Not Interested'
+    # else:
+    #     interest_button_text= 'Show interest'
 
-    context = {
-        'user_object': user_object, 
-        'user_profile': user_profile,
-        'user_posts': user_posts,
-        'user_post_length': user_post_length,
-        'button_text': button_text,
-        'user_followers': user_followers,
-        'user_following': user_following,
-        'interest_button_text': interest_button_text,
+    response_data = {
+        # 'user_object': user_object, 
+        # 'user_profile': user_profile,
+        'DP': user_profile.profileimg,
+        # 'posts': user_posts,
+        # 'user_post_length': user_post_length,
+        # 'button_text': button_text,
+        # 'user_followers': user_followers,
+        # 'user_following': user_following,
+        # 'interest_button_text': interest_button_text,
+        'details': {
+            'username': pk,
+            'isFollowing': isFollowing,
+            'posts': user_post_length,
+            'followers': user_followers,
+            'following': user_following,
+        }
     }
-    return render(request, 'profile.html', context)
+    return JsonResponse(response_data, status=200)
 
 # @login_required(login_url='signin')
 def follow(request):
@@ -302,10 +320,10 @@ def signin(request):
         password= data.get('password')
 
         user= auth.authenticate(username= username, password= password)
-
+        user_profile= Profile.objects.get(user=user)
         if user is not None:
             auth.login(request, user)
-            response_data = {'data': 'done'}
+            response_data = {'data': 'done', 'userId': user_profile.user_id}
             return JsonResponse(response_data, status=200)
         else:
             # messages.info(request, 'Credentials invalid')

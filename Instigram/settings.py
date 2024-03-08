@@ -63,6 +63,16 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_HEADERS = [
+    'Accept',
+    'Accept-Encoding',
+    'Authorization',
+    'Content-Type',
+    'Origin',
+    'X-Requested-With',
+    'body',  # Add 'body' to the list of allowed headers
+]
+
 
 INTERNAL_IPS = [
     # ...

@@ -37,8 +37,11 @@ function Login() {
                         password: true,
                         roll: true
                     })
+
+                    localStorage.setItem("userId", json.userId);
+
                 } else if (status == 409) {
-                    alert("Wrong username or Password");
+                    alert("Wrong Username or Password");
                     if (json.data == "username") {
                         setValid({
                             username: false,

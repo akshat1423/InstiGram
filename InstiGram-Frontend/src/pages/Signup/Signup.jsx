@@ -44,27 +44,22 @@ function Signup() {
                         })
 
                         localStorage.setItem("userId", json.userId);
-                        
+
                     } else if(status == 409) {
-                        console.log(json);
                         if (json.data == "username") {
                             setValid({
                                 username: false,
                                 password: true,
                                 roll: true
-                            });
-                            // console.log(valid);
-                            // console.log(json.data);
+                            })
                             alert('Username Taken');
                         } else if (json.data == "roll") {
                             setValid({
                                 username: true,
                                 password: true,
                                 roll: false
-                            });
-                            // console.log(valid);
-                            // console.log(json.data);
-                            alert('Roll Taken');
+                            })
+                            alert('Roll Number Taken');
                         }
                     }
                 })

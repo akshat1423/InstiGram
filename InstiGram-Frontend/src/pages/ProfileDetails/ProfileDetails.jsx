@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
 import ProfileSetupForm from "../../components/ProfileSetupForm/ProfileSetupForm";
+import { useRecoilValue } from "recoil";
+import { imageAtom } from "../../store/imageAtom";
 
 export default function ProfileSetup() {
     const navigate = useNavigate();
+    const image = useRecoilValue(imageAtom);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -19,7 +22,7 @@ export default function ProfileSetup() {
             department: formData.get('department'),
             degree: formData.get('degree'),
             year: formData.get('year'),
-            profileImage: formData.get('image'),
+            profileImage: image,
         }
 
         fetch("http://localhost:8000/profile/details", {
@@ -36,7 +39,7 @@ export default function ProfileSetup() {
                 console.log(json);
 
                 if(status == 200) {
-                    navigate('/interests');
+                    navigate('/feed');
                 }
             })
     }

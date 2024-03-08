@@ -1,0 +1,26 @@
+
+
+.single-post {
+    text-align: center;
+    display: inline-block;
+    background-color: black;
+    max-height: 204px;
+}
+
+.posts-container{
+    text-align: center;
+}
+
+.single-post img{
+    width: 25vw;
+    margin: 2px;
+    max-width: 200px;
+    height: 25vw;
+    max-height: 200px;
+}
+
+@media (min-width: 1050px){
+    .posts-container{
+        margin-left: 250px;
+    }
+}
