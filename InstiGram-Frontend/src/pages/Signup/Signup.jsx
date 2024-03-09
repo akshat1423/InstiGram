@@ -4,6 +4,7 @@ import SignupForm from '../../components/SignupForm/SignupForm';
 import DarkModeSwitch from '../../components/DarkModeSwitch/DarkModeSwitch';
 import { useNavigate } from 'react-router-dom';
 import { validAtom } from '../../store/validAtom';
+import SideCard from '../../components/SideCard/SideCard';
 
 function Signup() {
     const navigate = useNavigate();
@@ -72,7 +73,8 @@ function Signup() {
                 <SignupForm handleSubmit={ handleSubmit }></SignupForm>
             </Card>
 
-            <DarkModeSwitch></DarkModeSwitch>
+            <SideCard title='SIGNUP'></SideCard>
+            {/* <DarkModeSwitch></DarkModeSwitch> */}
         </div>
     )
 }

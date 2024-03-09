@@ -1,0 +1,28 @@
+.side-card {
+    position: fixed;
+
+    width: 484.24px;
+    height: 697px;
+    top: 150px;
+    left: 777px;
+    border-radius: 0 35px 35px 0;
+
+    background: #0D190D;
+
+    box-sizing: border-box;
+}
+
+.side-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #F1FCFF;
+
+    font-family: Mukta;
+    font-size: 83px;
+    font-weight: 700;
+    line-height: 138px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}

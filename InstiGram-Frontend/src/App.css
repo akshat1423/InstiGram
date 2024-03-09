@@ -1,6 +1,6 @@
 :root {
-    --background-color: #f1f2f3;
-    --background-color-dark: #050607;
+    --background-color: #000F00;
+    --background-color-dark: #000F00;
 
     --border-color: black;
     --border-color-dark: white;
@@ -8,27 +8,30 @@
     --underline-color: rgba(0,0,0,0.6);
     --underline-color-dark: rgba(255,255,255,0.6);
 
-    --button-color: cyan;
-    --button-dark-color: cyan;
+    --button-color: #1F5EFF;
+    --button-dark-color: #1F5EFF;
 
     --link-color: #0279D3;
 
-    --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --font-family: "PoorStory";
     --placeholder-animation: scale(0.9) translateX(-0.75rem) translateY(-2rem);
     --textarea-placeholder-animation: scale(0.9) translateX(-0.5rem) translateY(-2.5rem);
 
     --input-color: black;
-    --input-color-dark: white;
+    --input-color-dark: #000F00;
     --input-background-color: white;
-    --input-background-color-dark: #7f7e7e;
+    --input-background-color-dark: transparent;
 
     --accent-color: #0279D3;
-    --text-color: #333;
-    --text-color-dark: #eee;
+
+    --text-color: black;
+    --text-color-dark: black;
 
     --textarea-height: 10rem;
     --loader-color: #0279D3;
     --loader-color-dark: cyan;
+
+    --card-background-color: #F8FFF6;
 }
 
   * {
@@ -59,15 +62,11 @@ body.darkMode {
     width: 100vw;
 }
 
-#signup-card {
-    width: 300px;
-}
-
 @font-face {
     font-family: "PoorStory";   
     src: local("PoorStory-Regular"),
-      url("./assets/fonts/Poor_Story/PoorStory-Regular.ttf") format("truetype");
-  }
+    url("./assets/fonts/Poor_Story/PoorStory-Regular.ttf") format("truetype");
+}
 
 @font-face {
     font-family: "Mukta";   

@@ -4,6 +4,7 @@ import Card from "../../components/Card/Card";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
 import { validAtom } from "../../store/validAtom";
+import SideCard from '../../components/SideCard/SideCard';
 
 function Login() {
     const navigate = useNavigate();
@@ -51,8 +52,9 @@ function Login() {
             <Card id='login-card'>
                 <LoginForm handleSubmit={ handleSubmit }></LoginForm>
             </Card>
+            <SideCard title='LOGIN'></SideCard>
 
-            <DarkModeSwitch></DarkModeSwitch>
+            {/* <DarkModeSwitch></DarkModeSwitch> */}
         </div>
     )
 }
