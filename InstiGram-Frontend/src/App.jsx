@@ -4,6 +4,8 @@ import { RecoilRoot } from 'recoil';
 import './App.css';
 import './mediaqueries.css';
 import Loading from './pages/Loading/Loading';
+import "./assets/fonts/Poor_Story/PoorStory-Regular.ttf"
+
 
 const Signup = React.lazy(() => import('./pages/Signup/Signup'));
 const ProfileDetails = React.lazy(() => import('./pages/ProfileDetails/ProfileDetails'));

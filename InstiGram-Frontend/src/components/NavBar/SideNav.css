@@ -1,4 +1,4 @@
-.sidenav {
+/* .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -59,4 +59,9 @@
     .sidenav .closebtn{
         display: none;
     }
+} */
+
+.sidenav{
+    font-family: "Mukta";
+    font-size: large;
 }

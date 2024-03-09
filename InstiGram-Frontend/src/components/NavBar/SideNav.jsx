@@ -12,11 +12,11 @@ function SideNav(){
     return(
         <>
         <div id="mySidenav" className="sidenav">
-            <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+            {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a> */}
             <h1>Instigram</h1>
-            <a href="#">Feed</a>
-            <a href="#">Chats</a>
-            <a href="#">Profile</a>
+            <a href="#">Feed</a><br />
+            <a href="#">Chats</a><br />
+            <a href="#">Profile</a><br />
         </div>
 
     <span className="openbtn" onClick={openNav}>&#9776; open</span>

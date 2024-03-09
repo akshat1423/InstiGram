@@ -14,6 +14,26 @@
     --link-color: #0279D3;
 
     --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --placeholder-animation: scale(0.9) translateX(-0.75rem) translateY(-2rem);
+    --textarea-placeholder-animation: scale(0.9) translateX(-0.5rem) translateY(-2.5rem);
+
+    --input-color: black;
+    --input-color-dark: white;
+    --input-background-color: white;
+    --input-background-color-dark: #7f7e7e;
+    --accent-color: #0279D3;
+    --text-color: #333;
+  --text-color-dark: #eee;
+
+    --textarea-height: 10rem;
+    --input-background-color: white;
+    --input-background-color-dark: #7f7e7e;
+    --loader-color: #0279D3;
+    --loader-color-dark: cyan;
+    --input-color: black;
+    --input-color-dark: white;
+    --input-background-color: white;
+    --input-background-color-dark: #7f7e7e;
 }
 
   * {
@@ -47,3 +67,15 @@ body.darkMode {
 #signup-card {
     width: 300px;
 }
+
+@font-face {
+    font-family: "PoorStory";   
+    src: local("PoorStory-Regular"),
+      url("./assets/fonts/Poor_Story/PoorStory-Regular.ttf") format("truetype");
+  }
+
+@font-face {
+    font-family: "Mukta";   
+    src: local("Mukta-Regular"),
+    url("./assets/fonts/Mukta/Mukta-Regular.ttf") format("truetype");
+}  

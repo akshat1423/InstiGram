@@ -1,14 +1,4 @@
-:root {
-    --placeholder-animation: scale(0.9) translateX(-0.75rem) translateY(-2rem);
-    --textarea-placeholder-animation: scale(0.9) translateX(-0.5rem) translateY(-2.5rem);
 
-    --input-color: black;
-    --input-color-dark: white;
-    --input-background-color: white;
-    --input-background-color-dark: #7f7e7e;
-
-    --textarea-height: 10rem;
-}
 
 label {
     display: flex;
