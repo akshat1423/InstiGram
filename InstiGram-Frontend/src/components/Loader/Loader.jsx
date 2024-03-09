@@ -1,13 +1,15 @@
-import './Loader.css'
+import React from 'react';
+import "./Loader.css"
+import { useRecoilValue } from 'recoil';
+import {darkModeAtom} from '../../store/darkModeAtom.jsx'
 
-export default function Loader() {
-    return(
-        <div className="loading-main">
-            <div className="loader-background">
-                <div className="loader">
-                    Loading...
-                </div>
-            </div>
-        </div>
-    )
+function Loader() {
+  const darkMode = useRecoilValue(darkModeAtom);
+  return(
+    <div className={darkMode ? 'container dark' : 'container'}>
+      <p className={ darkMode ? 'loader dark ' : 'loader' } >LOADING...</p>
+    </div>
+  )
 }
+
+  export default Loader

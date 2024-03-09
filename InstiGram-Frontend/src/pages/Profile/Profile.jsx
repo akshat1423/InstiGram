@@ -5,6 +5,7 @@ import SideNav from "../../components/NavBar/SideNav.jsx";
 import Details from "../../components/Details/Details.jsx";
 import Pic from "../../components/ProfilePic/Pic.jsx";
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from "recoil";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
@@ -15,34 +16,31 @@ function Profile() {
   const setPosts = useSetRecoilState(postAtom);
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
+  const navigate = useNavigate();
 
   useEffect(() => {
     
-    // const userId = localStorage.getItem(userId);
+    const userId = JSON.parse(localStorage.getItem('userId'));
 
     const data = {
-      userId: 5,
+      userId: userId,
     }
 
     console.log(data);
     console.log(JSON.stringify(data));
-    fetch("http://127.0.0.1:8000/profile", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(data),
-        })
-      .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          setPosts(data.posts);
-          setDP(data.DP);
-          setDetails(data.details)
-          
 
+    fetch('http://localhost:8000/profile', {
+      method: "POST",
+      headers: {
+        "Content-type": 'application/json',
+      },
+      body: JSON.stringify(data),
     })
-    
+      .then(async function(res) {
+        const json = await res.json();
+        console.log(json);
+
+      })
   }, []);
 
   return(
@@ -54,7 +52,7 @@ function Profile() {
     <Pic></Pic>
     <Details></Details>
     </div>
-    {/* <Post></Post> */}
+    <Post></Post>
     </div>
     
     </>

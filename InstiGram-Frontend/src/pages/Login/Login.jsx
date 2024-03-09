@@ -42,19 +42,6 @@ function Login() {
 
                 } else if (status == 409) {
                     alert("Wrong Username or Password");
-                    if (json.data == "username") {
-                        setValid({
-                            username: false,
-                            password: true,
-                            roll: true
-                        })
-                    } else if (json.data == "password") {
-                        setValid({
-                            username: true,
-                            password: false,
-                            roll: true,
-                        })
-                    }
                 }
             })
     }

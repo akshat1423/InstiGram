@@ -9,8 +9,8 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
     if ( name == "degree") {
         return (
             <>
-                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='DEFAULT' {...rootAttributes} >
-                    <option value="DEFAULT" disabled>--{ placeholder }--</option>
+                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
+                    <option value="" disabled >--{ placeholder }--</option>
                     <option value="btech">BTech</option>
                     <option value="mtech">MTech</option>
                     <option value="bsc">BSc</option>
@@ -24,8 +24,8 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
     } else if ( name == "year") {
         return (
             <>
-                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='DEFAULT' {...rootAttributes} >
-                    <option value="DEFAULT" disabled>--{ placeholder }--</option>
+                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
+                    <option value="" disabled >--{ placeholder }--</option>
                     <option value="1">First Year</option>
                     <option value="2">Second Year</option>
                     <option value="3">Third Year</option>
@@ -38,8 +38,8 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
     } else if (name == "department") {
         return (
             <>
-                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='DEFAULT' {...rootAttributes} >
-                    <option value="DEFAULT" disabled>--{ placeholder }--</option>
+                <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
+                    <option value="" disabled >--{ placeholder }--</option>
                     <option value="civil">Civil Engineering</option>
                     <option value="aero">Aerospace Engineering</option>
                     <option value="chemical">Chemical Engineering</option>

@@ -12,7 +12,7 @@ export default function ProfileSetupForm({ handleSubmit }) {
         <>
             <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
                 <ImageInput name="image" id="image" />
-                <AnimatedTextInput placeholder="Bio" name="bio" id="bio" type="text" required />
+                <AnimatedTextInput placeholder="Bio" name="bio" id="bio" type="text" required  />
                 <SelectInput placeholder="Department" name="department" id="department" type="text" required />
                 <div className="details">
                     <SelectInput placeholder="Degree" name="degree" id="degree" type="text" required />

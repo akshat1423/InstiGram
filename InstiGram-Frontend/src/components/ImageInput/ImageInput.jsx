@@ -13,6 +13,7 @@ export default function ImageInput({ id, name, ...rootAttributes}) {
 
             reader.onload = (e) => {
                 setImage(e.target.result);
+                console.log(e.target.result);
             };
             reader.readAsDataURL(event.target.files[0]);
         }

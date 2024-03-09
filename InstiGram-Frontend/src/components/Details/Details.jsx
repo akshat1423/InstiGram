@@ -7,7 +7,7 @@ function Details(){
 
     const details = useRecoilValue(detailsAtom);
 
- 
+
 
 
     return(
