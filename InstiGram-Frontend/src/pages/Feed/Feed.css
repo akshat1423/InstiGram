@@ -1,14 +1,8 @@
 
 
 :root {
-  --background-color: #f1f2f3;
-  --background-color-dark: #050607;
-  --text-color: #333;
-  --text-color-dark: #eee;
   --border-color: #ccc;
   --border-color-dark: #666;
-  --accent-color: #0279D3;
-  --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 * {

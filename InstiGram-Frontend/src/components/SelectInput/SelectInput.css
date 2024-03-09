@@ -1,9 +1,3 @@
-:root {
-    --input-color: black;
-    --input-color-dark: white;
-    --input-background-color: white;
-    --input-background-color-dark: #7f7e7e;
-}
 
 select {
     position: relative;
