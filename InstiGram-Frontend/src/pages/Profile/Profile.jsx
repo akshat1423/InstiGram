@@ -38,7 +38,9 @@ function Profile() {
     })
       .then(async function(res) {
         const json = await res.json();
-        console.log(json);
+        setDP(json.DP)
+        setDetails(json.details)
+        setPosts(json.posts)
 
       })
   }, []);

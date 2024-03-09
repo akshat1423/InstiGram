@@ -64,4 +64,44 @@
 .sidenav{
     font-family: "Mukta";
     font-size: large;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 288px;
+    background-color:#12180F;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.heading-instigram{
+    width: 251px;
+    height: 62px;
+    font-family: "PoorStory"; 
+    color: white;
+    margin:38px 8px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+}
+ul{
+    margin-top: 70px;
+}
+
+.list-item{
+    font-family: Mukta;
+    text-decoration: none;
+    color: #F8FFF6;
+    width: 143px;
+    height: 56px;
+    margin-left: 24px;
+    display: inline-block;
+}
+
+.calender-bg{
+    width: 10px;
+    height: 10px;
+    background-image: "../../assets/calendar.svg";
+    background-color: #F8FFF6;
 }
