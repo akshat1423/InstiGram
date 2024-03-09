@@ -1,13 +1,25 @@
 .card {
-    border: var(--border-color) solid 2px;
-    border-radius: 1rem;
+    position: absolute;
 
-    width: fit-content;
-    padding: 1rem;
+    width: 550.58px;
+    height: 754.47px;
+    top: 119px;
+    left: 222.42px;
 
-    transition: 1s;
+    background: #F8FFF6;
+
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .card.darkMode {
     border: var(--border-color-dark) solid 2px;
+}
+
+.background-1 {
+    position: absolute;
+
+    width: 557.77px;
+    height: 766.14px;
+    top: 124.39px;
+    left: 204.45px;
 }

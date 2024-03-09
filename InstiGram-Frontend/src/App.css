@@ -1,6 +1,7 @@
 :root {
     --background-color: #f1f2f3;
     --background-color-dark: #050607;
+
     --border-color: black;
     --border-color-dark: white;
 
@@ -20,19 +21,14 @@
     --input-color-dark: white;
     --input-background-color: white;
     --input-background-color-dark: #7f7e7e;
+
     --accent-color: #0279D3;
     --text-color: #333;
-  --text-color-dark: #eee;
+    --text-color-dark: #eee;
 
     --textarea-height: 10rem;
-    --input-background-color: white;
-    --input-background-color-dark: #7f7e7e;
     --loader-color: #0279D3;
     --loader-color-dark: cyan;
-    --input-color: black;
-    --input-color-dark: white;
-    --input-background-color: white;
-    --input-background-color-dark: #7f7e7e;
 }
 
   * {

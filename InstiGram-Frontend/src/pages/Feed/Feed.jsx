@@ -3,6 +3,7 @@ import Post from "../../components/Post/Post"
 import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
 import './Feed.css'
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 
 
@@ -50,6 +51,7 @@ export default function App() {
         <div>
             <div className="header">
                 <SearchBar onSearch={handleSearch} />
+                <Link to='/profile'>Profile</Link>
                 <DarkModeSwitch darkMode={darkMode} onChange={() => setDarkMode(!darkMode)} />
             </div>
             <div className="posts">
