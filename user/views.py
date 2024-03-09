@@ -7,6 +7,7 @@ from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comme
 from itertools import chain
 from django.http import JsonResponse
 import json
+import base64
 import random
 
 
@@ -87,7 +88,10 @@ def settings(request):
         #     user_profile.save()
 
         # if request.FILES.get('image') != None:
-        image= data.get('profileImage')
+        if data.get('profileImage')== None:
+            image= user_profile.profileimg
+        else:
+            image= data.get('profileImage')
         bio= data.get('bio')
         department= data.get('department')
         degree= data.get('degree')

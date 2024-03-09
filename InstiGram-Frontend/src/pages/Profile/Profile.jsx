@@ -54,7 +54,7 @@ function Profile() {
     <Pic></Pic>
     <Details></Details>
     </div>
-    <Post></Post>
+    {/* <Post></Post> */}
     </div>
     
     </>
