@@ -1,0 +1,70 @@
+.bio{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    background: #1D1E1D;
+    width: 1036px;
+    margin-top: 0px;
+    margin-left: 346px;
+    color: white;
+    width: 400px;
+}
+
+.name{
+    display: block;
+    font-family: Mukta;
+font-size: 30px;
+font-weight: 600;
+line-height: 50px;
+letter-spacing: 0em;
+margin-left: 63px;
+height: 50px;
+
+}
+
+.user-bio{
+    height: 50px;
+    display: block;
+    font-family: Mukta;
+font-size: 24px;
+font-weight: 400;
+line-height: 40px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 63px;
+
+
+}
+
+.acad-details{
+    display: inline-flex;
+    background-color: #1D1E1D;
+    width: 636px;
+}
+.bada-bio{
+    display: inline-flex;
+}
+
+.acad{
+border-radius: 6px;
+border: 1px solid #106EE8;
+color: #106EE8;
+height: 40px;
+font-family: Mukta;
+font-size: 24px;
+font-weight: 400;
+line-height: 40px;
+letter-spacing: 0em;
+text-align: center;
+padding: 0 13px;
+
+
+}
+
+.degree{
+    margin-right: 80px;
+}
+
+.subject{
+    margin-right: 80px;
+}

@@ -6,135 +6,66 @@
     
     vertical-align: top;
     color: white;
-    width: 400px;
-}
-
-.head{
-    padding-bottom: 0px ;
-    
+    height: 300px;
 }
 
 .username{
     display: inline-block;
-    padding-right: 5%;
-    max-width: 120px;
-    margin-bottom: 10px;
-    margin-left: 2px;
+    margin-top: 60px;
+    font-family: PoorStory;
+    font-size: 48px;
+font-weight: 400;
+line-height: 60px;
+letter-spacing: 0em;
+text-align: left;
+width: 382px;
+height: 60px;
+margin-left: 46px;
+
+    
 }
 
-.unfollow-button, .follow-button, .message-button{
-    background-color:#363636;
-    color: white;
-    display: inline-block;
-    height: 30px;
-    width: 100px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 1.5rem;
-}
-
-.unfollow-button{
-    background-color: black;
-    border: solid 2px white;
+.list{
+    margin-left: 53px;
 }
 
 .list li{
     display: inline-block;
-    width: 17%;
+    font-family: PoorStory;
+    text-align: center;
+font-size: 48px;
+font-weight: 400;
+line-height: 60px;
+letter-spacing: 0em;
+text-align: center;
+margin-top: 0px;
+
     
 }
 
-.show-posts{
-    margin-right: 1.5vw;
-}
+.key-details{
+    font-family: Mukta;
+font-size: 24px;
+font-weight: 400;
+line-height: 40px;
+letter-spacing: 0em;
+text-align: center;
+color: RGBA(255,255,255,50%);
 
-.show-following{
-    padding-right: 0%;
-    margin-right: 0%;
-    /* margin-left: 3%; */
-}
-.list{
-    padding-bottom: 25px;
-    margin-top: 6px;
-}
-
-.name{
-    font-size: 17px;
-}
-
-.bio{
-    padding-right: 17%;
-}
-
-ul{
-    padding-left: 0;
-}
-.break-line-1{
-    display: none;
 }
 
 .show-followers{
-    margin-right: 2.5vw;
+    margin-left: 89px;
 }
 
-@media (max-width: 1250px){
-    .container{
-        padding-left: 5%;
-        
-    }
-    .daughter-2{
-        margin-left: 3rem;
-    }
+.show-following{
+    margin-left: 98px;
 }
 
-
-
-@media (max-width: 760px){
-    .daughter-2 .break-line-1{
-        display: block;
-    }
-   
-    .daughter-2 .username{
-        padding-right: 0%;       
-    } 
-    .daughter-2{
-        margin: 0;
-    }
-    .container{
-        display: block;
-        text-align: center;
-        margin: 0;
-        padding: 0%;
-    }
-    .container .head{
-        margin: 0%;
-    }
-    .message-button{
-        margin: 0;
-    }
-    .show-following{
-        margin: 0;
-    }
-
-
-    .bio{
-        width: 75vw; 
-    
-    }
+button{
+    display: none;
 }
 
-@media (max-width: 430px){
-    
-    .list{
-        padding: 0%;
-    }
-    .daughter-2 ul{
-        margin: 10px;
-        font-size: 13px;
-    }
-    .bio p{
-        margin: 10px;
-        font-size: 13px;
-    }
-
+.daughter-2 ul{
+    margin-top: 0;
 }

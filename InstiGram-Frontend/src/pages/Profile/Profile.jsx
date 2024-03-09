@@ -1,9 +1,8 @@
-import Header from "../../components/Header/Header.jsx";
-import Post from "../../components/ProfilePosts/ProfilePosts.jsx";
-import "./Profile.css"
-import SideNav from "../../components/NavBar/SideNav.jsx";
-import Details from "../../components/Details/Details.jsx";
-import Pic from "../../components/ProfilePic/Pic.jsx";
+
+
+ import SideNav from "../../components/NavBar/SideNav.jsx";
+
+import ProfileMain from "../../components/ProfileMain/ProfileMain.jsx"
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from "recoil";
@@ -47,15 +46,9 @@ function Profile() {
 
   return(
     <>
-    {/* <Header></Header> */}
+    
     <SideNav></SideNav>
-    <div className="bada-container">
-    <div className="container">
-    <Pic></Pic>
-    <Details></Details>
-    </div>
-    {/* <Post></Post> */}
-    </div>
+    <ProfileMain ></ProfileMain>
     
     </>
   );

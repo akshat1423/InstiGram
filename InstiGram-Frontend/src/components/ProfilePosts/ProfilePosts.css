@@ -4,19 +4,21 @@
     text-align: center;
     display: inline-block;
     background-color: black;
-    max-height: 204px;
+    margin: 10px;
 }
 
 .posts-container{
     text-align: center;
+    background-color: #1d1e1d;
+    margin-left: 346px !important;
+    width: 1036px;
 }
 
 .single-post img{
-    width: 25vw;
+    width: 455px;
+    height: 455px;
     margin: 2px;
-    max-width: 200px;
-    height: 25vw;
-    max-height: 200px;
+
 }
 
 @media (min-width: 1050px){

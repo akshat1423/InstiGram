@@ -7,15 +7,12 @@ function Post() {
   const posts = useRecoilValue(postAtom);
 
 
-// useEffect(() => {
-//   setPosts(mockPosts);
-// }, []); // Run this effect only once on component mount
-
 
 
 
   return (
       <div className="posts-container">
+      
         {posts.map((post, index) => (
           <div key={post.id} className="single-post">
             <img src={post.url} width="200px" height="200px" alt={`Image for post ${post.id}`} />
