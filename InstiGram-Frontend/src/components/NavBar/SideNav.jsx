@@ -17,9 +17,12 @@ function SideNav(){
             {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a> */}
             <h1 className="heading-instigram">Instigram</h1>
             <ul >
-            <li ><Link className="list-item" to="/feed"><div className="calender-bg"></div>Calendar</Link><br /></li>
-            <li ><Link className="list-item" to="/chat"  >Chats</Link><br /></li>
-            <li ><Link className="list-item" to="/profile" >Profile</Link><br /></li>
+            <li><Link className="nav-list-item" to="/feed">
+            <div className="navbar-icon-calendar" />
+            Calendar</Link><br /></li>
+            <li ><Link className="nav-list-item" to="/chat"  ><div className=" navbar-icon-profile" />Profile</Link><br /></li>
+            <li ><Link className="nav-list-item" to="/profile" ><div className=" navbar-icon-searchh" />Search</Link><br /></li>
+            <li><Link className="nav-newpost-button"><div className="addpost-icon"></div> New Post</Link></li>
             </ul>
         </div>
 

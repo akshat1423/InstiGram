@@ -72,6 +72,11 @@
     position: fixed;
     height: 100%;
     overflow: auto;
+    border-radius: 0 50px 0 0;
+    
+    border-right: solid 1px #F8FFF6;
+    border-top: solid 1px #F8FFF6;
+    box-shadow: -4px 4px rgba(255, 255, 255, 25%);
 }
 
 .heading-instigram{
@@ -86,22 +91,112 @@
     line-height: 50px;
 }
 ul{
-    margin-top: 70px;
+    margin-top: 50px;
 }
-
-.list-item{
+li{
+    height: 50px;
+}
+.nav-list-item {
     font-family: Mukta;
     text-decoration: none;
     color: #F8FFF6;
-    width: 143px;
-    height: 56px;
+    display: flex;
+    align-items: center; /* Vertically center items */
     margin-left: 24px;
-    display: inline-block;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 36.56px;
+    justify-items: center;
 }
 
-.calender-bg{
-    width: 10px;
-    height: 10px;
-    background-image: "../../assets/calendar.svg";
-    background-color: #F8FFF6;
+.navbar-icon-calendar {
+    width: 24px;
+    height: 24px; 
+    margin-right: 8px;
+    
+    background-image: url("../../assets/calendar.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
+
+.navbar-icon-profile{
+    width: 24px;
+    height: 24px; 
+    margin-right: 8px;
+    
+    background-image: url("../../assets/user.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.navbar-icon-searchh{
+    width: 24px;
+    height: 24px; 
+    margin-right: 8px;
+    
+    background-image: url("../../assets/search.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.nav-newpost-button{
+    font-family: PoorStory;
+    text-decoration: none;
+    color: #003887;
+    display: flex;
+    align-items: center; /* Vertically center items */
+    padding-left: 24px;
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 36.56px;
+    justify-items: center;
+    background-color: #F8FFF6;
+    padding-top: 14px;
+    padding-bottom: 16px;
+    margin: 10px;
+    border-radius: 10px;
+
+}
+.addpost-icon{
+    width: 45px;
+    height: 45px; 
+    margin-right: 8px;
+    
+    background-image: url("../../assets/plus-square.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+/* .nav-newpost-button{
+    margin-top: 30px;
+    padding: 12.5px 35px;
+    width: 258px;
+    height: 68px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-left: 15px;
+    font-family: PoorStory;
+    font-weight: 400;
+    font-size: 29px;
+    background-color: #F8FFF6;
+    color: #003887;
+    line-height: 36.25px;
+
+}
+
+.addpost-icon{
+
+    margin-right: 8px;
+    
+    background-image: url("../../assets/plus-square.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+} */
