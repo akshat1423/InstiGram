@@ -21,7 +21,7 @@ export default function Error() {
                 </div>
             </div>
             <div className='switch'>
-                <DarkModeSwitch /> 
+                {/* <DarkModeSwitch />  */}
             </div>
         </div>
 

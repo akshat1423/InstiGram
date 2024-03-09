@@ -6,7 +6,7 @@
     top: 119px;
     left: 222.42px;
 
-    background: #F8FFF6;
+    background: var(--card-background-color);
 
     box-shadow: 0px 4px 4px 0px #00000040;
 }
@@ -22,4 +22,19 @@
     height: 766.14px;
     top: 124.39px;
     left: 204.45px;
+
+    background: var(--card-background-color);
+
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.background-2 {
+    position: absolute;
+
+    width: 568.55px;
+    height: 774.23px;
+    top: 130.68px;
+    left: 182px;
+
+    background: var(--card-background-color);
 }

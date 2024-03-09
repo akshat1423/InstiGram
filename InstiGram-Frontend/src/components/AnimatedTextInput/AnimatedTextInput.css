@@ -9,8 +9,16 @@ label {
     box-sizing: border-box;
 
     width: max-content;
-    bottom: 2rem;
-    left: 0.5rem;
+    bottom: 0;
+    right: 390px;
+
+    font-family: "PoorStory";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+
 
     transition: 0.3s;
 }
@@ -21,22 +29,22 @@ input {
     padding: 5px;
     box-sizing: border-box;
 
-    width: 100%;
+    width: 400px;
 
     font-size: 1.1rem;
     line-height: 1.5rem;
     color: var(--input-color);
 
     background-color: var(--input-background-color);
-    border: 1px var(--input-color) solid;
-    border-radius: 5px;
+    border: none;
+    border-radius: 0px;
 }
 
 input.dark {
     background-color: var(--input-background-color-dark);
     color: var(--input-color-dark); 
 
-    border: 1px var(--input-color-dark) solid;
+    border: none;
 }
 
 input:focus {
@@ -44,17 +52,14 @@ input:focus {
 }
 
 input:focus + label {
-    display: block;
+    display: none;
     position: relative;
 
-    transform: var(--placeholder-animation);
+    /* animation: fade 200s both; */
 }
 
 input:valid + label {
-    display: block;
-    position: relative;
-
-    transform: var(--placeholder-animation);
+    display: none;
 }
 
 textarea {
@@ -111,14 +116,12 @@ textarea:valid + label {
 }
 
 .eye {
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
-    margin-bottom: -1.25rem;
+    width: 24px;
+    height: 24px;
 
-    position: relative;
-    float: right;
-    bottom: 3.25rem;
+    position: absolute;
+
+    left: 450px;
 
     z-index: 2;
 }
@@ -142,8 +145,22 @@ textarea:valid + label {
 
 .error-msg {
     color: red;
-    font-size: 0.8rem;
+    font-size: 1rem;
 
-    position: relative;
-    bottom: 0.5rem;
+    position: absolute;
+    transform: translateY(2.5rem);
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+        transform: none;
+    } 0.3% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    } 100% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
 }
