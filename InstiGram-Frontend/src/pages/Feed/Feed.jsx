@@ -12,6 +12,7 @@ export default function App() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         document.body.classList.toggle('darkMode', darkMode);
@@ -51,7 +52,7 @@ export default function App() {
         <div>
             <div className="header">
                 <SearchBar onSearch={handleSearch} />
-                <Link to='/profile'>Profile</Link>
+                <Link to={`/profile/${userId}`}>Profile</Link>
                 <DarkModeSwitch darkMode={darkMode} onChange={() => setDarkMode(!darkMode)} />
             </div>
             <div className="posts">

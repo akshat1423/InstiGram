@@ -5,6 +5,7 @@ import './App.css';
 import './mediaqueries.css';
 import Loading from './pages/Loading/Loading';
 import "./assets/fonts/Poor_Story/PoorStory-Regular.ttf"
+import EditProfile from './pages/EditProfile/EditProfile';
 
 
 const Signup = React.lazy(() => import('./pages/Signup/Signup'));
@@ -26,7 +27,8 @@ function App() {
               <Route path='/' element={ <Signup /> } />
               <Route path='/signin' element={ <Login /> } />
               <Route path='/profile/details' element={ <ProfileDetails />} />
-              <Route path='/profile' element={ <Profile /> } />
+              <Route path='/profile/edit' element={ <EditProfile />} />
+              <Route path='/profile/:userId' element={ <Profile /> } />
               <Route path='/feed' element={ <Feed />} />
               <Route path='/loading' element={ <Loading /> } />
               <Route path='/redirect' element={ <Error /> }/>

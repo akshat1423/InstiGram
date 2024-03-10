@@ -3,6 +3,7 @@ import PopupCard from "../../components/PopupCard/PopupCard";
 import ProfileSetupForm from "../../components/ProfileSetupForm/ProfileSetupForm";
 import { useRecoilValue } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
+import './ProfileDetails.css'
 
 export default function ProfileSetup() {
     const navigate = useNavigate();
@@ -45,9 +46,9 @@ export default function ProfileSetup() {
 
     return (
         <div className="main">
-            <PopupCard>
+            <div className="details-background">
                 <ProfileSetupForm handleSubmit={ handleSubmit }></ProfileSetupForm>
-            </PopupCard>
+            </div>
 
             {/* <DarkModeSwitch></DarkModeSwitch> */}
         </div>

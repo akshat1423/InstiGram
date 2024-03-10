@@ -21,7 +21,7 @@ export default function ImageInput({ id, name, ...rootAttributes}) {
 
     return (
         <>
-            <input type="file" id={ id } name={ name } accept="image/*" onChange={ imageUpload } />
+            <input type="file" id={ id } name={ name } accept="image/*" onChange={ imageUpload } className='image-input' />
             <label htmlFor={ id } id="profile-img" className={darkMode ? "dark" : ""}>
                 <img src={ image } alt="" className="selected-img" />
             </label>
