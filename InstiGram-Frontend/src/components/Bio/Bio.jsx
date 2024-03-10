@@ -8,8 +8,8 @@ function Bio(){
     return(
         <div className="bada-bio">
         <div className="bio">
-                    <div className="name"><p>{details.name} ajisbdguiawrevgiyerv</p> <br /></div>
-                    <div className="user-bio"><p>{details.bio}aa asajksfwjiefjilre</p> </div>
+                    {/* <div className="name"><p>{details.name}</p> <br /></div> */}
+                    <div className="user-bio"><p>{details.bio}</p> </div>
         </div>
         <div className="acad-details">
             <div className="degree acad">{details.degree}</div>

@@ -17,7 +17,7 @@ return(
     
     </div>
     <Bio></Bio>
-    <Post></Post>
+    {/* <Post></Post> */}
     
 </div>
     );
