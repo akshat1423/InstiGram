@@ -8,11 +8,13 @@ import './EditProfile.css';
 import { useEffect } from "react";
 import { detailsAtom } from "../../store/detailsAtom";
 import { imageAtom } from "../../store/imageAtom";
+import { useNavigate } from "react-router-dom";
 
 export default function EditProfile() {
     const darkMode = useRecoilValue(darkModeAtom);
     const details = useRecoilValue(detailsAtom);
     const image = useRecoilValue(imageAtom);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
