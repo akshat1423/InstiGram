@@ -11,7 +11,7 @@ function Details(){
 
 
     return(<>
-             <div className="daughter-2">
+            <div className="daughter-2">
                 <div className="head">
                 <h2 className="username">{details.username}</h2>
                 <br></br>

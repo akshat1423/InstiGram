@@ -9,7 +9,7 @@ export const detailsAtom = atom({
         followers: '0',
         following: '0',
         degree: 'B.Tech',
-        subject: 'CSE',
+        department: 'CSE',
         gradYear: '2027'
     }
 })
