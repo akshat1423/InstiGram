@@ -20,10 +20,11 @@ function Profile() {
 
   useEffect(() => {
     
-    // const userId = JSON.parse(localStorage.getItem('userId'));
+    const loggedUser = JSON.parse(localStorage.getItem('userId'));
 
     const data = {
       userId: userId,
+      loggedUser: loggedUser,
     }
 
     console.log(data);
