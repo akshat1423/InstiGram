@@ -5,11 +5,12 @@ import SelectInput from "../SelectInput/SelectInput";
 import { detailsAtom } from "../../store/detailsAtom";
 import { darkModeAtom } from "../../store/darkModeAtom";
 import './EditForm.css';
+import { useNavigate } from "react-router-dom";
 
 export default function EditForm({ handleSubmit }) {
     const details = useRecoilValue(detailsAtom);
     const darkMode = useRecoilValue(darkModeAtom);
-
+    const navigate = useNavigate();
 
     return (
         <>
@@ -17,6 +18,7 @@ export default function EditForm({ handleSubmit }) {
                 <div className="details-title">
                     Edit Profile
                 </div>
+                <div className="edit-close-button-div" onClick={() => navigate(-1)}></div>
                 <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
                     <label htmlFor='bio' className='dark' >Bio: </label>
                     <ImageInput name="image" id="image" />

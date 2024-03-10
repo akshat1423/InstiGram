@@ -1,7 +1,27 @@
+.profile-close-button-div {
+    position: relative;
 
+    left: 720px;
+    bottom: 135px;
+
+    height: 48px;
+    width: 48px;
+
+    background-image: url('../../assets/xmark-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 62.5%;
+    background-position: center;
+
+    border-radius: 50%;
+}
+
+.profile-close-button-div:hover {
+    background-color: rgb(76, 75, 75);
+    cursor: pointer;
+}
 
 .daughter-2{
- 
+
     display: inline-block; 
     
     vertical-align: top;
