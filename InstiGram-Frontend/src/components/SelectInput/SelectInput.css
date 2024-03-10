@@ -17,7 +17,7 @@ select {
 }
 
 select.dark {
-    color: var(--input-color-dark);
+    color: white;
 
     background-color: var(--input-background-color-dark);
     border: 1px solid #106EE8

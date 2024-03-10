@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./Details.css"
 import {useRecoilState, useRecoilValue } from 'recoil';
 import {detailsAtom} from "../../store/detailsAtom.jsx"
+import { Link } from 'react-router-dom';
 
 function Details(){
 
@@ -14,6 +15,7 @@ function Details(){
             <div className="daughter-2">
                 <div className="head">
                 <h2 className="username">{details.username}</h2>
+                <Link to='/profile/edit'>Edit Profile</Link>
                 <br></br>
                 <button type="button" className={details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile'}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
                 <button type="button" className="message-button button-profile">Message</button> <br />
