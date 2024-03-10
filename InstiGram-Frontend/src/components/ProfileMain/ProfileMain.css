@@ -1,0 +1,16 @@
+
+.container{
+    display: flex;
+    background: #1D1E1D;
+    width: 1036px;
+    height: 300px;
+    margin-top: 58px;
+    margin-left: 346px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+}
+
+.big-container{
+    overflow-y: auto;
+}
