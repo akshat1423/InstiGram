@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Card/Card";
-import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
+import PopupCard from "../../components/PopupCard/PopupCard";
 import ProfileSetupForm from "../../components/ProfileSetupForm/ProfileSetupForm";
 import { useRecoilValue } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
@@ -46,11 +45,11 @@ export default function ProfileSetup() {
 
     return (
         <div className="main">
-            <Card>
+            <PopupCard>
                 <ProfileSetupForm handleSubmit={ handleSubmit }></ProfileSetupForm>
-            </Card>
+            </PopupCard>
 
-            <DarkModeSwitch></DarkModeSwitch>
+            {/* <DarkModeSwitch></DarkModeSwitch> */}
         </div>
     )
 }

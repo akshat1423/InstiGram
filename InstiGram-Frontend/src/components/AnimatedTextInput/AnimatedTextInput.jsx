@@ -47,13 +47,6 @@ export default function AnimatedTextInput({ placeholder, id, type, name, ...root
                 <label htmlFor={ id } className='dark' >{ placeholder }</label>
             </>
         )
-    } else if ( name == "bio") {
-        return (
-            <>
-                <textarea name={ name } id={ id } cols="30" rows="10" className='dark' {...rootAttributes} />
-                <label htmlFor={ id } className='dark' >{ placeholder }</label>
-            </>
-        )
     } else {
         return (
             <>

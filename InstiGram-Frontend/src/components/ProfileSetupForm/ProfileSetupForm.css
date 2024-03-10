@@ -1,6 +1,67 @@
+.details-title {
+    position: relative;
+
+    margin: 31px 0 0 0;
+
+    font-family: "Mukta";
+
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 80px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    color: white;
+}
+
 .details {
     display: flex;
     flex-direction: row;
+}
+
+form {
+    position: relative;
+}
+
+textarea {
+    position: relative;
+    margin: 5px 0;
+    padding: 5px;
+    box-sizing: border-box;
+
+    height: var(--textarea-height);
+    width: 100%;
+
+    margin-bottom: 57px;
+
+    font-family: "PoorStory";
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    color: var(--input-color);
+    resize: none;
+
+    background-color: var(--input-background-color);
+    border: 1px var(--input-color) solid;
+    border-radius: 16px;
+}
+
+textarea.dark {
+    background-color: var(--input-background-color-dark);
+    color: var(--input-color-dark); 
+
+    border: 1px var(--input-color-dark) solid;
+}
+
+.bio-label {
+    position: absolute;
+    top: 210px;
+    left: 0;
+
+    height: fit-content;
+
+    font-size: 25px;
+    font-family: "Mukta";
+    color: var(--text-color-dark);
 }
 
 .submit-div {
@@ -8,15 +69,19 @@
     justify-content: center;
     align-items: center;
 
-    margin: 1rem;
+    margin: 5rem;
 }
 
 .submit {
-    font-size: 1.1rem;
+    font-family: "PoorStory";
+    font-size: 27px;
+
+    width: 140px;
+    height: 47px;
 
     padding: 0.5rem;
 
-    opacity: 0.7;
+    color: var(--text-color-dark);
     background-color: var(--button-color);
     border: none;
     border-radius: 5px;

@@ -18,14 +18,16 @@
     --textarea-placeholder-animation: scale(0.9) translateX(-0.5rem) translateY(-2.5rem);
 
     --input-color: black;
-    --input-color-dark: #000F00;
+    --input-color-dark: white;
     --input-background-color: white;
     --input-background-color-dark: transparent;
+
+    --image-input-background-color: #D9D9D9;
 
     --accent-color: #0279D3;
 
     --text-color: black;
-    --text-color-dark: black;
+    --text-color-dark: white;
 
     --textarea-height: 10rem;
     --loader-color: #0279D3;

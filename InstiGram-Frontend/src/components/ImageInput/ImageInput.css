@@ -1,3 +1,6 @@
+input:valid + label {
+    display: block;
+}
 
 #image {
     display: none;
@@ -7,8 +10,11 @@
     height: 140px;
     width: 140px;
 
+    margin-bottom: 80px;
+
     position: relative;
-    top: 1.5rem;
+    left: 0;
+    top: 0;
 
     border: 1px solid black;
     border-radius: 50%;
@@ -23,8 +29,8 @@
 #profile-img.dark {
     border: 1px solid white;
 
-    background-color: var(--input-background-color-dark);
-    background-image: url('../../assets//user-regular-dark.svg');
+    background-color: var(--image-input-background-color);
+    background-image: url('../../assets//user-regular.svg');
 }
 
 #profile-img:hover {

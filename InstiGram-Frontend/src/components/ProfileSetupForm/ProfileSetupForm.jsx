@@ -10,9 +10,14 @@ export default function ProfileSetupForm({ handleSubmit }) {
 
     return (
         <>
+            <div className="details-title">
+                Profile Details
+            </div>
             <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
+                <label htmlFor='bio' className='dark' >Bio: </label>
                 <ImageInput name="image" id="image" />
-                <AnimatedTextInput placeholder="Bio" name="bio" id="bio" type="text" required  />
+                <label htmlFor='bio' className='bio-label dark'>Bio: </label>
+                <textarea name='bio' id='bio' cols="30" rows="10" className='dark' />
                 <SelectInput placeholder="Department" name="department" id="department" type="text" required />
                 <div className="details">
                     <SelectInput placeholder="Degree" name="degree" id="degree" type="text" required />
