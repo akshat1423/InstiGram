@@ -9,7 +9,7 @@ import { useSetRecoilState } from "recoil";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
 import { detailsAtom } from "../../store/detailsAtom.jsx";
-
+import './Profile.css';
 
 function Profile() {
   const setPosts = useSetRecoilState(postAtom);
@@ -47,12 +47,10 @@ function Profile() {
   }, []);
 
   return(
-    <>
-    
-    <SideNav></SideNav>
-    <ProfileMain ></ProfileMain>
-    
-    </>
+    <div className="overlay">
+      <SideNav></SideNav>
+      <ProfileMain ></ProfileMain>
+    </div>
   );
 }
 

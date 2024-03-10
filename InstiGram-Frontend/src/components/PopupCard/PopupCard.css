@@ -13,5 +13,7 @@
     background: #1D1E1D;
 
     box-sizing: border-box;
-    padding-bottom: 1400px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }

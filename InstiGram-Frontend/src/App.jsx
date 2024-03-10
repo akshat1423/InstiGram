@@ -6,6 +6,7 @@ import './mediaqueries.css';
 import Loading from './pages/Loading/Loading';
 import "./assets/fonts/Poor_Story/PoorStory-Regular.ttf"
 import EditProfile from './pages/EditProfile/EditProfile';
+import CustomRouter from './CustomRouter';
 
 
 const Signup = React.lazy(() => import('./pages/Signup/Signup'));
@@ -22,19 +23,7 @@ function App() {
     <>
       <RecoilRoot>
         <BrowserRouter>
-          <Suspense fallback={ <Loading /> }>
-            <Routes>
-              <Route path='/' element={ <Signup /> } />
-              <Route path='/signin' element={ <Login /> } />
-              <Route path='/profile/details' element={ <ProfileDetails />} />
-              <Route path='/profile/edit' element={ <EditProfile />} />
-              <Route path='/profile/:userId' element={ <Profile /> } />
-              <Route path='/feed' element={ <Feed />} />
-              <Route path='/loading' element={ <Loading /> } />
-              <Route path='/redirect' element={ <Error /> }/>
-              <Route path='*' element={ <Navigate to='/redirect' />} />
-            </Routes>
-          </Suspense>
+          <CustomRouter />
         </BrowserRouter>      
       </RecoilRoot>
     </>
