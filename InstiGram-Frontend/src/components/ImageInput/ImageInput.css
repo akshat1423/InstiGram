@@ -1,4 +1,4 @@
-input:valid + label {
+.image-input:valid + label {
     display: block;
 }
 

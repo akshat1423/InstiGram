@@ -6,3 +6,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.details-background {
+    /* position: absolute;
+
+    top: 58px;
+    left: 346px; */
+    width: 1036px;
+    height: 966px;
+
+    border-radius: 30px;
+
+    padding: 0 127px;
+
+    background: #1D1E1D;
+
+    box-sizing: border-box;
+}
