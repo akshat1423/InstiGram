@@ -49,7 +49,7 @@ textarea.dark {
     background-color: var(--input-background-color-dark);
     color: var(--input-color-dark); 
 
-    border: 1px var(--input-color-dark) solid;
+    border: 1px white solid;
 }
 
 .bio-label {
