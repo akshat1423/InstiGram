@@ -258,7 +258,8 @@ def profile(request):
             'following': user_following,
             'gradYear': user_profile.year,
             'degree': user_profile.degree,
-            'department': user_profile.department,  
+            'department': user_profile.department,
+            'bio': user_profile.bio,  
         }
     }
     return JsonResponse(response_data, status=200)
