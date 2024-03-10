@@ -61,6 +61,34 @@ def index(request):
 
     return render(request, 'index.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
 
+def edit(request):
+    data = json.loads(request.body)
+    user_auth= data.get('userId')
+    user_object = User.objects.get(id=user_auth)
+    user_profile= Profile.objects.get(user_id= int(user_auth))
+
+    if request.method== 'POST':
+        if data.get('profileImage')== None:
+            image= user_profile.profileimg
+        else:
+            image= data.get('profileImage')
+        
+        if data.get('bio')== None:
+            image= user_profile.bio
+        else:
+            image= data.get('bio')
+
+        if data.get('profileImage')== None:
+            image= user_profile.profileimg
+        else:
+            image= data.get('profileImage')
+
+        if data.get('department')== None:
+            image= user_profile.department
+        else:
+            image= data.get('department')
+         
+
 # @login_required(login_url='signin')
 def settings(request):
     data = json.loads(request.body)
@@ -228,6 +256,9 @@ def profile(request):
             'posts': user_post_length,
             'followers': user_followers,
             'following': user_following,
+            'gradYear': user_profile.year,
+            'degree': user_profile.degree,
+            'department': user_profile.department,  
         }
     }
     return JsonResponse(response_data, status=200)
