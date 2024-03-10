@@ -66,28 +66,45 @@ def edit(request):
     user_auth= data.get('userId')
     user_object = User.objects.get(id=user_auth)
     user_profile= Profile.objects.get(user_id= int(user_auth))
-
     if request.method== 'POST':
         if data.get('profileImage')== None:
             image= user_profile.profileimg
         else:
             image= data.get('profileImage')
+        bio= data.get('bio')
+        department= data.get('department')
+        degree= data.get('degree')
+        year= data.get('year')
+
+        username= data.get('username')
+        if username == user_object.username:
+            user_profile.profileimg= image
+            user_profile.bio= bio
+            user_profile.degree= degree
+            user_profile.year= year
+            user_profile.department= department
+            user_profile.save()
+            
+            response_data = {'data': 'done'}
+            return JsonResponse(response_data, status=200)
         
-        if data.get('bio')== None:
-            image= user_profile.bio
+        elif User.objects.filter(username=username).exists():
+            response_data = {'data': 'username'}
+            return JsonResponse(response_data, status=409)
+    
         else:
-            image= data.get('bio')
-
-        if data.get('profileImage')== None:
-            image= user_profile.profileimg
-        else:
-            image= data.get('profileImage')
-
-        if data.get('department')== None:
-            image= user_profile.department
-        else:
-            image= data.get('department')
-         
+            user_object.username= username
+            user_profile.profileimg= image
+            user_profile.bio= bio
+            user_profile.degree= degree
+            user_profile.year= year
+            user_profile.department= department
+            user_object.save()
+            user_profile.save()
+            
+            response_data = {'data': 'done'}
+            return JsonResponse(response_data, status=200)
+        
 
 # @login_required(login_url='signin')
 def settings(request):
@@ -221,6 +238,8 @@ def profile(request):
     user_posts= Post.objects.filter(user=pk)
     user_post_length= len(user_posts)
 
+    posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
+
     follower= request.user.username
     # interesties= request.user.username
     user= pk
@@ -244,7 +263,7 @@ def profile(request):
         # 'user_object': user_object, 
         # 'user_profile': user_profile,
         'DP': user_profile.profileimg,
-        # 'posts': user_posts,
+        'posts': posts_array,
         # 'user_post_length': user_post_length,
         # 'button_text': button_text,
         # 'user_followers': user_followers,
