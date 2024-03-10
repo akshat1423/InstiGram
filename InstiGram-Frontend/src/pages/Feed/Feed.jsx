@@ -55,6 +55,7 @@ export default function App() {
                 <DarkModeSwitch darkMode={darkMode} onChange={() => setDarkMode(!darkMode)} />
             </div>
             <div className="posts">
+            <Post key={1} darkMode={darkMode} className="post" postId={1} postImg={"../../assets/pic1.jpeg"} postContent={"hi"} />
     {posts && posts.map(post => (
         <Post key={post.id} darkMode={darkMode} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
     ))}
