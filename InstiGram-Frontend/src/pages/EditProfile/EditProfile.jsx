@@ -5,9 +5,14 @@ import PopupCard from "../../components/PopupCard/PopupCard";
 import SelectInput from "../../components/SelectInput/SelectInput";
 import { darkModeAtom } from "../../store/darkModeAtom";
 import './EditProfile.css';
+import { useEffect } from "react";
+import { detailsAtom } from "../../store/detailsAtom";
+import { imageAtom } from "../../store/imageAtom";
 
 export default function EditProfile() {
     const darkMode = useRecoilValue(darkModeAtom);
+    const details = useRecoilValue(detailsAtom);
+    const image = useRecoilValue(imageAtom);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -18,7 +23,7 @@ export default function EditProfile() {
 
         const data = {
             userId: userId,
-            username: username,
+            username: formData.get('username'),
             bio: formData.get('bio'),
             department: formData.get('department'),
             degree: formData.get('degree'),
@@ -59,13 +64,13 @@ export default function EditProfile() {
                     <ImageInput name="image" id="image" />
                     <div className="form-inputs">
                         <label htmlFor="username-edit" className="username-label">Username: </label>
-                        <input type="text" id="username-edit" className="username-edit" name="username" />
+                        <input type="text" id="username-edit" className="username-edit" name="username" defaultValue={details.username} required/>
                         <label htmlFor='bio' className='bio-label dark'>Bio: </label>
-                        <textarea name='bio' id='bio' cols="30" rows="10" className='dark' />
-                        <SelectInput placeholder="Department" name="department" id="department" type="text" required />
+                        <textarea name='bio' id='bio' cols="30" rows="10" className='dark' defaultValue={details.bio} />
+                        <SelectInput placeholder="Department" name="department" id="department" type="text" defaultValue={details.department} />
                         <div className="details">
-                            <SelectInput placeholder="Degree" name="degree" id="degree" type="text" required />
-                            <SelectInput placeholder="Year" name="year" id="year" type="text" required />
+                            <SelectInput placeholder="Degree" name="degree" id="degree" type="text" defaultValue={details.degree} />
+                            <SelectInput placeholder="Year" name="year" id="year" type="text" defaultValue={details.gradYear} />
                         </div>
 
                         <div className="submit-div">

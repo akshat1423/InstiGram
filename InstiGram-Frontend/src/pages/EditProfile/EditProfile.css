@@ -27,6 +27,10 @@ form {
     margin-top: -50px;
 }
 
+.username-edit {
+    color: white;
+}
+
 textarea {
     position: relative;
     margin: 5px 0;
@@ -51,9 +55,9 @@ textarea {
 
 textarea.dark {
     background-color: var(--input-background-color-dark);
-    color: var(--input-color-dark); 
+    color: white; 
 
-    border: 1px var(--input-color-dark) solid;
+    border: 1px white solid;
 }
 
 .bio-label {
