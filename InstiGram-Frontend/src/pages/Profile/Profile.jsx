@@ -1,6 +1,6 @@
 
 
- import SideNav from "../../components/NavBar/SideNav.jsx";
+import SideNav from "../../components/NavBar/SideNav.jsx";
 
 import ProfileMain from "../../components/ProfileMain/ProfileMain.jsx"
 import React, { useEffect } from 'react';
