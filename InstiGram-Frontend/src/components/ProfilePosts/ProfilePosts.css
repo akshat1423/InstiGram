@@ -4,14 +4,14 @@
     text-align: center;
     display: inline-block;
     background-color: black;
-    margin: 10px;
+    margin-left: 42px;
+    margin-bottom: 42px;
 }
 
 .posts-container{
-    text-align: center;
-    background-color: #1d1e1d;
-    margin-left: 346px !important;
+    text-align: left;
     width: 1036px;
+    margin-left: -127px;
 }
 
 .single-post img{
@@ -21,8 +21,4 @@
 
 }
 
-@media (min-width: 1050px){
-    .posts-container{
-        margin-left: 250px;
-    }
-}
+
