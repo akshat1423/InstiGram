@@ -17,8 +17,8 @@ function Details(){
                 <h2 className="username">{details.username}</h2>
                 <Link to='/profile/edit'>Edit Profile</Link>
                 <br></br>
-                <button type="button" className={details.isFollowing ? 'unfollow-button' : 'follow-button'}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
-                <button type="button" className="message-button">Message</button> <br />
+                <button type="button" className={details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile'}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
+                <button type="button" className="message-button button-profile">Message</button> <br />
                 </div>
 
                 <div className="list"><ul>
