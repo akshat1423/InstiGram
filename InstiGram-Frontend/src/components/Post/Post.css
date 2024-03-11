@@ -38,3 +38,73 @@ border-radius: 30px 30px 0px 0px;
     height: fit-content;
     width: fit-content;
 }
+.bar{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 49px;
+    height: 147px;
+    top: -175px;
+    left: 776px;    
+    border-radius: 15px;
+    background-color: #99999961;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+.not-liked{
+    position: relative;
+    top:-10px;
+    width:29.02px;
+    height: 29.02px;
+    background-image: url('../../assets/like.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.liked{
+    position: relative;
+    width:29.02px;
+    top:-10px;
+    height: 29.02px;
+    background-image: url('../../assets/heart-red.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.comment_but{
+    width:29.02px;
+    height: 29.02px;
+    background-image: url('../../assets/message-circle.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.share_but{
+    position: relative;
+    width:29.02px;
+    top:10px;
+    height: 29.02px;
+    background-image: url('../../assets/share.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.below_post{
+    display: grid;
+    grid-template-columns: 100px auto;
+    align-content: space-between;
+    position: relative;
+    top:-150px;
+    color:white;
+    font-family: Mukta;
+font-size: 22px;
+font-weight: 600;
+line-height: 44px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.like_count .comment_count{
+    padding:15px;
+}

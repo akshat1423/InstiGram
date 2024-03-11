@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';/
-// import { faHeart as h2 } from '@fortawesome/free-solid-svg-icons';
+
 import './Post.css';
-import { useRecoilState,useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import {commentAtom,likeAtom,commentCountAtom,likeCountAtom,showCommentBoxAtom,showCommentIconAtom} from '../../store/likeCommentAtom.jsx';
 
 function CommentBox({ onSubmit, comments }) {
@@ -35,7 +33,7 @@ function CommentBox({ onSubmit, comments }) {
 
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required/>
-                <button type="submit"><FontAwesomeIcon icon={faPaperPlane} /></button>
+                <button type="submit" class="send-btn"></button>
             </form>
         </div>
     );
@@ -133,33 +131,37 @@ export default function Post(props) {
             </div>
             <div className="post_content"></div>
             
-            {showCommentIcon && (
+            
                 <div className="bar">
                    
-                        <div className="like_but">
-                            {/* {!like ?
-                                <FontAwesomeIcon icon={faHeart} onClick={likeClick} size="2x" /> :
-                                <FontAwesomeIcon icon={h2} style={{ color: "#ca3a16" }} onClick={likeClick} size="2x" />
-                            } */}
-                        </div>
+                        
+                             {!like ?
+                                <div className="not-liked" onClick={likeClick}> </div>:
+                                <div className="liked" onClick={likeClick}></div>
+                            } 
+                        
                         <div className="comment_but" onClick={commentClick}>
-                            {/* <FontAwesomeIcon icon={faComment} size="2x" /> */}
+                            
                         </div>
                         <div className="share_but">
                             
                         </div>
+                </div>
+                <div className="below_post">
                         <div className="like_count">
-                            {likeCount}
+
+                            {likeCount} likes
                         
-                    </div>
+                        </div>
                     
                         
                         <div className="comment_count">
-                            {commentCount}
+                            {commentCount} comments
                         </div>
+                </div>        
                     
-                </div>
-            )}
+                
+            
             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={comments} />}
         </div>
     );

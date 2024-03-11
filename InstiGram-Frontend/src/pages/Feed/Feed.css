@@ -21,7 +21,10 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--font-family);
-  
+  /*max-height: 110%;
+  overflow-y: hidden;
+  max-width:100%;
+  overflow-x: hidden;*/
 }
 
 
@@ -37,15 +40,13 @@ body {
   position: absolute;
   top:214px;
   left:329px;
-  width:800px;
+  width:100%;
   height:100%;
+  overflow-y: auto;
   
   
 }
 
-.fixed{
-  position:fixed;
-}
 
 
 .header{
