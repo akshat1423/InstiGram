@@ -4,13 +4,14 @@
     height: 44px;
     top: 30px;
     left: 313px;
-   
+
     z-index:2;
     border:3px solid #106EE8;
     border-radius: 7px;
 
 
 }
+
 #search{
     
     position:fixed;
@@ -22,8 +23,9 @@
     color:white;
     background-color: black;
     font-family:Mukta;
-    
+    font-size: 1.2rem;
 }
+
 #search:focus{
     outline: none;
 }
@@ -36,12 +38,12 @@
     background-repeat: no-repeat;
     border:none;
     cursor: pointer;
- position:fixed;   
-width: 29.56px;
-height: 30px;
-top: 37.68px;
-left: 324.32px;
-border-radius: 7px;
-opacity: 0.58;
-z-index:2;
+    position:fixed;   
+    width: 29.56px;
+    height: 30px;
+    top: 37.68px;
+    left: 324.32px;
+    border-radius: 7px;
+    opacity: 0.58;
+    z-index:2;
 }

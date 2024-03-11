@@ -46,6 +46,7 @@ function Profile() {
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -95,7 +96,9 @@ function Profile() {
         <motion.div className="profile-animate-container" 
         variants={mainVariant}
         >
-          <ProfileMain ></ProfileMain>
+          <div className="scrollable-container">
+            <ProfileMain ></ProfileMain>
+          </div>
         </motion.div>
       </motion.div>
     </>
