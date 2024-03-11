@@ -1,22 +1,29 @@
 import React,{ useState,useEffect } from "react"
 import Post from "../../components/Post/Post"
-import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
+
 import './Feed.css'
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { Link } from "react-router-dom";
+import {  useRecoilValue, useSetRecoilState } from "recoil";
+import { postAtom } from "../../store/postAtom.jsx";
 
+import NavBar from "../../components/NavBar/SideNav.jsx"
+import {loadingAtom} from "../../store/loadingAtom.jsx"
+import {errorAtom} from "../../store/errorAtom.jsx"
 
 
 export default function App() {
-    const [darkMode, setDarkMode] = useState(false);
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const userId = localStorage.getItem('userId');
+  
 
-    useEffect(() => {
-        document.body.classList.toggle('darkMode', darkMode);
-    }, [darkMode]);
+    
+    const posts=useRecoilValue(postAtom);
+
+    
+    const setLoading = useSetRecoilState(loadingAtom);
+
+    
+    const setError = useSetRecoilState(errorAtom);
+
+
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -50,14 +57,12 @@ export default function App() {
 
     return (
         <div>
-            <div className="header">
-                <SearchBar onSearch={handleSearch} />
-                <Link to={`/profile/${userId}`}>Profile</Link>
-                <DarkModeSwitch darkMode={darkMode} onChange={() => setDarkMode(!darkMode)} />
-            </div>
+            <NavBar />
+           
+            <SearchBar onSearch={handleSearch} />
             <div className="posts">
             <Post key={1} darkMode={darkMode} className="post" postId={1} postImg={"../../assets/pic1.jpeg"} postContent={"hi"} />
-    {posts && posts.map(post => (
+    {posts.map(post => (
         <Post key={post.id} darkMode={darkMode} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
     ))}
 </div>

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as h2 } from '@fortawesome/free-solid-svg-icons';
 import './Post.css';
+import { useRecoilState,useSetRecoilState } from "recoil";
+import {commentAtom,likeAtom,commentCountAtom,likeCountAtom,showCommentBoxAtom,showCommentIconAtom} from '../../store/likeCommentAtom.jsx';
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
@@ -40,18 +42,19 @@ function CommentBox({ onSubmit, comments }) {
 }
 
 export default function Post(props) {
-    const [comments, setComments] = useState([]);
-    const [like, setLike] = useState(false);
-    const [likeCount, setLikeCount] = useState();
-    const [commentCount, setCommentCount] = useState();
-    const [showCommentBox, setShowCommentBox] = useState(false);
-    const [showCommentIcon, setShowCommentIcon] = useState(true);
+    const [comments,setComments]=useRecoilState(commentAtom)
+    const [like,setLike]=useRecoilState(likeAtom)
+    const [likeCount,setLikeCount]=useRecoilState(likeCountAtom)
+    const [commentCount,setCommentCount]=useRecoilState(commentCountAtom)
+    const [showCommentBox,setShowCommentBox]=useRecoilState(showCommentBoxAtom)
+    const [showCommentIcon,setShowCommentIcon]=useRecoilState(showCommentIconAtom)
+
 
 
 
     const fetchComments = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/v1/social-media/comments/post/{props.postId}`);
+            const response = await fetch(`http://localhost:8080/api/v1/social-media/comments/post/${props.postId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch comments');
             }
@@ -64,7 +67,7 @@ export default function Post(props) {
     
     const fetchLikeCount = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/v1/social-media/like/post/{props.postId}`);
+            const response = await fetch(`http://localhost:8080/api/v1/social-media/like/post/${props.postId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch like count');
             }
@@ -78,6 +81,7 @@ export default function Post(props) {
         fetchComments(); 
         fetchLikeCount();
     }, []);
+    
     const likeClick = async () => {
     try {
         const newLikeState = !like;
@@ -115,36 +119,44 @@ export default function Post(props) {
             console.error('Error submitting comment:', error);
         }
         finally{
-                    setShowCommentBox(false);
+            setShowCommentBox(false);
             setShowCommentIcon(true);
         }
     };
 
     return (
         <div className="post">
+            <div className="post_det">
+                <div className="post_auth">{props.postAuth}
+                </div>
+                </div>
             <img className="post_content" src={props.postImg} alt="hello" />
-            <p>{props.postContent}</p>
+            
             {showCommentIcon && (
                 <div className="bar">
-                    <div className="liker">
+                   
                         <div className="like_but">
                             {!like ?
                                 <FontAwesomeIcon icon={faHeart} onClick={likeClick} size="2x" /> :
                                 <FontAwesomeIcon icon={h2} style={{ color: "#ca3a16" }} onClick={likeClick} size="2x" />
                             }
                         </div>
-                        <div className="like_count">
-                            {likeCount}
-                        </div>
-                    </div>
-                    <div className="commenter">
                         <div className="comment_but" onClick={commentClick}>
                             <FontAwesomeIcon icon={faComment} size="2x" />
                         </div>
+                        <div className="share_but">
+                            
+                        </div>
+                        <div className="like_count">
+                            {likeCount}
+                        
+                    </div>
+                    
+                        
                         <div className="comment_count">
                             {commentCount}
                         </div>
-                    </div>
+                    
                 </div>
             )}
             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={comments} />}
