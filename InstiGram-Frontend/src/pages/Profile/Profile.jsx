@@ -9,14 +9,44 @@ import { useSetRecoilState } from "recoil";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
 import { detailsAtom } from "../../store/detailsAtom.jsx";
+
+import { motion } from 'framer-motion';
+
 import './Profile.css';
+
+const mainVariant = {
+  initial: {
+    y: '100vh',
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+  exit: {
+    y: '100vh',
+  }
+}
+
+const overlayVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    delay: 0.5,
+  },
+  exit: {
+    opacity: 0,
+  }
+}
 
 function Profile() {
   const setPosts = useSetRecoilState(postAtom);
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
   const { userId } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -47,10 +77,21 @@ function Profile() {
   }, []);
 
   return(
-    <div className="overlay">
-      <SideNav></SideNav>
-      <ProfileMain ></ProfileMain>
-    </div>
+    <>
+      <motion.div className="overlay" 
+      variants={overlayVariant}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+      >
+        <SideNav></SideNav>
+        <motion.div className="profile-animate-container" 
+        variants={mainVariant}
+        >
+          <ProfileMain ></ProfileMain>
+        </motion.div>
+      </motion.div>
+    </>
   );
 }
 

@@ -3,7 +3,34 @@ import { imageAtom } from "../../store/imageAtom";
 import { useNavigate } from "react-router-dom";
 import EditForm from "../../components/EditForm/EditForm";
 import './EditProfile.css';
-import SideNav from "../../components/NavBar/SideNav";
+import { motion } from 'framer-motion';
+
+const mainVariant = {
+    initial: {
+        y: '100vh',
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+    },
+    exit: {
+        y: '100vh',
+    }
+}
+
+const overlayVariant = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+        delay: 0.5,
+    },
+    exit: {
+        opacity: 0,
+    }
+}
 
 export default function EditProfile() {
     const image = useRecoilValue(imageAtom);
@@ -48,8 +75,17 @@ export default function EditProfile() {
     }
 
     return (
-        <div className="overlay">
-            <EditForm handleSubmit={ handleSubmit } />
-        </div>
+        <motion.div className="overlay" 
+        variants={overlayVariant}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        >
+            <motion.div className="edit-animate-container"
+            variants={mainVariant}
+            >
+                <EditForm handleSubmit={ handleSubmit } />
+            </motion.div>
+        </motion.div>
     )
 }
