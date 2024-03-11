@@ -16,6 +16,7 @@
     border-right: solid 1px #F8FFF6;
     border-top: solid 1px #F8FFF6;
     box-shadow: -4px 4px rgba(255, 255, 255, 25%);
+    z-index: 100;
 }
 
 .heading-instigram{

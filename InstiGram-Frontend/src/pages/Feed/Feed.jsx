@@ -58,16 +58,18 @@ export default function App() {
     return (
         <div>
             <NavBar className="fixed" />
-            <div className="header">
-                <SearchBar onSearch={handleSearch} className="fixed"/>
-            </div>
-            <div className="posts">
-                <Post key={1} postAuth={"Gaurav Kumar"} className="post" postId={1} postImg={"../../assets/pic1.jpeg"}  />
-                <Post key={2} postAuth={"Paul Atriedes"} className="post" postId={2} postImg={"../../assets/pic1.jpeg"}  />
-                <Post key={3} postAuth={"Paul Atriedes"} className="post" postId={3} postImg={"../../assets/pic1.jpeg"}  />
-                {posts.map(post => (
-                    <Post key={post.id} postAuth={post.auth} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
-                ))}
+            <div className="scrollable-container-feed">
+                <div className="header">
+                    <SearchBar onSearch={handleSearch} className="fixed"/>
+                </div>
+                <div className="posts">
+                    <Post key={1} postAuth={"Gaurav Kumar"} className="post" postId={1} postImg={"../../assets/pic1.jpeg"}  />
+                    <Post key={2} postAuth={"Paul Atriedes"} className="post" postId={2} postImg={"../../assets/pic1.jpeg"}  />
+                    <Post key={3} postAuth={"Paul Atriedes"} className="post" postId={3} postImg={"../../assets/pic1.jpeg"}  />
+                    {posts.map(post => (
+                        <Post key={post.id} postAuth={post.auth} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
+                    ))}
+                </div>
             </div>
         </div>
     );

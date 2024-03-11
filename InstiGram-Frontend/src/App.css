@@ -46,7 +46,7 @@ body {
     color: var(--background-color-dark);
     font-family: var(--font-family);
 
-    overflow: scroll;
+    overflow: hidden;
 }
 
 body.darkMode {
