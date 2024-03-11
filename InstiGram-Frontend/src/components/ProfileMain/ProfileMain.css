@@ -2,15 +2,23 @@
 .container{
     display: flex;
     background: #1D1E1D;
-    width: 1036px;
+    width: auto;
     height: 300px;
     margin-top: 58px;
-    margin-left: 346px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 
 }
 
 .big-container{
-    overflow-y: auto;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#profile-main-card{
+    padding: 0;
+}
+
+.outer-container{
+    /* overflow-y: scroll; */
 }

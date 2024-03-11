@@ -1,7 +1,7 @@
 .details-title {
     position: relative;
 
-    margin: 31px 0 0 0;
+    padding: 31px 0 0 0;
 
     font-family: "Mukta";
 
@@ -14,6 +14,28 @@
     color: white;
 }
 
+.edit-close-button-div {
+    position: relative;
+
+    bottom: 51px;
+    left: 800px;
+
+    height: 48px;
+    width: 48px;
+
+    background-image: url('../../assets/xmark-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 62.5%;
+    background-position: center;
+
+    border-radius: 50%;
+}
+
+.edit-close-button-div:hover {
+    background-color: rgb(76, 75, 75);
+    cursor: pointer;
+}
+
 .details {
     display: flex;
     flex-direction: row;
@@ -21,6 +43,17 @@
 
 form {
     position: relative;
+}
+
+.form-inputs {
+    margin-top: -50px;
+}
+
+.username-edit {
+    color: white;
+    padding-left: 10px;
+    
+    box-sizing: border-box;
 }
 
 textarea {
@@ -47,16 +80,39 @@ textarea {
 
 textarea.dark {
     background-color: var(--input-background-color-dark);
-    color: var(--input-color-dark); 
+    color: white; 
 
     border: 1px white solid;
 }
 
 .bio-label {
-    position: absolute;
-    top: 210px;
-    left: 0;
 
+    height: fit-content;
+
+    font-size: 25px;
+    font-family: "Mukta";
+    color: var(--text-color-dark);
+}
+
+input {
+    width: 782px;
+    height: 50px;
+    top: 447.92px;
+    left: 473px;
+    border-radius: 16px;
+    border: 1px;
+
+    background-color: transparent;
+
+    border: 1px solid white;
+
+    font-family: "PoorStory";
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    color: var(--input-color-dark);
+}
+
+.username-label {
     height: fit-content;
 
     font-size: 25px;
@@ -72,7 +128,7 @@ textarea.dark {
     margin: 5rem;
 }
 
-.submit {
+.edit-submit {
     font-family: "PoorStory";
     font-size: 27px;
 
@@ -80,6 +136,8 @@ textarea.dark {
     height: 47px;
 
     padding: 0.5rem;
+    margin-top: -35px;
+    /* margin-bottom: 20px; */
 
     color: var(--text-color-dark);
     background-color: var(--button-color);
@@ -89,11 +147,11 @@ textarea.dark {
     transition: 0.2s;
 }
 
-.submit.dark {
+.edit-submit.dark {
     background-color: var(--button-dark-color);
 }
 
-.submit:hover {
+.edit-submit:hover {
     cursor: pointer;
     transform: scale(1.1);
     opacity: 1;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as h2 } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';/
+// import { faHeart as h2 } from '@fortawesome/free-solid-svg-icons';
 import './Post.css';
 import { useRecoilState,useSetRecoilState } from "recoil";
 import {commentAtom,likeAtom,commentCountAtom,likeCountAtom,showCommentBoxAtom,showCommentIconAtom} from '../../store/likeCommentAtom.jsx';
@@ -136,13 +136,13 @@ export default function Post(props) {
                 <div className="bar">
                    
                         <div className="like_but">
-                            {!like ?
+                            {/* {!like ?
                                 <FontAwesomeIcon icon={faHeart} onClick={likeClick} size="2x" /> :
                                 <FontAwesomeIcon icon={h2} style={{ color: "#ca3a16" }} onClick={likeClick} size="2x" />
-                            }
+                            } */}
                         </div>
                         <div className="comment_but" onClick={commentClick}>
-                            <FontAwesomeIcon icon={faComment} size="2x" />
+                            {/* <FontAwesomeIcon icon={faComment} size="2x" /> */}
                         </div>
                         <div className="share_but">
                             

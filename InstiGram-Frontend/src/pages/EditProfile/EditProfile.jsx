@@ -1,13 +1,13 @@
 import { useRecoilValue } from "recoil";
-import ImageInput from "../../components/ImageInput/ImageInput";
-import SideNav from "../../components/NavBar/SideNav";
-import PopupCard from "../../components/PopupCard/PopupCard";
-import SelectInput from "../../components/SelectInput/SelectInput";
-import { darkModeAtom } from "../../store/darkModeAtom";
+import { imageAtom } from "../../store/imageAtom";
+import { useNavigate } from "react-router-dom";
+import EditForm from "../../components/EditForm/EditForm";
 import './EditProfile.css';
+import SideNav from "../../components/NavBar/SideNav";
 
 export default function EditProfile() {
-    const darkMode = useRecoilValue(darkModeAtom);
+    const image = useRecoilValue(imageAtom);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -18,7 +18,7 @@ export default function EditProfile() {
 
         const data = {
             userId: userId,
-            username: username,
+            username: formData.get('username'),
             bio: formData.get('bio'),
             department: formData.get('department'),
             degree: formData.get('degree'),
@@ -48,34 +48,8 @@ export default function EditProfile() {
     }
 
     return (
-        <>
-            <SideNav></SideNav>
-            <PopupCard>
-                <div className="details-title">
-                    Edit Profile
-                </div>
-                <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
-                    <label htmlFor='bio' className='dark' >Bio: </label>
-                    <ImageInput name="image" id="image" />
-                    <div className="form-inputs">
-                        <label htmlFor="username-edit" className="username-label">Username: </label>
-                        <input type="text" id="username-edit" className="username-edit" name="username" />
-                        <label htmlFor='bio' className='bio-label dark'>Bio: </label>
-                        <textarea name='bio' id='bio' cols="30" rows="10" className='dark' />
-                        <SelectInput placeholder="Department" name="department" id="department" type="text" required />
-                        <div className="details">
-                            <SelectInput placeholder="Degree" name="degree" id="degree" type="text" required />
-                            <SelectInput placeholder="Year" name="year" id="year" type="text" required />
-                        </div>
-
-                        <div className="submit-div">
-                            <button type="submit" className={"submit " + (darkMode ? "dark" : "")}>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </PopupCard>
-        </>
+        <div className="overlay">
+            <EditForm handleSubmit={ handleSubmit } />
+        </div>
     )
 }

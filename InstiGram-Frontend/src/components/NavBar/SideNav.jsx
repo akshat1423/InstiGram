@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./SideNav.css"
 
 
@@ -10,6 +10,8 @@ function openNav() {
 }
 
 function SideNav(){
+    const userId = localStorage.getItem('userId');
+    const location = useLocation();
 
     return(
         <>
@@ -20,8 +22,8 @@ function SideNav(){
             <li><Link className="nav-list-item" to="/feed">
             <div className="navbar-icon-calendar" />
             Calendar</Link><br /></li>
-            <li ><Link className="nav-list-item" to="/chat"  ><div className=" navbar-icon-profile" />Profile</Link><br /></li>
-            <li ><Link className="nav-list-item" to="/profile" ><div className=" navbar-icon-searchh" />Search</Link><br /></li>
+            <li ><Link className="nav-list-item" to={`/profile/${userId}`} state={{background: location}} ><div className=" navbar-icon-profile" />Profile</Link><br /></li>
+            <li ><Link className="nav-list-item" to="/chat" ><div className=" navbar-icon-searchh" />Search</Link><br /></li>
             <li><Link className="nav-newpost-button"><div className="addpost-icon"></div> New Post</Link></li>
             </ul>
         </div>
