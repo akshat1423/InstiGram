@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
-// import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const SearchBar = ({ onSearch }) => {
@@ -19,12 +17,11 @@ const SearchBar = ({ onSearch }) => {
           type="text"
           id="search"
           name="search"
-          placeholder="Search for a user..."
-          autoFocus={true}
+          autoFocus={false}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        {/* <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button> */}
+        <button type="submit" className='search_icon'></button>
       </form>
     </div>
   );

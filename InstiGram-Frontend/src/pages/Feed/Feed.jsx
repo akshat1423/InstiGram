@@ -3,12 +3,8 @@ import Post from "../../components/Post/Post"
 
 import './Feed.css'
 import SearchBar from "../../components/SearchBar/SearchBar";
-<<<<<<< HEAD
 import {  useRecoilValue, useSetRecoilState } from "recoil";
 import { postAtom } from "../../store/postAtom.jsx";
-=======
-import SideNav from "../../components/NavBar/SideNav";
->>>>>>> 86a379e5ae65d78c6221768d960c9d0cd4c9935f
 
 import NavBar from "../../components/NavBar/SideNav.jsx"
 import {loadingAtom} from "../../store/loadingAtom.jsx"
@@ -61,23 +57,17 @@ export default function App() {
 
     return (
         <div>
-<<<<<<< HEAD
             <NavBar />
-           
-            <SearchBar onSearch={handleSearch} />
-=======
-            <SideNav></SideNav>
-            <div className="header">
+           <div className="header">
                 <SearchBar onSearch={handleSearch} />
-                <DarkModeSwitch darkMode={darkMode} onChange={() => setDarkMode(!darkMode)} />
             </div>
->>>>>>> 86a379e5ae65d78c6221768d960c9d0cd4c9935f
             <div className="posts">
-            <Post key={1} darkMode={darkMode} className="post" postId={1} postImg={"../../assets/pic1.jpeg"} postContent={"hi"} />
-    {posts.map(post => (
-        <Post key={post.id} darkMode={darkMode} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
-    ))}
-</div>
+                <Post key={1} postAuth={"Gaurav Kumar"} className="post" postId={1} postImg={"../../assets/pic1.jpeg"}  />
+                <Post key={2} postAuth={"Paul Atriedes"} className="post" postId={2} postImg={"../../assets/pic1.jpeg"}  />
+                {posts.map(post => (
+                    <Post key={post.id} postAuth={post.auth} className="post" postId={post._id} postImg={post.url} postContent={post.content} />
+                ))}
+            </div>
         </div>
     );
 }

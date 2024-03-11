@@ -1,5 +1,5 @@
 #search_bar{
-    
+    position:fixed;
     border-width: 3px, 3px, 3px, 3px;
 
     border-style: solid;
@@ -10,16 +10,36 @@ height: 44px;
 top: 30px;
 left: 313px;
 border-radius: 7px;
-border: 3px;
+
 
 }
+#search{
+    position:fixed;
+    border:none;
+    width: 693px;
+    height: 44px;
+    top: 30px;
+    left: 355px;
+    color:white
+}
+#search:focus{
+    border: none;
+}
 
-.but{
-    width: 29.56px;
+.search_icon{
+    background-color: black;
+    background-image: url("../../assets/search.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border:none;
+    cursor: pointer;
+ position:fixed;   
+width: 29.56px;
 height: 30px;
 top: 37.68px;
 left: 324.32px;
 border-radius: 7px;
-opacity: 0.58px;
-
+opacity: 0.58;
+z-index:2;
 }
