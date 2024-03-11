@@ -9,20 +9,20 @@ function ProfileMain(){
 
 return(
     <div className="outer-container">
-<PopupCard>  
-    
-    <div className="container">
-        <div className="details-1">
-            <Pic></Pic>
-            <Details></Details>
-        </div>
-    
+        <PopupCard>  
+            
+            <div className="container">
+                <div className="details-1">
+                    <Pic></Pic>
+                    <Details></Details>
+                </div>
+            
+            </div>
+            <Bio></Bio>
+            <Post></Post>
+            
+        </PopupCard>
     </div>
-    <Bio></Bio>
-    <Post></Post>
-    
-</PopupCard>
-</div>
     );
 }
 

@@ -12,7 +12,7 @@ import {errorAtom} from "../../store/errorAtom.jsx"
 
 
 export default function App() {
-  
+
 
     
     const posts=useRecoilValue(feedAtom);
