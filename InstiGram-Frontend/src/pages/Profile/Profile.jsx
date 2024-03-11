@@ -46,7 +46,6 @@ function Profile() {
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
   const { userId } = useParams();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -75,6 +74,14 @@ function Profile() {
 
       })
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'scroll';
+    }
+  })
 
   return(
     <>

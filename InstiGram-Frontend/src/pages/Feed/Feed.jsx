@@ -58,7 +58,7 @@ export default function App() {
     return (
         <div>
             <NavBar className="fixed" />
-           <div className="header">
+            <div className="header">
                 <SearchBar onSearch={handleSearch} className="fixed"/>
             </div>
             <div className="posts">
