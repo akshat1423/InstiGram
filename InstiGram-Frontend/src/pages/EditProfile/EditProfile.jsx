@@ -16,7 +16,6 @@ const mainVariant = {
     },
     exit: {
         y: '100vh',
-        delay: 0.5,
     }
 }
 

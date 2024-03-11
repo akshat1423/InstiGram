@@ -84,7 +84,7 @@ function Profile() {
       animate='animate'
       exit='exit'
       >
-        <SideNav></SideNav>
+        <SideNav className='profile-sidebar'></SideNav>
         <motion.div className="profile-animate-container" 
         variants={mainVariant}
         >

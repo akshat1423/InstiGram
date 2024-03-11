@@ -26,3 +26,7 @@
 
     overflow-y: scroll;
 }
+
+.profile-sidebar {
+    z-index: 200;
+}
