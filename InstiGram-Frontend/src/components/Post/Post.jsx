@@ -126,11 +126,12 @@ export default function Post(props) {
 
     return (
         <div className="post">
+            
             <div className="post_det">
                 <div className="post_auth">{props.postAuth}
                 </div>
-                </div>
-            <img className="post_content" src={props.postImg} alt="hello" />
+            </div>
+            <div className="post_content"></div>
             
             {showCommentIcon && (
                 <div className="bar">

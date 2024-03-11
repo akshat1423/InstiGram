@@ -14,6 +14,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
@@ -36,15 +37,16 @@ body {
   position: absolute;
   top:214px;
   left:329px;
-  width:760px;
+  width:800px;
   height:100%;
   
   
 }
-.post{
-  height:1000px;
-  width:770px;
+
+.fixed{
+  position:fixed;
 }
+
 
 .header{
   position:fixed;
