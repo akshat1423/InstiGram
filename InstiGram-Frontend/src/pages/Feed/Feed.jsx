@@ -13,22 +13,7 @@ export default function App() {
     const posts=useRecoilValue(feedAtom);
     const setPosts=useSetRecoilState(feedAtom);
  
-    useEffect(() => {
-    
-    
-        fetch(`http://localhost:8000/feed`, {
-          method: "POST",
-          headers: {
-            "Content-type": 'application/json',
-          },
-          body: JSON.stringify(data),
-        })
-          .then(async function(res) {
-            const data = await res.json();
-            setPosts(data.post);
-            
-          })
-      }, []);
+//fetch posts
 
     const handleSearch = async (query) => {
         try {
@@ -38,7 +23,7 @@ export default function App() {
         } catch (error) {
             console.error('Error searching:', error);
         }
-    };
+    }
 
     return (
         <div>
@@ -51,7 +36,7 @@ export default function App() {
                     
                     
                     {posts.map(post => (
-                        <Post className="post" id={post._id}/>
+                        <Post key={post._id} className="post" id={post._id}/>
                     ))}
                 </div>
             </div>

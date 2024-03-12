@@ -1,10 +1,7 @@
 import React, { useState, useEffect} from "react";
 import './Post.css';
-import { useRecoilState,useRecoilValue } from "recoil";
-import { feedAtom } from "../../store/feedAtom";
-
-
-
+import { useRecoilState, useRecoilValue } from "recoil";
+import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
@@ -29,92 +26,76 @@ function CommentBox({ onSubmit, comments }) {
         <div className="comm">
             <ul className="all-comments">
                 {comments.map((comment) => (
-                    <li>{comment.commentAuth}: {comment.commentContent}</li>
+                    <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
                 ))}
             </ul>
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required/>
-                <button type="submit" class="send-btn"></button>
+            <form onSubmit={handleSubmit} className="comment_box">
+                <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required className="comment_field" />
+                <button type="submit" className="send-btn"></button>
             </form>
         </div>
     );
 }
 
 export default function Post(props) {
-    const posts=useRecoilValue(feedAtom)
-    //how to implement a post with specific post id
-    const [liked,setLiked]=useState(false)
-    const likeClick = async () => {
-    try {
-        setLiked(!liked);
-        //post likes to api
-    } catch (error) {
-        console.error('Error liking:', error);
-    }
-};
+    const [selectedId, setSelectedId] = useRecoilState(selectedPostId);
+    const post = useRecoilValue(selectedPostSelector);
+    const [showCommentBox, setShowCommentBox] = useState(false);
 
+    useEffect(() => {
+        setSelectedId(props.id);
+    }, []);
+
+    const [liked, setLiked] = useState(false);
+    const likeClick = async () => {
+        try {
+            setLiked(!liked);
+            //post likes to api
+        } catch (error) {
+            console.error('Error liking:', error);
+        }
+    };
 
     const commentClick = () => {
         setShowCommentBox(true);
-        setShowCommentIcon(false);
     };
 
     const handleCommentSubmit = async (comment) => {
-        try{
+        try {
             //post comments to api
-            
-
         } catch(error) {
             console.error('Error submitting comment:', error);
         }
-        finally{
+        finally {
             setShowCommentBox(false);
-            setShowCommentIcon(true);
         }
     };
 
     return (
         <div className="post">
-            
             <div className="post_det">
-                <div className="post_auth">{post.auth}
+                <div className="post_auth">{post?.auth}</div>
+            </div>
+            <div className="post_content">{post?.content}</div>
+            <div className="bar">
+                {!liked ?
+                    <div className="notLiked" onClick={likeClick}> </div> :
+                    <div className="liked" onClick={likeClick}></div>
+                } 
+                <div className="comment_but" onClick={commentClick}></div>
+                <div className="share_but"></div>
+            </div>
+            <div className="below_post">
+                <div className="like_count">
+                    {post?.likes.length} likes
+                </div>
+                <div className="comment_count">
+                    {post?.comments.length} comments
                 </div>
             </div>
-            <div className="post_content"></div>
-            
-            
-                <div className="bar">
-                   
-                        
-                             {!liked ?
-                                <div className="notLiked" onClick={likeClick}> </div>:
-                                <div className="liked" onClick={likeClick}></div>
-                            } 
-                        
-                        <div className="comment_but" onClick={commentClick}>
-                            
-                        </div>
-                        <div className="share_but">
-                            
-                        </div>
-                </div>
-                <div className="below_post">
-                        <div className="like_count">
-
-                            {post.likes.length} likes
-                        
-                        </div>
-                    
-                        
-                        <div className="comment_count">
-                            {post.comments.length} comments
-                        </div>
-                </div>        
-                    
-                
-            
             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />}
         </div>
     );
 }
+
