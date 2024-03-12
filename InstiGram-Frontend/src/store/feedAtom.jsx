@@ -1,4 +1,4 @@
-import { atom,selector } from 'recoil';
+import { atom } from 'recoil';
 
 export const feedAtom=atom({
     key:"feedAtom",
@@ -10,6 +10,7 @@ export const feedAtom=atom({
             likes: 2,
             comments: 2,
             caption: 'Lol',
+            postImage: null,
     
         },
         {
@@ -19,6 +20,7 @@ export const feedAtom=atom({
             likes: 3,
             comments: 3,
             caption: 'string',
+            postImage: null,
         }
     ]
 })

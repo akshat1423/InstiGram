@@ -11,7 +11,7 @@ import NavBar from "../../components/NavBar/SideNav.jsx"
 
 export default function App() {
     const [posts, setPosts] = useRecoilState(feedAtom);
- 
+
     useEffect(() => {
     
     

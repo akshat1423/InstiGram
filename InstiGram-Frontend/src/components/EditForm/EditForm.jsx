@@ -22,7 +22,7 @@ export default function EditForm({ handleSubmit }) {
                 <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
                     <label htmlFor="image" className="image-edit-label">Edit picture</label>
                     <ImageInput name="image" id="image" />
-                    <div className="form-inputs">
+                    <div className="edit-form-inputs">
                         <label htmlFor="username-edit" className="username-label">Username: </label>
                         <input type="text" id="username-edit" className="username-edit" name="username" defaultValue={details.username} required/>
                         <label htmlFor='bio' className='bio-label dark'>Bio: </label>

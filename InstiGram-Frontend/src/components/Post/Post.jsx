@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import './Post.css';
 import { useRecoilState, useRecoilValue } from "recoil";
-import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
+// import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');

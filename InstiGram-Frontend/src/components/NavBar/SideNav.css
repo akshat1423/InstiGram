@@ -1,6 +1,4 @@
-
-
-.sidenav{
+.sidenav {
     font-family: "Mukta";
     font-size: large;
     list-style-type: none;
@@ -23,7 +21,7 @@
     padding-top: 8px;
 }
 
-.heading-instigram{
+.heading-instigram {
     width: 251px;
     height: 62px;
     font-family: "PoorStory"; 
@@ -35,11 +33,11 @@
     line-height: 50px;
 }
 
-ul{
+ul {
     margin-top: 50px;
 }
 
-li{
+li {
     height: 50px;
 }
 
@@ -68,7 +66,7 @@ li{
 
 }
 
-.navbar-icon-profile{
+.navbar-icon-profile {
     width: 24px;
     height: 24px; 
     margin-right: 8px;
@@ -85,7 +83,12 @@ li{
     border-radius: 10px;
 }
 
-.navbar-icon-searchh{
+.nav-newpost-button.create-open {
+    background: #106EE8;
+    color: white;
+}
+
+.navbar-icon-search {
     width: 24px;
     height: 24px; 
     margin-right: 8px;
@@ -96,7 +99,8 @@ li{
     background-repeat: no-repeat;
 
 }
-.nav-newpost-button{
+
+.nav-newpost-button {
     font-family: PoorStory;
     text-decoration: none;
     color: #003887;
@@ -114,7 +118,8 @@ li{
     border-radius: 10px;
 
 }
-.addpost-icon{
+
+.addpost-icon {
     width: 45px;
     height: 45px; 
     margin-right: 8px;
@@ -123,6 +128,15 @@ li{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
 
+.addpost-icon-open {
+    width: 45px;
+    height: 45px; 
+    margin-right: 8px;
+    
+    background-image: url("../../assets/plus-square-open.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
