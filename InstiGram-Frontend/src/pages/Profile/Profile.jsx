@@ -59,7 +59,7 @@ function Profile() {
       loggedUser: loggedUser,
     }
 
-    console.log(data);
+    // console.log(data);
     // console.log(JSON.stringify(data));
 
     fetch(`http://localhost:8000/profile`, {
@@ -88,7 +88,7 @@ function Profile() {
 
   return(
     <>
-      <motion.div className="overlay" 
+      <motion.div className="profile-overlay" 
       variants={overlayVariant}
       initial='initial'
       animate='animate'

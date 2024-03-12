@@ -80,7 +80,7 @@ export default function EditProfile() {
     }
 
     return (
-        <motion.div className="overlay" 
+        <motion.div className="edit-overlay" 
         variants={overlayVariant}
         initial='initial'
         animate='animate'
