@@ -5,7 +5,7 @@
     font-size: large;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0 10px;
     width: 288px;
     background-color:#12180F;
     position: fixed;
@@ -19,6 +19,10 @@
     z-index: 100;
 }
 
+.sidenav li {
+    padding-top: 8px;
+}
+
 .heading-instigram{
     width: 251px;
     height: 62px;
@@ -30,12 +34,15 @@
     font-size: 40px;
     line-height: 50px;
 }
+
 ul{
     margin-top: 50px;
 }
+
 li{
     height: 50px;
 }
+
 .nav-list-item {
     font-family: Mukta;
     text-decoration: none;
@@ -72,6 +79,12 @@ li{
     background-repeat: no-repeat;
 
 }
+
+.profile-open {
+    background: #74876A;
+    border-radius: 10px;
+}
+
 .navbar-icon-searchh{
     width: 24px;
     height: 24px; 

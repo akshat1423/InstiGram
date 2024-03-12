@@ -5,7 +5,7 @@ import SideNav from "../../components/NavBar/SideNav.jsx";
 import ProfileMain from "../../components/ProfileMain/ProfileMain.jsx"
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
 import { detailsAtom } from "../../store/detailsAtom.jsx";
@@ -13,6 +13,7 @@ import { detailsAtom } from "../../store/detailsAtom.jsx";
 import { motion } from 'framer-motion';
 
 import './Profile.css';
+import { profileAtom } from "../../store/profileAtom.jsx";
 
 const mainVariant = {
   initial: {
@@ -47,6 +48,7 @@ function Profile() {
   const setDetails = useSetRecoilState(detailsAtom);
   const { userId } = useParams();
   const navigate = useNavigate();
+  const [profile, setProfile] = useRecoilState(profileAtom);
 
   useEffect(() => {
     
@@ -75,6 +77,14 @@ function Profile() {
 
       })
   }, []);
+
+  useEffect(() => {
+    setProfile(true);
+
+    return () => {
+      setProfile(false);
+    }
+  }, [])
 
   return(
     <>
