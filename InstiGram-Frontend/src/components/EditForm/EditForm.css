@@ -59,7 +59,7 @@ form {
 textarea {
     position: relative;
     margin: 5px 0;
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
 
     height: var(--textarea-height);
@@ -94,7 +94,17 @@ textarea.dark {
     color: var(--text-color-dark);
 }
 
-input {
+.image-edit-label {
+    position: relative;
+
+    left: 180px;
+    top: 90px;
+
+    font-size: 24px;
+    font-family: 'Mukta';
+}
+
+.username-edit {
     width: 782px;
     height: 50px;
     top: 447.92px;
@@ -109,7 +119,7 @@ input {
     font-family: "PoorStory";
     font-size: 1.2rem;
     line-height: 1.3rem;
-    color: var(--input-color-dark);
+    color: white;
 }
 
 .username-label {

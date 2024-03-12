@@ -3,6 +3,7 @@ import { atom } from 'recoil';
 export const detailsAtom = atom({
     key: 'detailsAtom',
     default: {
+        userId: 4,
         username: 'username',
         isFollowing: false,
         posts: '0',

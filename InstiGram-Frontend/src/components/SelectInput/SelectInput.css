@@ -4,6 +4,8 @@ select {
     padding: 5px;
     box-sizing: border-box;
 
+    appearance: none;
+
     width: 60%;
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -35,6 +37,11 @@ select + label {
 
 select:hover {
     cursor: pointer;
+}
+
+select:focus-visible {
+    /* border: none; */
+    outline: none;
 }
 
 select#department {

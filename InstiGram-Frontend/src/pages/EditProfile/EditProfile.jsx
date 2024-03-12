@@ -1,9 +1,10 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
 import { useNavigate } from "react-router-dom";
 import EditForm from "../../components/EditForm/EditForm";
 import './EditProfile.css';
 import { motion } from 'framer-motion';
+import { detailsAtom } from "../../store/detailsAtom";
 
 const mainVariant = {
     initial: {
@@ -39,6 +40,8 @@ export default function EditProfile() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        const setDetails = useSetRecoilState(detailsAtom);
+
         const formData = new FormData(e.target);
         
         const userId = localStorage.getItem('userId');
@@ -52,6 +55,7 @@ export default function EditProfile() {
             year: formData.get('year'),
             profileImage: image,
         }
+
 
         fetch("http://localhost:8000/profile/edit", {
             method: "POST",
@@ -67,6 +71,7 @@ export default function EditProfile() {
                 console.log(json);
 
                 if(status == 200) {
+                    setDetails(data);
                     navigate('/feed');
                 } else if (status == 409) {
                     alert("Username Taken");
