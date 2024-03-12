@@ -10,6 +10,7 @@ const Login = React.lazy(() => import('./pages/Login/Login'));
 const Profile = React.lazy(() => import('./pages/Profile/Profile'));
 const EditProfile = React.lazy(() => import('./pages/EditProfile/EditProfile'))
 const Feed = React.lazy(() => import('./pages/Feed/Feed'));
+const CreatePost = React.lazy(() => import('./pages/CreatePost/CreatePost'));
 const Error = React.lazy(() => import('./pages/Error/Error'));
 
 // import EditProfile from './pages/EditProfile/EditProfile';
@@ -28,6 +29,7 @@ export default function CustomRouter() {
                     <Route path="/profile/:userId" element={ <Profile />} />
                     <Route path='/profile/details' element={ <ProfileDetails />} />
                     <Route path='/profile/edit' element={ <EditProfile />} />
+                    <Route path='/post/create' element={ <CreatePost />} />
                     <Route path='/feed' element={ <Feed />} />
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>
@@ -37,6 +39,7 @@ export default function CustomRouter() {
                     <Routes location={location} key={location.key}>
                         {background && <Route path="/profile/:userId" element={ <Profile />} />}
                         {background && <Route path="/profile/edit" element={ <EditProfile/>} />}
+                        {background && <Route path="/post/create" element={ <CreatePost/>} />}
                     </Routes>
                 </AnimatePresence>
             </Suspense>

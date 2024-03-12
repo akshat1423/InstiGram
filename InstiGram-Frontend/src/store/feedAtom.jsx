@@ -5,51 +5,19 @@ export const feedAtom=atom({
     default:[
         {
             _id: 20,
-            key: 1,
             auth: "string",
-            likes: [{
-                
-                likeAuth: "string",
-            },{
-                
-                likeAuth: "string",
-            },{
-                
-                likeAuth: "string",
-            }
-        ],
-            comments: [{
-                commentId: 1,
-                commentAuth: 'string',
-                commentContent: 'string',
-    
-            },{
-                commentId: 1,
-                commentAuth: 'string',
-                commentContent: 'string',
-    
-            },{
-                commentId: 1,
-                commentAuth: 'string',
-                commentContent: 'string',
-    
-            }],
-            content: 'Lol',
+            profileImage: null,
+            likes: 2,
+            comments: 2,
+            caption: 'Lol',
     
         },{
             _id: 21,
-            key: 2,
             auth: 'DEF',
-            likes: [{}, {}, {}],
-            comments: [
-                {
-                    commentId: 1,
-                    commentAuth: 'string',
-                    commentContent: 'string',
-    
-                }
-            ],
-            content: 'string',
+            profileImage: null,
+            likes: 3,
+            comments: 3,
+            caption: 'string',
         }
     ]
 })

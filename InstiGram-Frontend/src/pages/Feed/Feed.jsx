@@ -3,15 +3,14 @@ import Post from "../../components/Post/Post"
 
 import './Feed.css'
 import SearchBar from "../../components/SearchBar/SearchBar";
-import {  useRecoilValue, useSetRecoilState } from "recoil";
+import {  useRecoilState } from "recoil";
 import { feedAtom } from "../../store/feedAtom.jsx";
 
 import NavBar from "../../components/NavBar/SideNav.jsx"
 
 
 export default function App() {
-    const posts=useRecoilValue(feedAtom);
-    const setPosts=useSetRecoilState(feedAtom);
+    const [posts, setPosts] = useRecoilState(feedAtom);
  
     useEffect(() => {
     
@@ -21,7 +20,7 @@ export default function App() {
           headers: {
             "Content-type": 'application/json',
           },
-          body: JSON.stringify(data),
+        //   body: JSON.stringify(data),
         })
           .then(async function(res) {
             const data = await res.json();
@@ -51,7 +50,7 @@ export default function App() {
                     
                     
                     {posts.map(post => (
-                        <Post className="post" id={post._id}/>
+                        <Post key={posts.indexOf(post)} id={post._id} auth={post.auth} image={post.profileImage} likes={post.likes} comments={post.comments} className="post" />
                     ))}
                 </div>
             </div>

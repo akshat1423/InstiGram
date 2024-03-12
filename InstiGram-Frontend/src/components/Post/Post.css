@@ -1,5 +1,4 @@
-
-.post_content{
+.post_content {
     background-color: #FFFFFF;
     height:660.86px;
     width:762px;
@@ -8,20 +7,24 @@
     top:-20px;
     border-radius: 30px;
 }
-.post_det{
+
+.post_det {
     position:relative;
     top:0px;
     left:0px;
     width: 762px;
-height: 101.02px;
-background-color: #106EE8;
-border-radius: 30px 30px 0px 0px;
-
+    height: 101.02px;
+    background-color: #106EE8;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
-.post_auth{
+
+.post_auth {
     position:relative;
-    top:20.77px;
-    left:101px;
+    top:12.77px;
+    left:32px;
     width: 234px;
     height: 46.26px;
     font-family: Mukta;
@@ -31,14 +34,16 @@ border-radius: 30px 30px 0px 0px;
     line-height: 52px;
     letter-spacing: 0em;
     text-align: left;
-
+    
 
 }
-.post{
-    height: fit-content;
+
+.post {
+    height: 900px;
     width: fit-content;
 }
-.bar{
+
+.bar {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -52,7 +57,8 @@ border-radius: 30px 30px 0px 0px;
     align-items: center;
     align-content: space-around;
 }
-.notLiked{
+
+.notLiked {
     position: relative;
     top:-10px;
     width:29.02px;
@@ -62,7 +68,8 @@ border-radius: 30px 30px 0px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.liked{
+
+.liked {
     position: relative;
     width:29.02px;
     top:-10px;
@@ -72,7 +79,8 @@ border-radius: 30px 30px 0px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.comment_but{
+
+.comment_but {
     width:29.02px;
     height: 29.02px;
     background-image: url('../../assets/message-circle.svg');
@@ -80,7 +88,8 @@ border-radius: 30px 30px 0px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.share_but{
+
+.share_but {
     position: relative;
     width:29.02px;
     top:10px;
@@ -90,7 +99,8 @@ border-radius: 30px 30px 0px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.below_post{
+
+.below_post {
     display: grid;
     grid-template-columns: 100px auto;
     align-content: space-between;
@@ -98,13 +108,31 @@ border-radius: 30px 30px 0px 0px;
     top:-150px;
     color:white;
     font-family: Mukta;
-font-size: 22px;
-font-weight: 600;
-line-height: 44px;
-letter-spacing: 0em;
-text-align: left;
-
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: left;
 }
-.like_count .comment_count{
+
+.like_count .comment_count {
     padding:15px;
+}
+
+.post-profile-image-div {
+    height: 50px;
+    width: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    margin-top: 12.5px;
+    border-radius: 50%;
+}
+
+.post-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }

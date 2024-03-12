@@ -42,7 +42,7 @@ function CommentBox({ onSubmit, comments }) {
 }
 
 export default function Post(props) {
-    const posts=useRecoilValue(feedAtom)
+    // const post=useRecoilValue(feedAtom)
     //how to implement a post with specific post id
     const [liked,setLiked]=useState(false)
     const likeClick = async () => {
@@ -78,8 +78,11 @@ export default function Post(props) {
         <div className="post">
             
             <div className="post_det">
-                <div className="post_auth">{post.auth}
+                <div className="post-profile-image-div">
+                    <img src={props.image} alt="" className="post-profile-image" />
                 </div>
+                <div className="post_auth">{props.auth}
+            </div>
             </div>
             <div className="post_content"></div>
             
@@ -102,19 +105,19 @@ export default function Post(props) {
                 <div className="below_post">
                         <div className="like_count">
 
-                            {post.likes.length} likes
+                            {props.likes} likes
                         
                         </div>
                     
                         
                         <div className="comment_count">
-                            {post.comments.length} comments
+                            {props.comments} comments
                         </div>
                 </div>        
                     
                 
             
-            {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />}
+            {/* {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />} */}
         </div>
     );
 }
