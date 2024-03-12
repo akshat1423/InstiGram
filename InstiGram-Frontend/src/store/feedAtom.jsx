@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom,selector } from 'recoil';
 
 export const feedAtom=atom({
     key:"feedAtom",
@@ -11,7 +11,8 @@ export const feedAtom=atom({
             comments: 2,
             caption: 'Lol',
     
-        },{
+        },
+        {
             _id: 21,
             auth: 'DEF',
             profileImage: null,

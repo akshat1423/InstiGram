@@ -37,7 +37,7 @@ export default function App() {
         } catch (error) {
             console.error('Error searching:', error);
         }
-    };
+    }
 
     return (
         <div>

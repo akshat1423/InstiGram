@@ -1,10 +1,7 @@
 import React, { useState, useEffect} from "react";
 import './Post.css';
-import { useRecoilState,useRecoilValue } from "recoil";
-import { feedAtom } from "../../store/feedAtom";
-
-
-
+import { useRecoilState, useRecoilValue } from "recoil";
+import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
@@ -29,13 +26,13 @@ function CommentBox({ onSubmit, comments }) {
         <div className="comm">
             <ul className="all-comments">
                 {comments.map((comment) => (
-                    <li>{comment.commentAuth}: {comment.commentContent}</li>
+                    <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
                 ))}
             </ul>
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required/>
-                <button type="submit" class="send-btn"></button>
+            <form onSubmit={handleSubmit} className="comment_box">
+                <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required className="comment_field" />
+                <button type="submit" className="send-btn"></button>
             </form>
         </div>
     );
@@ -46,37 +43,31 @@ export default function Post(props) {
     //how to implement a post with specific post id
     const [liked,setLiked]=useState(false)
     const likeClick = async () => {
-    try {
-        setLiked(!liked);
-        //post likes to api
-    } catch (error) {
-        console.error('Error liking:', error);
-    }
-};
-
+        try {
+            setLiked(!liked);
+            //post likes to api
+        } catch (error) {
+            console.error('Error liking:', error);
+        }
+    };
 
     const commentClick = () => {
         setShowCommentBox(true);
-        setShowCommentIcon(false);
     };
 
     const handleCommentSubmit = async (comment) => {
-        try{
+        try {
             //post comments to api
-            
-
         } catch(error) {
             console.error('Error submitting comment:', error);
         }
-        finally{
+        finally {
             setShowCommentBox(false);
-            setShowCommentIcon(true);
         }
     };
 
     return (
         <div className="post">
-            
             <div className="post_det">
                 <div className="post-profile-image-div">
                     <img src={props.image} alt="" className="post-profile-image" />
@@ -121,3 +112,4 @@ export default function Post(props) {
         </div>
     );
 }
+

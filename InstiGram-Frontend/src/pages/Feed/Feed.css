@@ -42,6 +42,9 @@ body {
   left:51px;
   width:1000px;
   height:100%;
+
+  
+  
 }
 
 .fixed{
@@ -75,7 +78,12 @@ body {
   z-index:1;
 
 }
-
+.comm{
+  position: relative;
+  top:-180px;
+  left:30px;
+  font-size: 22px;
+}
 
 @media only screen and (max-width: 768px) {
   .search {
