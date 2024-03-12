@@ -15,51 +15,55 @@ import random
 
 # @login_required(login_url='signin')
 def index(request):
-    user_object= User.objects.get(username= request.user.username)
-    user_profile= Profile.objects.get(user= user_object)
+    data = json.loads(request.body)
+    user_auth= data.get('userId')
+    user_object= User.objects.get(id=user_auth)
+    user_profile= Profile.objects.get(user_id= int(user_auth))
 
-    user_following_list = []
-    feed= []
+    # user_following_list = []
+    # feed= []
 
-    user_following = FollowersCount.objects.filter(follower=request.user.username)
+    # user_following = FollowersCount.objects.filter(follower=request.user.username)
 
-    for users in user_following:
-        user_following_list.append(users.user)
+    # for users in user_following:
+    #     user_following_list.append(users.user)
     
-    for usernames in user_following_list:
-        feed_lists= Post.objects.filter(user= usernames)
-        feed.append(feed_lists)
+    # for usernames in user_following_list:
+    #     feed_lists= Post.objects.filter(user= usernames)
+    #     feed.append(feed_lists)
     
-    feed_list = list(chain(*feed))
+    # feed_list = list(chain(*feed))
 
-    # posts = Post.objects.all()
+    posts = Post.objects.all()
 
-    all_users = User.objects.all()
-    user_following_all = []
+    # all_users = User.objects.all()
+    # user_following_all = []
 
-    for user in user_following:
-        user_list = User.objects.get(username=user.user)
-        user_following_all.append(user_list)
+    # for user in user_following:
+    #     user_list = User.objects.get(username=user.user)
+    #     user_following_all.append(user_list)
     
-    new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
-    current_user = User.objects.filter(username=request.user.username)
-    final_suggestions_list = [x for x in list(new_suggestions_list) if ( x not in list(current_user))]
-    random.shuffle(final_suggestions_list)
+    # new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
+    # current_user = User.objects.filter(username=request.user.username)
+    # final_suggestions_list = [x for x in list(new_suggestions_list) if ( x not in list(current_user))]
+    # random.shuffle(final_suggestions_list)
 
-    username_profile = []
-    username_profile_list = []
+    # username_profile = []
+    # username_profile_list = []
 
-    for users in final_suggestions_list:
-        username_profile.append(users.id)
+    # for users in final_suggestions_list:
+    #     username_profile.append(users.id)
 
-    for ids in username_profile:
-        profile_lists = Profile.objects.filter(id_user=ids)
-        username_profile_list.append(profile_lists)
+    # for ids in username_profile:
+    #     profile_lists = Profile.objects.filter(id_user=ids)
+    #     username_profile_list.append(profile_lists)
 
-    suggestions_username_profile_list = list(chain(*username_profile_list))
+    # suggestions_username_profile_list = list(chain(*username_profile_list))
 
+    posts_array = [{'_id': post.id, 'auth': post.user,'likes':post.no_of_likes,'comments': post.no_of_comments, 'content': post.caption, 'postImage': post.image} for post in posts]
 
-    return render(request, 'index.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
+    return JsonResponse(posts_array, status=200)
+    # return render(request, 'index.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
 
 def edit(request):
     data = json.loads(request.body)
@@ -221,9 +225,12 @@ def comment(request):
     post_id= data.get('post_id')
     text= data.get['text']
 
+    post = Post.objects.get(id= post_id)
+
     new_comment= comments.objects.create(post_id= post_id, username= username, text= text)
     new_comment.save()
-
+    post.no_of_comments= post.no_of_comments+1
+    post.save()
     return redirect('/')
 
 
