@@ -2,38 +2,55 @@ import { atom } from 'recoil';
 
 export const feedAtom=atom({
     key:"feedAtom",
-    default:[{
-        id: '',
-        auth: '',
-        image: '',
-        detail: {
-            likes: 5,
+    default:[
+        {
+            _id: 20,
+            key: 1,
+            auth: "string",
+            likes: [{
+                
+                likeAuth: "string",
+            },{
+                
+                likeAuth: "string",
+            },{
+                
+                likeAuth: "string",
+            }
+        ],
+            comments: [{
+                commentId: 1,
+                commentAuth: 'string',
+                commentContent: 'string',
+    
+            },{
+                commentId: 1,
+                commentAuth: 'string',
+                commentContent: 'string',
+    
+            },{
+                commentId: 1,
+                commentAuth: 'string',
+                commentContent: 'string',
+    
+            }],
+            content: 'Lol',
+    
+        },{
+            _id: 21,
+            key: 2,
+            auth: 'DEF',
+            likes: [{}, {}, {}],
             comments: [
                 {
-                    commentAuth:'',
-                    commentId:'',
-                    comment:'',
+                    commentId: 1,
+                    commentAuth: 'string',
+                    commentContent: 'string',
+    
                 }
-            ]
+            ],
+            content: 'string',
         }
-
-    }],
+    ]
 })
-const posts = {post:[
-    {
-        id: '',
-        auth: '',
-        image: '',
-        detail: {
-            likes: 5,
-            comments: [
-                {
-                    commentAuth:'',
-                    commentId:'',
-                    comment:'',
-                }
-            ]
-        }
 
-    }
-]}

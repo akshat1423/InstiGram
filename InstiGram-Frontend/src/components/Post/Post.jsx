@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect} from "react";
 import './Post.css';
-import { useRecoilState } from "recoil";
-import {commentAtom,likeAtom,commentCountAtom,likeCountAtom,showCommentBoxAtom,showCommentIconAtom} from '../../store/likeCommentAtom.jsx';
+import { useRecoilState,useRecoilValue } from "recoil";
+import { feedAtom } from "../../store/feedAtom";
+
+
+
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
@@ -26,8 +28,8 @@ function CommentBox({ onSubmit, comments }) {
     return (
         <div className="comm">
             <ul className="all-comments">
-                {comments.map((comment, index) => (
-                    <li key={index}>{comment}</li>
+                {comments.map((comment) => (
+                    <li>{comment.commentAuth}: {comment.commentContent}</li>
                 ))}
             </ul>
 
@@ -40,54 +42,15 @@ function CommentBox({ onSubmit, comments }) {
 }
 
 export default function Post(props) {
-    const [comments,setComments]=useRecoilState(commentAtom)
-    const [like,setLike]=useRecoilState(likeAtom)
-    const [likeCount,setLikeCount]=useRecoilState(likeCountAtom)
-    const [commentCount,setCommentCount]=useRecoilState(commentCountAtom)
-    const [showCommentBox,setShowCommentBox]=useRecoilState(showCommentBoxAtom)
-    const [showCommentIcon,setShowCommentIcon]=useRecoilState(showCommentIconAtom)
-
-
-
-
-    const fetchComments = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/v1/social-media/comments/post/${props.postId}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch comments');
-            }
-            const data = await response.json();
-            setComments(data.comments); 
-        } catch (error) {
-            console.error('Error fetching comments:', error);
-        }
-    };
-    
-    const fetchLikeCount = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/v1/social-media/like/post/${props.postId}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch like count');
-            }
-            const data = await response.json();
-            setLikeCount(data.likeCount);
-        } catch (error) {
-            console.error('Error fetching like count:', error);
-        }
-    };
-    useEffect(() => {
-        fetchComments(); 
-        fetchLikeCount();
-    }, []);
-    
+    const posts=useRecoilValue(feedAtom)
+    //how to implement a post with specific post id
+    const [liked,setLiked]=useState(false)
     const likeClick = async () => {
     try {
-        const newLikeState = !like;
-        setLike(newLikeState);
-        setLikeCount(newLikeState ? likeCount + 1 : likeCount - 1);
-
+        setLiked(!liked);
+        //post likes to api
     } catch (error) {
-        console.error('Error updating like count:', error);
+        console.error('Error liking:', error);
     }
 };
 
@@ -98,22 +61,11 @@ export default function Post(props) {
     };
 
     const handleCommentSubmit = async (comment) => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/v1/social-media/comments/post/{props.postId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ comment }),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to submit comment');
-            }
-            const newComment = await response.json();
-            setComments([...comments, newComment.comment]);
-            setCommentCount(commentCount + 1);
+        try{
+            //post comments to api
+            
 
-        } catch (error) {
+        } catch(error) {
             console.error('Error submitting comment:', error);
         }
         finally{
@@ -126,7 +78,7 @@ export default function Post(props) {
         <div className="post">
             
             <div className="post_det">
-                <div className="post_auth">{props.postAuth}
+                <div className="post_auth">{post.auth}
                 </div>
             </div>
             <div className="post_content"></div>
@@ -135,8 +87,8 @@ export default function Post(props) {
                 <div className="bar">
                    
                         
-                             {!like ?
-                                <div className="not-liked" onClick={likeClick}> </div>:
+                             {!liked ?
+                                <div className="notLiked" onClick={likeClick}> </div>:
                                 <div className="liked" onClick={likeClick}></div>
                             } 
                         
@@ -150,19 +102,19 @@ export default function Post(props) {
                 <div className="below_post">
                         <div className="like_count">
 
-                            {likeCount} likes
+                            {post.likes.length} likes
                         
                         </div>
                     
                         
                         <div className="comment_count">
-                            {commentCount} comments
+                            {post.comments.length} comments
                         </div>
                 </div>        
                     
                 
             
-            {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={comments} />}
+            {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />}
         </div>
     );
 }
