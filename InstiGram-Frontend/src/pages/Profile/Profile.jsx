@@ -13,7 +13,7 @@ import { detailsAtom } from "../../store/detailsAtom.jsx";
 import { motion } from 'framer-motion';
 
 import './Profile.css';
-import { profileAtom } from "../../store/profileAtom.jsx";
+import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
 
 const mainVariant = {
   initial: {
@@ -48,7 +48,7 @@ function Profile() {
   const setDetails = useSetRecoilState(detailsAtom);
   const { userId } = useParams();
   const navigate = useNavigate();
-  const [profile, setProfile] = useRecoilState(profileAtom);
+  const setProfile = useSetRecoilState(profileAtom);
 
   useEffect(() => {
     

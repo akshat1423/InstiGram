@@ -1,8 +1,8 @@
 import "./ProfileMain.css"
- import Post from "../ProfilePosts/ProfilePosts.jsx";
- import Details from "../Details/Details.jsx";
- import Pic from "../ProfilePic/Pic.jsx";
- import Bio from "../Bio/Bio.jsx";
+import Post from "../ProfilePosts/ProfilePosts.jsx";
+import Details from "../Details/Details.jsx";
+import Pic from "../ProfilePic/Pic.jsx";
+import Bio from "../Bio/Bio.jsx";
 import PopupCard from "../PopupCard/PopupCard.jsx"
 
 function ProfileMain(){

@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import "./SideNav.css"
 import { useRecoilValue } from "recoil";
-import { profileAtom } from "../../store/profileAtom";
+import { createAtom, profileAtom } from "../../store/pageAtoms";
+
 
 
 function closeNav(){
@@ -14,6 +15,7 @@ function openNav() {
 function SideNav(){
     const userId = localStorage.getItem('userId');
     const profile = useRecoilValue(profileAtom);
+    const create = useRecoilValue(createAtom);
     const location = useLocation();
 
     return(
@@ -42,16 +44,20 @@ function SideNav(){
                 </li>
                 <li >
                     <Link className="nav-list-item" to="/chat" >
-                        <div className=" navbar-icon-searchh" />
+                        <div className=" navbar-icon-search" />
                         Search
                     </Link>
                     <br />
                 </li>
                 <li>
-                    <Link className="nav-newpost-button">
+                    {!create ? <Link className="nav-newpost-button" to='/post/create' state={{background: location}} >
                         <div className="addpost-icon"></div> 
                         New Post
-                    </Link>
+                    </Link> : 
+                    <div className={"nav-newpost-button create-open"}>
+                        <div className="addpost-icon-open" />
+                        New Post
+                    </div>}
                 </li>
             </ul>
         </div>

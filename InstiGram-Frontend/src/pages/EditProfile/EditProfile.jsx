@@ -35,12 +35,11 @@ const overlayVariant = {
 
 export default function EditProfile() {
     const image = useRecoilValue(imageAtom);
+    const setDetails = useSetRecoilState(detailsAtom);
     const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        const setDetails = useSetRecoilState(detailsAtom);
 
         const formData = new FormData(e.target);
         

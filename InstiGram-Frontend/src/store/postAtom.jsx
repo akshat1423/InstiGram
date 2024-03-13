@@ -37,3 +37,10 @@ export const postAtom = atom({
         {postImage: 'https://placehold.co/200'},
     ],
 })
+
+// const data = {
+//     postImage: image,
+//     caption: caption,
+//     likes: number,
+//     comments: number,
+// }
