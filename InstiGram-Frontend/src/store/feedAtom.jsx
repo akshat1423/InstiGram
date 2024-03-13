@@ -6,6 +6,7 @@ export const feedAtom=atom({
         {
             _id: 20,
             auth: "string",
+            authId: 6,
             profileImage: null,
             likes: 2,
             isLiked: false,
@@ -17,6 +18,7 @@ export const feedAtom=atom({
         {
             _id: 21,
             auth: 'DEF',
+            authId: 5,
             profileImage: null,
             likes: 3,
             isLiked: true,
