@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 
 import './Profile.css';
 import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
+import { BASE_URL } from "../../App.jsx";
 
 const mainVariant = {
   initial: {
@@ -62,7 +63,7 @@ function Profile() {
     // console.log(data);
     // console.log(JSON.stringify(data));
 
-    fetch(`http://localhost:8000/profile`, {
+    fetch(`${BASE_URL}/profile`, {
       method: "POST",
       headers: {
         "Content-type": 'application/json',

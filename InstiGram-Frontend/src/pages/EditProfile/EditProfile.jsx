@@ -5,6 +5,7 @@ import EditForm from "../../components/EditForm/EditForm";
 import './EditProfile.css';
 import { motion } from 'framer-motion';
 import { detailsAtom } from "../../store/detailsAtom";
+import { BASE_URL } from "../../App";
 
 const mainVariant = {
     initial: {
@@ -56,7 +57,7 @@ export default function EditProfile() {
         }
 
 
-        fetch("http://localhost:8000/profile/edit", {
+        fetch(`${BASE_URL}/pofile/edit`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

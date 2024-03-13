@@ -41,8 +41,8 @@ export default function LoginForm({ handleSubmit }) {
                     </>
                 </div>
 
-                <div className="submit-div">
-                    <button type="submit" className={ darkMode ? "submit dark" : "submit"}>LOGIN</button>
+                <div className="login-submit-div">
+                    <button type="submit" className={ darkMode ? "login-submit dark" : "login-submit"}>LOGIN</button>
                 </div>
 
                 <hr className='line' />

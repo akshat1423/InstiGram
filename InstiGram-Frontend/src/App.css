@@ -14,7 +14,7 @@
     --link-color: #0279D3;
 
     --font-family: "PoorStory";
-    
+
     --placeholder-animation: scale(0.9) translateX(-0.75rem) translateY(-2rem);
     --textarea-placeholder-animation: scale(0.9) translateX(-0.5rem) translateY(-2.5rem);
 
@@ -37,7 +37,7 @@
     --card-background-color: #F8FFF6;
 }
 
-  * {
+* {
     margin: 0;
     padding: 0;
 }
@@ -52,7 +52,7 @@ body {
 
 body.darkMode {
     background-color: var(--background-color-dark);
-    color: white;
+    color: black;
 }
 
 .main {

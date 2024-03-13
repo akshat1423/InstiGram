@@ -23,7 +23,7 @@ form {
     position: relative;
 }
 
-textarea {
+#bio {
     position: relative;
     margin: 5px 0;
     padding: 5px;
@@ -33,6 +33,7 @@ textarea {
     width: 100%;
 
     margin-bottom: 57px;
+    padding: 10px;
 
     font-family: "PoorStory";
     font-size: 1.2rem;
@@ -45,9 +46,9 @@ textarea {
     border-radius: 16px;
 }
 
-textarea.dark {
+#bio.dark {
     background-color: var(--input-background-color-dark);
-    color: var(--input-color-dark); 
+    color: white; 
 
     border: 1px white solid;
 }

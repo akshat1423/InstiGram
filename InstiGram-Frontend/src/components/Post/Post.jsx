@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from "react";
 import './Post.css';
 import { useRecoilState, useRecoilValue } from "recoil";
+import { BASE_URL } from "../../App";
+import { feedAtom } from "../../store/feedAtom";
 // import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
@@ -41,11 +43,39 @@ function CommentBox({ onSubmit, comments }) {
 export default function Post(props) {
     // const post=useRecoilValue(feedAtom)
     //how to implement a post with specific post id
-    const [liked,setLiked]=useState(false)
+    const [posts, setPosts] = useRecoilState(feedAtom);
+    const [liked,setLiked]=useState(props.isLiked);
     const likeClick = async () => {
         try {
+
+            const userId = localStorage.getItem('userId');
+            const postId = props.id;
+
+            const data = {
+                userId: userId,
+                liked: !liked,
+                postId: postId,
+            }
             setLiked(!liked);
+
+            // console.log(data);
             //post likes to api
+            const res = await fetch(`${BASE_URL}/liked`, {
+                method: "POST",
+                headers: {
+                    "Content-type": 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const json = await res.json();
+
+            if (res.status == 200) {
+                setLiked(!liked);
+
+                json.likeCount;
+            }
+
         } catch (error) {
             console.error('Error liking:', error);
         }
@@ -70,42 +100,45 @@ export default function Post(props) {
         <div className="post">
             <div className="post_det">
                 <div className="post-profile-image-div">
-                    <img src={props.image} alt="" className="post-profile-image" />
+                    <img src={props.profileImage} alt="" className="post-profile-image" />
                 </div>
                 <div className="post_auth">{props.auth}
             </div>
             </div>
-            <div className="post_content"></div>
-            
-            
-                <div className="bar">
-                   
-                        
-                             {!liked ?
-                                <div className="notLiked" onClick={likeClick}> </div>:
-                                <div className="liked" onClick={likeClick}></div>
-                            } 
-                        
-                        <div className="comment_but" onClick={commentClick}>
-                            
-                        </div>
-                        <div className="share_but">
-                            
-                        </div>
+            <div className="post_content">
+                <img src={props.image} className="post-image" />
+                <div className="post-caption">
+                    {props.caption}
                 </div>
-                <div className="below_post">
-                        <div className="like_count">
+            </div>
+            
+            
+            <div className="bar">
 
-                            {props.likes} likes
-                        
-                        </div>
+                    {!liked ?
+                        <div className="notLiked" onClick={likeClick}> </div>:
+                        <div className="liked" onClick={likeClick}></div>
+                    } 
+                
+                <div className="comment_but" onClick={commentClick}>
                     
-                        
-                        <div className="comment_count">
-                            {props.comments} comments
-                        </div>
-                </div>        
+                </div>
+                <div className="share_but">
                     
+                </div>
+            </div>
+            <div className="below_post">
+                    <div className="like_count">
+
+                    {props.likes} likes
+                
+                </div>
+            
+                
+                <div className="comment_count">
+                    {props.comments} comments
+                </div>
+            </div>        
                 
             
             {/* {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />} */}

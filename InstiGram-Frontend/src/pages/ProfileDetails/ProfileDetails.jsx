@@ -4,6 +4,7 @@ import ProfileSetupForm from "../../components/ProfileSetupForm/ProfileSetupForm
 import { useRecoilValue } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
 import './ProfileDetails.css'
+import { BASE_URL } from "../../App";
 
 export default function ProfileSetup() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function ProfileSetup() {
             profileImage: image,
         }
 
-        fetch("http://localhost:8000/profile/details", {
+        fetch(`${BASE_URL}/profile/details`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
