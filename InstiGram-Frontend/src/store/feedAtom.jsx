@@ -7,8 +7,24 @@ export const feedAtom=atom({
             _id: 20,
             auth: "string",
             profileImage: null,
-            likes: 2,
-            comments: 2,
+            likes: [{
+                auth:'hello'
+            },
+            {
+                auth:'guara'
+            }],
+            comments:[
+                {
+                    commentId: 1,
+                    commentAuth:'guarav',
+                    commentContent:'helo'
+                },
+                {
+                    commentId: 2,
+                    commentAuth:'gaurav',
+                    commentContent:'halo'
+                }
+            ],
             caption: 'Lol',
     
         },
@@ -16,8 +32,12 @@ export const feedAtom=atom({
             _id: 21,
             auth: 'DEF',
             profileImage: null,
-            likes: 3,
-            comments: 3,
+            likes: [{}],
+            comments: [{
+                commentId: 4,
+                    commentAuth:'guarav',
+                    commentContent:'helo'
+            }],
             caption: 'string',
         }
     ]

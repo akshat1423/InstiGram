@@ -42,6 +42,7 @@ export default function Post(props) {
     // const post=useRecoilValue(feedAtom)
     //how to implement a post with specific post id
     const [liked,setLiked]=useState(false)
+    const [showCommentBox, setShowCommentBox] = useState(false);
     const likeClick = async () => {
         try {
             setLiked(!liked);
@@ -96,19 +97,19 @@ export default function Post(props) {
                 <div className="below_post">
                         <div className="like_count">
 
-                            {props.likes} likes
+                            {props.likes.length} likes
                         
                         </div>
                     
                         
                         <div className="comment_count">
-                            {props.comments} comments
+                            {props.comments.length} comments
                         </div>
                 </div>        
                     
                 
             
-            {/* {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />} */}
+             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={props.comments} />} 
         </div>
     );
 }
