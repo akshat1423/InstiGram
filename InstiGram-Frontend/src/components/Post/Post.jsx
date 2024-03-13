@@ -3,6 +3,7 @@ import './Post.css';
 import { useRecoilState, useRecoilValue } from "recoil";
 import { BASE_URL } from "../../App";
 import { feedAtom } from "../../store/feedAtom";
+import { Link, useLocation } from "react-router-dom";
 // import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
@@ -45,6 +46,8 @@ export default function Post(props) {
     //how to implement a post with specific post id
     const [posts, setPosts] = useRecoilState(feedAtom);
     const [liked,setLiked]=useState(props.isLiked);
+    const location = useLocation();
+
     const likeClick = async () => {
         try {
 
@@ -56,7 +59,7 @@ export default function Post(props) {
                 liked: !liked,
                 postId: postId,
             }
-            setLiked(!liked);
+            // setLiked(!liked);
 
             // console.log(data);
             //post likes to api
@@ -73,7 +76,17 @@ export default function Post(props) {
             if (res.status == 200) {
                 setLiked(!liked);
 
-                json.likeCount;
+                fetch(`${BASE_URL}/feed`, {
+                    method: "POST",
+                    headers: {
+                    "Content-type": 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(async function(res) {
+                        const json = await res.json();
+                        setPosts(json);
+                    })
             }
 
         } catch (error) {
@@ -102,8 +115,9 @@ export default function Post(props) {
                 <div className="post-profile-image-div">
                     <img src={props.profileImage} alt="" className="post-profile-image" />
                 </div>
-                <div className="post_auth">{props.auth}
-            </div>
+                <Link to={`/profile/${props.authId}`} state={{background: location}} className="post_auth">
+                    {props.auth}
+                </Link>
             </div>
             <div className="post_content">
                 <img src={props.image} className="post-image" />

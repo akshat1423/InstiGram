@@ -51,9 +51,10 @@ function Profile() {
   const navigate = useNavigate();
   const setProfile = useSetRecoilState(profileAtom);
 
+  const loggedUser = JSON.parse(localStorage.getItem('userId'));
+
   useEffect(() => {
     
-    const loggedUser = JSON.parse(localStorage.getItem('userId'));
 
     const data = {
       userId: userId,
@@ -80,10 +81,18 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    setProfile(true);
+    
+    if(userId == loggedUser) {
+      setProfile(true);
+    }
+    // setProfile(true);
 
     return () => {
-      setProfile(false);
+
+      if(userId == loggedUser) {
+        setProfile(false);
+      }
+      // setProfile(false);
     }
   }, [])
 

@@ -60,6 +60,7 @@ export default function App() {
                             key={posts.indexOf(post)} 
                             id={post._id} 
                             auth={post.auth} 
+                            authId={post.authId}
                             profileImage={post.profileImage}
                             image={post.postImage}
                             likes={post.likes} 

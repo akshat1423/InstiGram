@@ -59,7 +59,7 @@
     position:relative;
     top:12.77px;
     left:32px;
-    width: 234px;
+    /* width: 234px; */
     height: 46.26px;
     font-family: Mukta;
     color:#FFFFFF;
@@ -68,8 +68,11 @@
     line-height: 52px;
     letter-spacing: 0em;
     text-align: left;
-    
+    text-decoration: none;
+}
 
+.post_auth:hover {
+    cursor: pointer;
 }
 
 .post {
@@ -99,8 +102,10 @@
     height: 29.02px;
     background-image: url('../../assets/like.svg');
     background-position: center;
-    background-size: cover;
+    background-size: 90%;
     background-repeat: no-repeat;
+
+    transition: 0.2s;
 }
 
 .liked {
@@ -112,6 +117,13 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    transition: 0.2s;
+}
+
+.liked:hover, .notLiked:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .comment_but {
