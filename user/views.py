@@ -60,9 +60,19 @@ def index(request):
 
     # suggestions_username_profile_list = list(chain(*username_profile_list))
 
-    posts_array = [{'_id': post.id, 'auth': post.user,'likes':post.no_of_likes,'comments': post.no_of_comments, 'content': post.caption, 'postImage': post.image} for post in posts]
+    posts_array= [{
+        '_id': post.id,
+        'auth': post.user,
+        'profileImage': (Profile.objects.get(user_id= (User.objects.get(username=post.user)).id)).profileimg,
+        'likes':post.no_of_likes,
+        'isLiked': LikePost.objects.filter(post_id=post.id, username=user_object.username).exists(),
+        'comments': post.no_of_comments,
+        'caption': post.caption,
+        'postImage': post.image} 
+        for post in posts
+        ]
 
-    return JsonResponse(posts_array, status=200)
+    return JsonResponse(posts_array, safe=False)
     # return render(request, 'index.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
 
 def edit(request):
