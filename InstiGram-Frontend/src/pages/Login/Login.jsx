@@ -5,6 +5,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
 import { validAtom } from "../../store/validAtom";
 import SideCard from '../../components/SideCard/SideCard';
+import { BASE_URL } from '../../App';
 
 function Login() {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Login() {
         
         e.preventDefault();
 
-        fetch("http://127.0.0.1:8000/signin", {
+        fetch(`${BASE_URL}/signin`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

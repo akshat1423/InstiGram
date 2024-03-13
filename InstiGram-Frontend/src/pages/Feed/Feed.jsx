@@ -7,27 +7,33 @@ import {  useRecoilState } from "recoil";
 import { feedAtom } from "../../store/feedAtom.jsx";
 
 import NavBar from "../../components/NavBar/SideNav.jsx"
+import { BASE_URL } from "../../App.jsx";
 
 
 export default function App() {
     const [posts, setPosts] = useRecoilState(feedAtom);
 
+
     useEffect(() => {
+
+        const userId = localStorage.getItem('userId');
+
+        const data = {
+            userId: userId
+        }
     
-    
-        fetch(`http://localhost:8000/feed`, {
-          method: "POST",
-          headers: {
+        fetch(`${BASE_URL}/feed`, {
+            method: "POST",
+            headers: {
             "Content-type": 'application/json',
-          },
-        //   body: JSON.stringify(data),
+            },
+            body: JSON.stringify(data),
         })
-          .then(async function(res) {
-            const data = await res.json();
-            setPosts(data.post);
-            
-          })
-      }, []);
+            .then(async function(res) {
+                const json = await res.json();
+                setPosts(json);
+            })
+    }, []);
 
     const handleSearch = async (query) => {
         try {
@@ -50,7 +56,18 @@ export default function App() {
                     
                     
                     {posts.map(post => (
-                        <Post key={posts.indexOf(post)} id={post._id} auth={post.auth} image={post.profileImage} likes={post.likes} comments={post.comments} className="post" />
+                        <Post 
+                            key={posts.indexOf(post)} 
+                            id={post._id} 
+                            auth={post.auth} 
+                            authId={post.authId}
+                            profileImage={post.profileImage}
+                            image={post.postImage}
+                            likes={post.likes} 
+                            comments={post.comments}
+                            isLiked={post.isLiked}
+                            caption={post.caption}
+                            className="post" />
                     ))}
                 </div>
             </div>

@@ -5,6 +5,7 @@ import DarkModeSwitch from '../../components/DarkModeSwitch/DarkModeSwitch';
 import { useNavigate } from 'react-router-dom';
 import { validAtom } from '../../store/validAtom';
 import SideCard from '../../components/SideCard/SideCard';
+import { BASE_URL } from '../../App';
 
 function Signup() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Signup() {
                 roll: formData.get('roll'),
             }
 
-            fetch("http://127.0.0.1:8000/signup", {
+            fetch(`${BASE_URL}/signup`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

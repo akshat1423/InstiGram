@@ -119,7 +119,7 @@
 
 }
 
-.submit-div {
+.login-submit-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,7 +127,7 @@
     margin: 1rem;
 }
 
-.submit {
+.login-submit {
     width: 228px;
     height: 47px;
 
@@ -148,11 +148,11 @@
     transition: 0.2s;
 }
 
-.submit.dark {
+.login-submit.dark {
     background-color: var(--button-dark-color);
 }
 
-.submit:hover {
+.login-submit:hover {
     cursor: pointer;
     transform: scale(1.1);
     opacity: 1;

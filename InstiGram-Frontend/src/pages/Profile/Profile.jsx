@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 
 import './Profile.css';
 import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
+import { BASE_URL } from "../../App.jsx";
 
 const mainVariant = {
   initial: {
@@ -50,9 +51,10 @@ function Profile() {
   const navigate = useNavigate();
   const setProfile = useSetRecoilState(profileAtom);
 
+  const loggedUser = JSON.parse(localStorage.getItem('userId'));
+
   useEffect(() => {
     
-    const loggedUser = JSON.parse(localStorage.getItem('userId'));
 
     const data = {
       userId: userId,
@@ -62,7 +64,7 @@ function Profile() {
     // console.log(data);
     // console.log(JSON.stringify(data));
 
-    fetch(`http://localhost:8000/profile`, {
+    fetch(`${BASE_URL}/profile`, {
       method: "POST",
       headers: {
         "Content-type": 'application/json',
@@ -79,10 +81,18 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    setProfile(true);
+    
+    if(userId == loggedUser) {
+      setProfile(true);
+    }
+    // setProfile(true);
 
     return () => {
-      setProfile(false);
+
+      if(userId == loggedUser) {
+        setProfile(false);
+      }
+      // setProfile(false);
     }
   }, [])
 

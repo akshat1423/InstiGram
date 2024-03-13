@@ -68,8 +68,8 @@ export default function SignupForm({ handleSubmit }) {
                     </>
                 </div>
 
-                <div className="submit-div">
-                    <button type="submit" className={ darkMode ? "submit dark" : "submit"} id={ equal ? "" : "prohibited"}>
+                <div className="signup-submit-div">
+                    <button type="submit" className={ darkMode ? "signup-submit dark" : "signup-submit"} id={ equal ? "" : "prohibited"}>
                         SIGN UP
                     </button>
                 </div>

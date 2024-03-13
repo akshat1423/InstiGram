@@ -49,16 +49,17 @@ form {
     margin-top: 30px;
 }
 
-textarea {
+#caption {
     position: relative;
-    margin: 5px 0;
-    padding: 10px;
+    
     box-sizing: border-box;
 
     height: var(--textarea-height);
     width: 100%;
 
     margin-bottom: 57px;
+    margin: 5px 0;
+    padding: 10px;
 
     font-family: "PoorStory";
     font-size: 1.2rem;
@@ -71,7 +72,7 @@ textarea {
     border-radius: 16px;
 }
 
-textarea.dark {
+#caption.dark {
     background-color: var(--input-background-color-dark);
     color: white; 
 

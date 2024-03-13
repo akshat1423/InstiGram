@@ -7,6 +7,7 @@ import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
 import SideNav from '../../components/NavBar/SideNav';
 import { createPostAtom } from '../../store/createPostAtom';
 import { postAtom } from '../../store/postAtom';
+import { BASE_URL } from '../../App';
 
 const mainVariant = {
     initial: {
@@ -55,7 +56,7 @@ export default function CreatePost() {
             comments: 0,
         }
 
-        fetch("http://localhost:8000/post/create", {
+        fetch(`${BASE_URL}/post/create`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
