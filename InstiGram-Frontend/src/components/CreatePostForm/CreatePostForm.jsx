@@ -35,9 +35,7 @@ export default function CreatePostForm({ handleSubmit }) {
                             <div className="create-image-label-icon"></div>
                             <div className="create-image-label-text">Add Photo</div>
                         </div>
-                        <div className="">
-                            <img src={ createPost } className='selected-create-image' />
-                        </div>
+                        <img src={ createPost } className='selected-create-image' />
                     </label>
                     <input type="file" id="create-image" name="image" accept="image/*" onChange={ imageUpload } className={'image-input '} />
                     <div className="create-form-inputs">

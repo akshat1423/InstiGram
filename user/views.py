@@ -174,16 +174,23 @@ def settings(request):
 # @login_required(login_url='signin')
 def upload(request):
     if request.method=='POST':
-        user = request.user.username
-        image= request.FILES.get('image_upload')
-        caption = data.get['caption']
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile= Profile.objects.get(user_id= user_auth)
+        user = user_object.username
+        image= data.get('postImage')
+        # caption = data.get['caption']
+        caption = "tryCaption"
 
         new_post = Post.objects.create(user= user, image= image, caption= caption)
         new_post.save()
 
-        return redirect('/')
+        response_data = {'data': 'done'}
+        return JsonResponse(response_data, status=200)
     else:
-        return redirect('/')
+        response_data = {'data': 'done'}
+        return JsonResponse(response_data, status=200)
 
 # @login_required(login_url='signin')
 def search(request):
@@ -210,8 +217,12 @@ def search(request):
 
 # @login_required(login_url='signin')
 def like_post(request):
-    username= request.user.username
-    post_id= request.GET.get('post_id')
+    data = json.loads(request.body)
+    user_auth = data.get('userId')
+    user_object = User.objects.get(id=user_auth)
+    user_profile= Profile.objects.get(user_id= user_auth)
+    username= user_object.username
+    post_id= data.get('postId')
 
     post = Post.objects.get(id= post_id)
 
@@ -222,12 +233,14 @@ def like_post(request):
         new_like.save()
         post.no_of_likes= post.no_of_likes+1
         post.save()
-        return redirect('/')
+        response_data = {'data': 'done'}
+        return JsonResponse(response_data, status=200)
     else:
         like_filter.delete()
         post.no_of_likes= post.no_of_likes-1
         post.save()
-        return redirect('/')
+        response_data = {'data': 'done'}
+        return JsonResponse(response_data, status=200)
 
 # @login_required(login_url='signin')
 def comment(request):
