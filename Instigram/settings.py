@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'user',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -98,8 +99,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Instigram.wsgi.application'
+# WSGI_APPLICATION = 'Instigram.wsgi.application'
+ASGI_APPLICATION = 'Instigram.routing.application'
 
+CHANNEL_LAYERS ={
+    "default":{
+        "BACKEND":"channels.layers.InMemoryChannelLayer"
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

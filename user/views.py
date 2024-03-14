@@ -393,3 +393,11 @@ def logout(request):
     return redirect('signin')
 
 
+def chat(request):
+    return HttpResponse("Hello")
+
+def room(request, room_name):
+    if request.method== 'POST':
+            response_data = {'roomName': room_name}
+            return JsonResponse(response_data, status=409)
+    

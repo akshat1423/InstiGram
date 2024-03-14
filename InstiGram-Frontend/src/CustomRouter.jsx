@@ -12,6 +12,7 @@ const Feed = React.lazy(() => import('./pages/Feed/Feed'));
 const Error = React.lazy(() => import('./pages/Error/Error'));
 
 import EditProfile from './pages/EditProfile/EditProfile';
+import Chat from './pages/Chat/Chat';
 
 
 export default function CustomRouter() {
@@ -30,6 +31,7 @@ export default function CustomRouter() {
                     <Route path='/feed' element={ <Feed />} />
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>
+                    <Route path="/chat" element= { <Chat />} />
                     <Route path='*' element={ <Navigate to='/redirect' />} />
                 </Routes>
                 <Routes>

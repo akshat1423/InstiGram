@@ -15,4 +15,7 @@ urlpatterns = [
     path('logout', views.logout, name= 'logout'),
     path('profile/details', views.settings, name= 'settings'),
     path('profile/edit', views.edit, name= 'edit'), 
+    # path('chat', views.chat, name='chat'),
+    path('<str:room_name>/', views.room, name='room'),
+
 ]
