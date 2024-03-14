@@ -185,6 +185,9 @@ form {
     width: 100%;
 
     object-fit: contain;
+
+    background: #111111;
+    border-radius: 29px;
 }
 
 #create-image {
