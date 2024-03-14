@@ -57,7 +57,7 @@ export default function EditProfile() {
         }
 
 
-        fetch(`${BASE_URL}/pofile/edit`, {
+        fetch(`${BASE_URL}/profile/edit`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
