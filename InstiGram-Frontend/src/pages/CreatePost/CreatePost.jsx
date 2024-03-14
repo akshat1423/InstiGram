@@ -68,10 +68,12 @@ export default function CreatePost() {
                 console.log(data)
                 console.log(json);
 
-                setProfilePosts([
-                    ...profilePosts,
-                    data,
-                ]);
+                if (res.status == 200) {
+                    setProfilePosts([
+                        ...profilePosts,
+                        data,
+                    ]);
+                }
                 // navigate('/feed')
             })
     }

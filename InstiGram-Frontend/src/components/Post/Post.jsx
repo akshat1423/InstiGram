@@ -59,9 +59,7 @@ export default function Post(props) {
                 liked: !liked,
                 postId: postId,
             }
-            // setLiked(!liked);
 
-            // console.log(data);
             //post likes to api
             const res = await fetch(`${BASE_URL}/liked`, {
                 method: "POST",
