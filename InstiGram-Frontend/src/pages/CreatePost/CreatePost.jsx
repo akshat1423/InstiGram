@@ -74,7 +74,7 @@ export default function CreatePost() {
                         data,
                     ]);
                 }
-                // navigate('/feed')
+                navigate('/feed')
             })
     }
 
