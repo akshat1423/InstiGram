@@ -13,6 +13,7 @@
     background-position: center;
 
     border-radius: 50%;
+    z-index: 3;
 }
 
 .profile-close-button-div:hover {
@@ -82,10 +83,18 @@ color: RGBA(255,255,255,50%);
     margin-left: 98px;
 }
 
-.button-profile{
-    display: none;
-}
+
 
 .daughter-2 ul{
     margin-top: 0;
+}
+
+.edit-profile-button{
+    text-decoration: none;
+    color: white;
+    text-decoration: underline;
+}
+
+.display-none{
+    display: none;
 }

@@ -10,17 +10,28 @@ function Details(){
     const navigate = useNavigate();
     let location = useLocation();
 
+    const [userIdStored, setUserId] = useState();
+
+    useEffect(() => {
+      const storedUserId = localStorage.getItem('userId');
+      if (storedUserId) {
+        setUserId(storedUserId);
+      }
+    }, []);
+
+    var ownProfile = false;
+    if( userIdStored == details.userId ) ownProfile = true;
+
 
 
     return(<>
             <div className="daughter-2">
                 <div className="head">
                     <h2 className="username">{details.username}</h2>
-                    <Link to='/profile/edit' state={{background: location}} >Edit Profile</Link>
+                    <Link to='/profile/edit' className={ownProfile ? 'edit-profile-button' : 'display-none'} state={{background: location}} >Edit Profile</Link>
                     <div className="profile-close-button-div" onClick={() => navigate(-1)}></div>
                     <br></br>
-                    <button type="button" className={details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile'}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
-                    <button type="button" className="message-button button-profile">Message</button> <br />
+                    
                 </div>
 
                 <div className="list"><ul>

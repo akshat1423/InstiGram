@@ -1,5 +1,5 @@
 .bio{
-    height: 200px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     background: #1D1E1D;
@@ -68,3 +68,44 @@ padding: 0 13px;
 .subject{
     margin-right: 80px;
 }
+
+.button-profile{
+    background-color: aliceblue;
+    width: 459px;
+    height: 59px;
+    border: 0;
+    border-radius: 10px;
+font-family: Mukta;
+font-size: 30px;
+font-weight: 200;
+line-height: 50px;
+letter-spacing: 0em;
+text-align: center;
+background-color: transparent;
+cursor: pointer;
+
+}
+
+.follow-button, .unfollow-button{
+    background: #74876A;
+
+    color: white;
+}
+.message-button{
+    border: solid 4px#74876A;
+    color: #74876A;
+}
+
+.profile-buttons-container{
+    position: relative;
+    margin-top: 100px;
+    display: inline-flex;
+    margin-left: -82px;
+    margin-bottom: 52.5px;
+}
+
+.message-button{
+    margin-left: 39px;
+}
+
+.centre-message-button{}

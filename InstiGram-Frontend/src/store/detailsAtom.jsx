@@ -5,6 +5,8 @@ export const detailsAtom = atom({
     default: {
         userId: 4,
         username: 'username',
+        name: 'Vaibhav Singh',
+        bio: "lorem impsum iw",
         isFollowing: false,
         posts: '0',
         followers: '0',
