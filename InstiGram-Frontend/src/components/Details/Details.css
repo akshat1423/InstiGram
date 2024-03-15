@@ -1,5 +1,6 @@
 .profile-close-button-div {
     position: relative;
+    z-index: 100;
 
     left: 720px;
     bottom: 135px;

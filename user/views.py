@@ -180,8 +180,8 @@ def upload(request):
         user_profile= Profile.objects.get(user_id= user_auth)
         user = user_object.username
         image= data.get('postImage')
-        # caption = data.get['caption']
-        caption = "tryCaption"
+        caption = data.get('caption')
+        # caption = "tryCaption"
 
         new_post = Post.objects.create(user= user, image= image, caption= caption)
         new_post.save()
@@ -381,6 +381,7 @@ def signup(request):
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
 
+                
                 user_login = auth.authenticate(username=username, password=password)
                 auth.login(request, user_login)
 
@@ -404,15 +405,17 @@ def signin(request):
         username= data.get('username')
         password= data.get('password')
 
-        user= auth.authenticate(username= username, password= password)
-        user_profile= Profile.objects.get(user=user)
-        if user is not None:
-            auth.login(request, user)
-            response_data = {'data': 'done', 'userId': user_profile.user_id}
-            return JsonResponse(response_data, status=200)
-        else:
+        try:
+            user= auth.authenticate(username= username, password= password)
+            user_profile= Profile.objects.get(user=user)
+            if user is not None:
+                auth.login(request, user)
+                response_data = {'data': 'done', 'userId': user_profile.user_id}
+                return JsonResponse(response_data, status=200)
+        except:
             # messages.info(request, 'Credentials invalid')
             response_data = {'data': 'Notdone'}
+            print("NotDone")
             return JsonResponse(response_data, status=409)
     else:
         return render(request,'signin.html')
