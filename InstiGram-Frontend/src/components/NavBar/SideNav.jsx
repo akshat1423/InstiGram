@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import "./SideNav.css"
 import { useRecoilValue } from "recoil";
-import { createAtom, profileAtom } from "../../store/pageAtoms";
+import { calendarAtom, createAtom, profileAtom } from "../../store/pageAtoms";
 
 
 
@@ -15,6 +15,7 @@ function openNav() {
 function SideNav(){
     const userId = localStorage.getItem('userId');
     const profile = useRecoilValue(profileAtom);
+    const calendar = useRecoilValue(calendarAtom);
     const create = useRecoilValue(createAtom);
     const location = useLocation();
 
@@ -24,11 +25,15 @@ function SideNav(){
             {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a> */}
             <h1 className="heading-instigram">Instigram</h1>
             <ul >
-                <li>
-                    <Link className="nav-list-item" to="/feed">
+                <li className={calendar ? " calendar-open" : ""} >
+                    {!calendar ? <Link className="nav-list-item " to='/calendar'>
                         <div className="navbar-icon-calendar" />
-                        Calendar
-                    </Link>
+                            Calendar
+                    </Link> :
+                    <div className="nav-list-item">
+                        <div className="navbar-icon-calendar" />
+                            Calendar
+                    </div>}
                     <br />
                     </li>
                 <li className={profile ? " profile-open" : ""} >

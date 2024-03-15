@@ -17,8 +17,9 @@
 .create-close-button-div {
     position: relative;
 
+    float: right;
     bottom: 51px;
-    left: 800px;
+    left: 80px;
 
     height: 48px;
     width: 48px;
