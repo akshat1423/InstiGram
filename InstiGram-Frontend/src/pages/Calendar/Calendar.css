@@ -1,0 +1,31 @@
+.calendar-main-div {
+    width: 100vw;
+    height: 101vh;
+
+    margin-top: -20px;
+
+    background: #212421;
+}
+
+.calendar-close-button-div {
+    position: relative;
+
+    float: right;
+    top: 50px;
+    right: 50px;
+
+    height: 48px;
+    width: 48px;
+
+    background-image: url('../../assets/xmark-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 62.5%;
+    background-position: center;
+
+    border-radius: 50%;
+}
+
+.calendar-close-button-div:hover {
+    background-color: rgb(76, 75, 75);
+    cursor: pointer;
+}

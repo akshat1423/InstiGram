@@ -28,10 +28,12 @@ function CommentBox({ onSubmit, comments }) {
     return (
         <div className="comm">
             <ul className="all-comments">
-                {comments.map((comment) => (
-                    <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
-                ))}
-            </ul>
+    {comments.slice(0, 3).map(comment => (
+        <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
+    ))}
+</ul>
+
+
 
             <form onSubmit={handleSubmit} className="comment_box">
                 <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required className="comment_field" />
@@ -46,6 +48,7 @@ export default function Post(props) {
     //how to implement a post with specific post id
     const [posts, setPosts] = useRecoilState(feedAtom);
     const [liked,setLiked]=useState(props.isLiked);
+    const [showCommentBox,setShowCommentBox]=useState(false);
     const location = useLocation();
 
     const likeClick = async () => {
@@ -59,9 +62,7 @@ export default function Post(props) {
                 liked: !liked,
                 postId: postId,
             }
-            // setLiked(!liked);
 
-            // console.log(data);
             //post likes to api
             const res = await fetch(`${BASE_URL}/liked`, {
                 method: "POST",
@@ -110,7 +111,7 @@ export default function Post(props) {
     };
 
     return (
-        <div className="post">
+        <div className={{showCommentBox}?"post-comm":"post"}>
             <div className="post_det">
                 <div className="post-profile-image-div">
                     <img src={props.profileImage} alt="" className="post-profile-image" />
@@ -150,12 +151,12 @@ export default function Post(props) {
             
                 
                 <div className="comment_count">
-                    {props.comments} comments
+                    {props.comments.length} comments
                 </div>
             </div>        
                 
             
-            {/* {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={post.comments} />} */}
+             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={props.comments} />} 
         </div>
     );
 }

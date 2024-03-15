@@ -79,6 +79,9 @@
     height: 900px;
     width: fit-content;
 }
+.post-comm{
+    height:1100px;
+}
 
 .bar {
     position: relative;
@@ -188,6 +191,8 @@
     top:-180px;
     left:30px;
     font-size: 22px;
+    color:white;
+    font-family: Mukta;
 }
 
 .comment_box {

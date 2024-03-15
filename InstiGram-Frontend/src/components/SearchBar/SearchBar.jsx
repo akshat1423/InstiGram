@@ -1,24 +1,79 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
+import { BASE_URL } from '../../App';
 
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = () => {
   const [query, setQuery] = useState('');
+  
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); 
-    onSearch(query);
-  };
+    const query = e.target.value;
+
+    const data = {
+      query: query,
+    }
+
+    try {
+
+        fetch(`${BASE_URL}/search`, {
+            method: "POST",
+            headers: {
+                "Content-type": 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+          .then(async function (res) {
+            const data = await response.json();
+            console.log(data);
+          })
+    } catch (error) {
+        console.error('Error searching:', error);
+    }
+  }
+
+  function handleChange(e) {
+    e.preventDefault();
+
+    const query = e.target.value;
+
+    const data = {
+        query: query,
+    }
+
+    fetch(`${BASE_URL}/search`, {
+      method: "POST",
+      headers: {
+        "Content-type": 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(async function(res) {
+        const json = await res.json();
+        console.log(json);
+      })
+    
+  }
+
+  let timeout;
+
+  function debouncedHandleChange(e) {
+
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      handleChange(e);
+    }, 100);
+  }
 
   return (
     <div>
-      <form id="search_bar" name="search_bar" onSubmit={handleSubmit}>
+      <form id="search_bar" name="search_bar" onSubmit={(e) => handleSubmit(e)} onInput={(e) => debouncedHandleChange(e)}>
         <input
           type="text"
           id="search"
           name="search"
           autoFocus={false}
-          value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
         <button type="submit" className='search_icon'></button>
