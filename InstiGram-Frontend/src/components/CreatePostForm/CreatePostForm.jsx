@@ -28,14 +28,17 @@ export default function CreatePostForm({ handleSubmit }) {
                 <div className="create-title">
                     Create Post
                 </div>
-                <div className="create-close-button-div" onClick={() => navigate(-1)}></div>
+                <div className="create-close-button-div" onClick={() => {
+                    navigate(-1)
+                    setCreatePost(null);
+                    }}></div>
                 <form className="create-post-form" onSubmit={(e) => handleSubmit(e)}>
                     <label htmlFor="create-image" className='create-image-label'>
                         <div className={"create-image-label-container " + (createPost ? "hide" : "")}>
                             <div className="create-image-label-icon"></div>
                             <div className="create-image-label-text">Add Photo</div>
                         </div>
-                        <img src={ createPost } className='selected-create-image' />
+                        <img src={ createPost } className={'selected-create-image' + (createPost ? " ": "hide")} />
                     </label>
                     <input type="file" id="create-image" name="image" accept="image/*" onChange={ imageUpload } className={'image-input '} />
                     <div className="create-form-inputs">

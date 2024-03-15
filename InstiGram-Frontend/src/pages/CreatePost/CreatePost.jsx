@@ -56,26 +56,29 @@ export default function CreatePost() {
             comments: 0,
         }
 
-        fetch(`${BASE_URL}/post/create`, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then(async function(res) {
-                const json = await res.json();
-                console.log(data)
-                console.log(json);
-
-                if (res.status == 200) {
-                    setProfilePosts([
-                        ...profilePosts,
-                        data,
-                    ]);
-                }
-                navigate('/feed')
+        if (createPost != null) {
+            fetch(`${BASE_URL}/post/create`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(data),
             })
+                .then(async function(res) {
+                    const json = await res.json();
+                    console.log(data)
+                    console.log(json);
+    
+                    if (res.status == 200) {
+                        setProfilePosts([
+                            ...profilePosts,
+                            data,
+                        ]);
+                        
+                        navigate('/feed')
+                    }
+                })
+        }
     }
 
     useEffect(() => {

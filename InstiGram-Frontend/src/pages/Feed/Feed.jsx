@@ -9,7 +9,6 @@ import { feedAtom } from "../../store/feedAtom.jsx";
 import NavBar from "../../components/NavBar/SideNav.jsx"
 import { BASE_URL } from "../../App.jsx";
 
-
 export default function App() {
     const [posts, setPosts] = useRecoilState(feedAtom);
 
@@ -35,22 +34,12 @@ export default function App() {
             })
     }, []);
 
-    const handleSearch = async (query) => {
-        try {
-            const response = await fetch(`/api/search?q=${query}`);
-            const data = await response.json();
-            console.log(data); 
-        } catch (error) {
-            console.error('Error searching:', error);
-        }
-    }
-
     return (
         <div>
             <NavBar className="fixed" />
             <div className="scrollable-container-feed">
                 <div className="header">
-                    <SearchBar onSearch={handleSearch} className="fixed"/>
+                    <SearchBar className="fixed"/>
                 </div>
                 <div className="posts">
                     
