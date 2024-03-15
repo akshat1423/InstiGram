@@ -83,6 +83,11 @@ li {
     border-radius: 10px;
 }
 
+.calendar-open {
+    background: #74876A;
+    border-radius: 10px;
+}
+
 .nav-newpost-button.create-open {
     background: #106EE8;
     color: white;

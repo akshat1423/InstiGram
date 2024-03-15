@@ -10,6 +10,7 @@ const Login = React.lazy(() => import('./pages/Login/Login'));
 const Profile = React.lazy(() => import('./pages/Profile/Profile'));
 const EditProfile = React.lazy(() => import('./pages/EditProfile/EditProfile'))
 const Feed = React.lazy(() => import('./pages/Feed/Feed'));
+const Calendar = React.lazy(() => import('./pages/Calendar/Calendar'));
 const CreatePost = React.lazy(() => import('./pages/CreatePost/CreatePost'));
 const Error = React.lazy(() => import('./pages/Error/Error'));
 
@@ -31,6 +32,7 @@ export default function CustomRouter() {
                     <Route path='/profile/edit' element={ <EditProfile />} />
                     <Route path='/post/create' element={ <CreatePost />} />
                     <Route path='/feed' element={ <Feed />} />
+                    <Route path="/calendar" element={ <Calendar />} />
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>
                     <Route path='*' element={ <Navigate to='/redirect' />} />
