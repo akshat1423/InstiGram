@@ -24,6 +24,7 @@ function Details(){
 
 
 
+
     return(<>
             <div className="daughter-2">
                 <div className="head">
