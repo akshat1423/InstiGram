@@ -68,7 +68,7 @@ form {
     margin-bottom: 57px;
 
     font-family: "PoorStory";
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.3rem;
     color: var(--input-color);
     resize: none;
@@ -119,7 +119,7 @@ form {
     border: 1px solid white;
 
     font-family: "PoorStory";
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.3rem;
     color: white;
 }

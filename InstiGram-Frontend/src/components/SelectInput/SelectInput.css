@@ -27,10 +27,11 @@ select.dark {
 
 select + label {
     position: relative;
-    bottom: 1.75rem;
-    left: -21.5rem;
+    bottom: 2.5rem;
+    left: -20rem;
 
     font-family: "Mukta";
+    font-size: 25px;
 
     color: var(--text-color-dark);
 }
@@ -52,6 +53,6 @@ select#department {
 
 select#department + label {
     position: relative;
-    bottom: 5.5rem;
+    bottom: 6rem;
     left: 0rem;
 }

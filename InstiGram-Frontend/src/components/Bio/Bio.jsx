@@ -2,22 +2,26 @@ import "./Bio.css"
 import { useRecoilValue } from 'recoil';
 import {detailsAtom} from "../../store/detailsAtom.jsx"
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 function Bio(){
     const details = useRecoilValue(detailsAtom)
 
-    const [userIdStored, setUserId] = useState();
+    const { userId } = useParams();
+    const [ownProfile, setOwnProfile] = useState(false);
 
     useEffect(() => {
       const storedUserId = localStorage.getItem('userId');
-      if (storedUserId) {
-        setUserId(storedUserId);
+      
+      if( storedUserId != userId){ 
+        setOwnProfile(false);
+      } else {
+        setOwnProfile(true);
       }
     }, []);
 
-    var ownProfile = false;
-    if( userIdStored == details.userId ) ownProfile = true;
+    
 
     return(
         <>
@@ -36,8 +40,8 @@ function Bio(){
             
         </div>
         <div  className="profile-buttons-container">
-        <button type="button" className={ownProfile ? 'display-none' : (details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile')}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
-        <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ?"message-button button-profile" : "message-button button-profile"}>Message</button> <br />
+          <button type="button" className={ownProfile ? 'display-none' : (details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile')}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
+          <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ?"message-button button-profile" : "message-button button-profile"}>Message</button> <br />
         </div>
         </>
     )

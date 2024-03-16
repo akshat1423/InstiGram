@@ -1,25 +1,4 @@
-.profile-close-button-div {
-    position: relative;
 
-    left: 720px;
-    bottom: 135px;
-
-    height: 48px;
-    width: 48px;
-
-    background-image: url('../../assets/xmark-solid.svg');
-    background-repeat: no-repeat;
-    background-size: 62.5%;
-    background-position: center;
-
-    border-radius: 50%;
-    z-index: 3;
-}
-
-.profile-close-button-div:hover {
-    background-color: rgb(76, 75, 75);
-    cursor: pointer;
-}
 
 .daughter-2{
 
@@ -35,13 +14,13 @@
     margin-top: 60px;
     font-family: PoorStory;
     font-size: 48px;
-font-weight: 400;
-line-height: 60px;
-letter-spacing: 0em;
-text-align: left;
-width: 382px;
-height: 60px;
-margin-left: 46px;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 382px;
+    height: 60px;
+    margin-left: 46px;
 
     
 }
@@ -54,24 +33,23 @@ margin-left: 46px;
     display: inline-block;
     font-family: PoorStory;
     text-align: center;
-font-size: 48px;
-font-weight: 400;
-line-height: 60px;
-letter-spacing: 0em;
-text-align: center;
-margin-top: 0px;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 0px;
 
-    
 }
 
 .key-details{
     font-family: Mukta;
-font-size: 24px;
-font-weight: 400;
-line-height: 40px;
-letter-spacing: 0em;
-text-align: center;
-color: RGBA(255,255,255,50%);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: RGBA(255,255,255,50%);
 
 }
 
@@ -92,7 +70,15 @@ color: RGBA(255,255,255,50%);
 .edit-profile-button{
     text-decoration: none;
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
+
+    font-family: Mukta;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+
 }
 
 .display-none{
