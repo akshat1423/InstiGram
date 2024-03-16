@@ -322,7 +322,7 @@ from django.contrib.auth.decorators import login_required
 
 def profile(request):
     # Check if the user is authenticated
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -361,10 +361,10 @@ def profile(request):
             }
         }
         return JsonResponse(response_data, status=200)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 
 # @login_required(login_url='signin')
