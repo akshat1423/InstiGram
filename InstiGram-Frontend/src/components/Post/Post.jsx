@@ -130,7 +130,7 @@ export default function Post(props) {
             
             <div className="bar">
 
-                    {!liked ?
+                    {!props.isLiked ?
                         <div className="notLiked" onClick={likeClick}> </div>:
                         <div className="liked" onClick={likeClick}></div>
                     } 

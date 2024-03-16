@@ -31,7 +31,7 @@ export const feedAtom=atom({
             authId: 5,
             profileImage: null,
             likes: 3,
-            isLiked: true,
+            isLiked: false,
             comments: [,
                 {    commentId:3,
                     commentAuth:'paul',

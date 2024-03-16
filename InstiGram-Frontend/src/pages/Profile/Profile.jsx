@@ -48,7 +48,6 @@ function Profile() {
   const setPosts = useSetRecoilState(postAtom);
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
-  const setFollow = useSetRecoilState(followAtom);
   const { userId } = useParams();
   const navigate = useNavigate();
   const setProfile = useSetRecoilState(profileAtom);
@@ -78,7 +77,6 @@ function Profile() {
         setDP(json.DP);
         setDetails(json.details);
         setPosts(json.posts);
-        setFollow(json.isFollowing);
       })
   }, []);
 
