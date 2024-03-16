@@ -4,11 +4,19 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { BASE_URL } from "../../App";
 import { feedAtom } from "../../store/feedAtom";
 import { Link, useLocation } from "react-router-dom";
+import { AllComments } from "../AllComments/AllComments";
+
 // import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
-
+    const [showAllComm,setShowAllComm]=useState(false)
+    const openComments=()=>{
+        setShowAllComm(true)
+    }
+    const closeComm=()=>{
+        setShowAllComm(false)
+    }
     const handleChange = (e) => {
         setComment(e.target.value); 
     };
@@ -26,19 +34,28 @@ function CommentBox({ onSubmit, comments }) {
     };
 
     return (
+        <div className="c">
+        { !showAllComm ?
         <div className="comm">
             <ul className="all-comments">
-    {comments.slice(0, 3).map(comment => (
-        <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
-    ))}
-</ul>
-
-
-
+               {comments.slice(0, 3).map(comment => (
+                    <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
+            ))}
+            </ul>
+                <button onClick={openComments} className="view-but">View all comments</button>
             <form onSubmit={handleSubmit} className="comment_box">
                 <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required className="comment_field" />
                 <button type="submit" className="send-btn"></button>
             </form>
+        </div>:
+        <div className="large-comm">
+        <ul className="all-comments">
+            <div className="close-but" onClick={closeComm}>Close</div>
+        {comments.map(comment => (
+             <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
+     ))}
+     </ul>
+        </div>}
         </div>
     );
 }
@@ -50,7 +67,7 @@ export default function Post(props) {
     const [liked,setLiked]=useState(props.isLiked);
     const [showCommentBox,setShowCommentBox]=useState(false);
     const location = useLocation();
-
+    
     const likeClick = async () => {
         try {
 
@@ -89,7 +106,7 @@ export default function Post(props) {
                         setPosts(json);
                     })
             }
-
+            
         } catch (error) {
             console.error('Error liking:', error);
         }

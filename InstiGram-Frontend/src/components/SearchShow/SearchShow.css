@@ -1,0 +1,9 @@
+.below-search{
+    background-color: white;
+    color:black;
+    font-family: Mukta;
+    width:735px;
+    height:50px ;/*random*/
+    z-index:2;
+    
+}
