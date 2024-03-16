@@ -344,7 +344,7 @@ def profile(request):
             isFollowing = False
 
         user_followers = len(FollowersCount.objects.filter(user=user_auth))
-        user_following = len(FollowersCount.objects.filter(follower=follower))
+        user_following = len(FollowersCount.objects.filter(follower=user_auth))
 
         response_data = {
             'DP': user_profile.profileimg,
