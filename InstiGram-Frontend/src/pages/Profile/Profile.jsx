@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import './Profile.css';
 import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
 import { BASE_URL } from "../../App.jsx";
+import { followAtom } from "../../store/followAtom.jsx";
 
 const mainVariant = {
   initial: {
@@ -47,6 +48,7 @@ function Profile() {
   const setPosts = useSetRecoilState(postAtom);
   const setDP = useSetRecoilState(imageAtom);
   const setDetails = useSetRecoilState(detailsAtom);
+  const setFollow = useSetRecoilState(followAtom);
   const { userId } = useParams();
   const navigate = useNavigate();
   const setProfile = useSetRecoilState(profileAtom);
@@ -73,10 +75,10 @@ function Profile() {
     })
       .then(async function(res) {
         const json = await res.json();
-        setDP(json.DP)
-        setDetails(json.details)
-        setPosts(json.posts)
-
+        setDP(json.DP);
+        setDetails(json.details);
+        setPosts(json.posts);
+        setFollow(json.isFollowing);
       })
   }, []);
 
