@@ -11,12 +11,12 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
             <>
                 <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
                     <option value="" disabled >--{ placeholder }--</option>
-                    <option value="btech">BTech</option>
-                    <option value="mtech">MTech</option>
-                    <option value="bsc">BSc</option>
-                    <option value="msc">MSc</option>
-                    <option value="dd">DD</option>
-                    <option value="phd">PhD</option>
+                    <option value="BTech">BTech</option>
+                    <option value="MTech">MTech</option>
+                    <option value="BSc">BSc</option>
+                    <option value="MSc">MSc</option>
+                    <option value="DD">DD</option>
+                    <option value="PhD">PhD</option>
                 </select>
                 <label htmlFor={ id }>{ placeholder }</label>
             </>
@@ -40,16 +40,16 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
             <>
                 <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
                     <option value="" disabled >--{ placeholder }--</option>
-                    <option value="civil">Civil Engineering</option>
-                    <option value="aero">Aerospace Engineering</option>
-                    <option value="chemical">Chemical Engineering</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="envi">Environmental Science</option>
-                    <option value="maths">Mathematics</option>
-                    <option value="elec">Electrical Engineering</option>
-                    <option value="cs">Computer Science</option>
-                    <option value="phys">Physics</option>
-                    <option value="energy">Energy Science and Engineering</option>
+                    <option value="Civil">Civil Engineering</option>
+                    <option value="Aerospace">Aerospace Engineering</option>
+                    <option value="Chemical">Chemical Engineering</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Environmental">Environmental Science</option>
+                    <option value="Maths">Mathematics</option>
+                    <option value="Electrical">Electrical Engineering</option>
+                    <option value="CSE">Computer Science</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Energy">Energy Science and Engineering</option>
                 </select>
                 <label htmlFor={ id }>{ placeholder }</label>
             </>

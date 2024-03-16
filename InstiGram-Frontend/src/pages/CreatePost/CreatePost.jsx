@@ -8,6 +8,7 @@ import SideNav from '../../components/NavBar/SideNav';
 import { createPostAtom } from '../../store/createPostAtom';
 import { postAtom } from '../../store/postAtom';
 import { BASE_URL } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 const mainVariant = {
     initial: {
@@ -40,6 +41,7 @@ export default function CreatePost() {
     const setCreate = useSetRecoilState(createAtom);
     const createPost = useRecoilValue(createPostAtom);
     const [profilePosts, setProfilePosts] = useRecoilState(postAtom);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();

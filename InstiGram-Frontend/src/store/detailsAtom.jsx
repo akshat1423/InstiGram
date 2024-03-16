@@ -5,12 +5,13 @@ export const detailsAtom = atom({
     default: {
         userId: 4,
         username: 'username',
-        isFollowing: false,
+        name: 'Vaibhav Singh',
+        bio: "lorem ipsum iw",
         posts: '0',
         followers: '0',
         following: '0',
         degree: 'B.Tech',
-        department: 'cs',
+        department: 'CSE',
         gradYear: '2027'
     }
 })
