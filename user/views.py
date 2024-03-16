@@ -334,9 +334,9 @@ def profile(request):
 
         posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
 
-        follower = request.user.username
+        follower = data.get('loggedUser')
 
-        if FollowersCount.objects.filter(follower=follower, user=pk).exists():
+        if FollowersCount.objects.filter(follower=follower, user=user_auth).exists():
             button_text = 'Unfollow'
             isFollowing = True
         else:
@@ -379,7 +379,7 @@ def follow(request):
             delete_folower = FollowersCount.objects.get(follower=follower, user=user)
             delete_folower.delete()
 
-            response_data = {'isFollowing': True }
+            response_data = {'data': 'done'}
             return JsonResponse(response_data, status=200)
             # return redirect('/profile/'+user)
         
@@ -387,7 +387,7 @@ def follow(request):
             new_follower= FollowersCount.objects.create(follower=follower, user=user)
             new_follower.save()
 
-            response_data = {'isFollowing': False}
+            response_data = {'data': 'done'}
             return JsonResponse(response_data, status=200)
             # return redirect('/profile/'+user)
     else:
