@@ -14,7 +14,7 @@ function Post() {
       <div className="posts-container">
       
         {posts.map((post, index) => (
-          <div key={post.id} className="single-post">
+          <div key={posts.indexOf(post)} className="single-post">
             <img src={post.postImage} width="200px" height="200px" alt={`Image for post ${post.postId}`} />
           </div>
         ))}

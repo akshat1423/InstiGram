@@ -63,6 +63,7 @@ def index(request):
     posts_array= [{
         '_id': post.id,
         'auth': post.user,
+        'authId': (User.objects.get(username=post.user)).id,
         'profileImage': (Profile.objects.get(user_id= (User.objects.get(username=post.user)).id)).profileimg,
         'likes':post.no_of_likes,
         'isLiked': LikePost.objects.filter(post_id=post.id, username=user_object.username).exists(),
@@ -180,8 +181,8 @@ def upload(request):
         user_profile= Profile.objects.get(user_id= user_auth)
         user = user_object.username
         image= data.get('postImage')
-        # caption = data.get['caption']
-        caption = "tryCaption"
+        caption = data.get('caption')
+        # caption = "tryCaption"
 
         new_post = Post.objects.create(user= user, image= image, caption= caption)
         new_post.save()
@@ -194,11 +195,11 @@ def upload(request):
 
 # @login_required(login_url='signin')
 def search(request):
-
-    user_object = User.objects.get(username= request.user.username)
-    user_profile= Profile.objects.get(user= user_object)
+    # user_object = User.objects.get(username= request.user.username)
+    # user_profile= Profile.objects.get(user= user_object)
     if request.method=='POST':
-        username = data.get['username']
+        data = json.loads(request.body)
+        username = data.get('query')
         username_object= User.objects.filter(username__icontains= username)
 
         username_profile= []
@@ -213,7 +214,11 @@ def search(request):
 
         username_profile_list= list(chain(*username_profile_list))
 
-    return render(request, 'search.html', {'user_object': user_object, 'user_profile': user_profile,'username_profile_list': username_profile_list})
+    response_data = [{'data': (User.objects.get(id= suser.user_id)).username}
+                    for suser in username_profile_list 
+                    ]
+    return JsonResponse(response_data, safe=False)
+    # return render(request, 'search.html', {'user_object': user_object, 'user_profile': user_profile,'username_profile_list': username_profile_list})
 
 # @login_required(login_url='signin')
 def like_post(request):
@@ -258,78 +263,133 @@ def comment(request):
 
 
 # @login_required(login_url='signin')
-def profile(request):
-    data = json.loads(request.body)
-    # data = json.loads(request.body)
-    user_auth = data.get('userId')
-    user_object = User.objects.get(id=user_auth)
-    user_profile= Profile.objects.get(user_id= user_auth)
-    pk= user_object.username
-    user_posts= Post.objects.filter(user=pk)
-    user_post_length= len(user_posts)
+# def profile(request):
+#     data = json.loads(request.body)
+#     # data = json.loads(request.body)
+#     user_auth = data.get('userId')
+#     user_object = User.objects.get(id=user_auth)
+#     user_profile= Profile.objects.get(user_id= user_auth)
+#     pk= user_object.username
+#     user_posts= Post.objects.filter(user=pk)
+#     user_post_length= len(user_posts)
 
-    posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
+#     posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
 
-    follower= request.user.username
-    # interesties= request.user.username
-    user= pk
+#     follower= request.user.username
+#     # interesties= request.user.username
+#     user= pk
 
-    if FollowersCount.objects.filter(follower=follower, user= user).first():
-        button_text= 'Unfollow'
-        isFollowing= True
-    else:
-        button_text= 'Follow'
-        isFollowing= False
+#     if FollowersCount.objects.filter(follower=follower, user= user).first():
+#         button_text= 'Unfollow'
+#         isFollowing= True
+#     else:
+#         button_text= 'Follow'
+#         isFollowing= False
     
-    user_followers= len(FollowersCount.objects.filter(user=pk))
-    user_following= len(FollowersCount.objects.filter(follower=pk))
+#     user_followers= len(FollowersCount.objects.filter(user=pk))
+#     user_following= len(FollowersCount.objects.filter(follower=pk))
 
-    # if ShowInterest.objects.filter(interesties=interesties, user= user).first():
-    #     interest_button_text= 'Not Interested'
-    # else:
-    #     interest_button_text= 'Show interest'
+#     # if ShowInterest.objects.filter(interesties=interesties, user= user).first():
+#     #     interest_button_text= 'Not Interested'
+#     # else:
+#     #     interest_button_text= 'Show interest'
 
-    response_data = {
-        # 'user_object': user_object, 
-        # 'user_profile': user_profile,
-        'DP': user_profile.profileimg,
-        'posts': posts_array,
-        # 'user_post_length': user_post_length,
-        # 'button_text': button_text,
-        # 'user_followers': user_followers,
-        # 'user_following': user_following,
-        # 'interest_button_text': interest_button_text,
-        'details': {
-            'username': pk,
-            'isFollowing': isFollowing,
-            'posts': user_post_length,
-            'followers': user_followers,
-            'following': user_following,
-            'gradYear': user_profile.year,
-            'degree': user_profile.degree,
-            'department': user_profile.department,
-            'bio': user_profile.bio,  
+#     response_data = {
+#         # 'user_object': user_object, 
+#         # 'user_profile': user_profile,
+#         'DP': user_profile.profileimg,
+#         'posts': posts_array,
+#         # 'user_post_length': user_post_length,
+#         # 'button_text': button_text,
+#         # 'user_followers': user_followers,
+#         # 'user_following': user_following,
+#         # 'interest_button_text': interest_button_text,
+#         'details': {
+#             'username': pk,
+#             'isFollowing': isFollowing,
+#             'posts': user_post_length,
+#             'followers': user_followers,
+#             'following': user_following,
+#             'gradYear': user_profile.year,
+#             'degree': user_profile.degree,
+#             'department': user_profile.department,
+#             'bio': user_profile.bio,  
+#         }
+#     }
+#     return JsonResponse(response_data, status=200)
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+
+def profile(request):
+    # Check if the user is authenticated
+    # if request.user.is_authenticated:
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        pk = user_object.username
+        user_posts = Post.objects.filter(user=pk)
+        user_post_length = len(user_posts)
+
+        posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
+
+        follower = data.get('loggedUser')
+
+        if FollowersCount.objects.filter(follower=follower, user=user_auth).exists():
+            button_text = 'Unfollow'
+            isFollowing = True
+        else:
+            button_text = 'Follow'
+            isFollowing = False
+
+        user_followers = len(FollowersCount.objects.filter(user=user_auth))
+        user_following = len(FollowersCount.objects.filter(follower=user_auth))
+
+        response_data = {
+            'DP': user_profile.profileimg,
+            'posts': posts_array,
+            'details': {
+                'username': pk,
+                'isFollowing': isFollowing,
+                'posts': user_post_length,
+                'followers': user_followers,
+                'following': user_following,
+                'gradYear': user_profile.year,
+                'degree': user_profile.degree,
+                'department': user_profile.department,
+                'bio': user_profile.bio,
+            }
         }
-    }
-    return JsonResponse(response_data, status=200)
+        return JsonResponse(response_data, status=200)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
+
 
 # @login_required(login_url='signin')
 def follow(request):
     if request.method== 'POST':
-        follower= data.get['follower']
-        user= data.get['user']
+        data = json.loads(request.body)
+        follower= data.get('loggedUser')
+        user= data.get('userId')
 
         if FollowersCount.objects.filter(follower=follower, user= user).first():
             delete_folower = FollowersCount.objects.get(follower=follower, user=user)
             delete_folower.delete()
 
-            return redirect('/profile/'+user)
+            response_data = {'data': 'done'}
+            return JsonResponse(response_data, status=200)
+            # return redirect('/profile/'+user)
         
         else:
             new_follower= FollowersCount.objects.create(follower=follower, user=user)
             new_follower.save()
 
-            return redirect('/profile/'+user)
+            response_data = {'data': 'done'}
+            return JsonResponse(response_data, status=200)
+            # return redirect('/profile/'+user)
     else:
         return redirect('/')
 
@@ -381,6 +441,7 @@ def signup(request):
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
 
+                
                 user_login = auth.authenticate(username=username, password=password)
                 auth.login(request, user_login)
 
@@ -404,15 +465,17 @@ def signin(request):
         username= data.get('username')
         password= data.get('password')
 
-        user= auth.authenticate(username= username, password= password)
-        user_profile= Profile.objects.get(user=user)
-        if user is not None:
-            auth.login(request, user)
-            response_data = {'data': 'done', 'userId': user_profile.user_id}
-            return JsonResponse(response_data, status=200)
-        else:
+        try:
+            user= auth.authenticate(username= username, password= password)
+            user_profile= Profile.objects.get(user=user)
+            if user is not None:
+                auth.login(request, user)
+                response_data = {'data': 'done', 'userId': user_profile.user_id}
+                return JsonResponse(response_data, status=200)
+        except:
             # messages.info(request, 'Credentials invalid')
             response_data = {'data': 'Notdone'}
+            print("NotDone")
             return JsonResponse(response_data, status=409)
     else:
         return render(request,'signin.html')

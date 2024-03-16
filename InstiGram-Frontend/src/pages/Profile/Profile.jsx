@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import './Profile.css';
 import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
 import { BASE_URL } from "../../App.jsx";
+import { followAtom } from "../../store/followAtom.jsx";
 
 const mainVariant = {
   initial: {
@@ -73,10 +74,9 @@ function Profile() {
     })
       .then(async function(res) {
         const json = await res.json();
-        setDP(json.DP)
-        setDetails(json.details)
-        setPosts(json.posts)
-
+        setDP(json.DP);
+        setDetails(json.details);
+        setPosts(json.posts);
       })
   }, []);
 

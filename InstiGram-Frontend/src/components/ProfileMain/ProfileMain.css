@@ -18,3 +18,34 @@
 #profile-main-card{
     padding: 0;
 }
+
+.profile-close-button-div {
+    position: relative;
+
+    left: 800px;
+    bottom: 300px;
+
+    height: 48px;
+    width: 48px;
+
+    background-image: url('../../assets/xmark-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 62.5%;
+    background-position: center;
+
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.profile-close-button-div:hover {
+    background-color: rgb(76, 75, 75);
+    cursor: pointer;
+}
+
+.profile-line {
+    position: relative;
+    left: -80px;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+}

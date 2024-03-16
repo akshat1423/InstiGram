@@ -108,3 +108,7 @@ cursor: pointer;
     margin-left: 39px;
 }
 
+
+.display-none {
+    display: none;
+}

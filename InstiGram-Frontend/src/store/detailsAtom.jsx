@@ -6,13 +6,13 @@ export const detailsAtom = atom({
         userId: 4,
         username: 'username',
         name: 'Vaibhav Singh',
-        bio: "lorem impsum iw",
-        isFollowing: false,
+        bio: "lorem ipsum iw",
         posts: '0',
         followers: '0',
         following: '0',
+        isFollowing: false,
         degree: 'B.Tech',
-        department: 'cs',
+        department: 'CSE',
         gradYear: '2027'
     }
 })

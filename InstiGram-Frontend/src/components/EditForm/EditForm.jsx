@@ -27,10 +27,10 @@ export default function EditForm({ handleSubmit }) {
                         <input type="text" id="username-edit" className="username-edit" name="username" defaultValue={details.username} required/>
                         <label htmlFor='bio' className='bio-label dark'>Bio: </label>
                         <textarea name='bio' id='bio' cols="30" rows="10" className='edit-bio dark' defaultValue={details.bio} />
-                        <SelectInput placeholder="Department" name="department" id="department" type="text" defaultValue={details.department} />
+                        <SelectInput placeholder="Department: " name="department" id="department" type="text" defaultValue={details.department} />
                         <div className="details">
-                            <SelectInput placeholder="Degree" name="degree" id="degree" type="text" defaultValue={details.degree} />
-                            <SelectInput placeholder="Year" name="year" id="year" type="text" defaultValue={details.gradYear} />
+                            <SelectInput placeholder="Degree: " name="degree" id="degree" type="text" defaultValue={details.degree} />
+                            <SelectInput placeholder="Year: " name="year" id="year" type="text" defaultValue={details.gradYear} />
                         </div>
 
                         <div className="submit-div">

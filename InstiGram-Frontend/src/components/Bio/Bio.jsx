@@ -1,23 +1,69 @@
 import "./Bio.css"
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import {detailsAtom} from "../../store/detailsAtom.jsx"
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { followAtom } from "../../store/followAtom.jsx";
+import { BASE_URL } from "../../App.jsx";
+import { postAtom } from "../../store/postAtom.jsx";
+import { imageAtom } from "../../store/imageAtom.jsx";
 
 
 function Bio(){
-    const details = useRecoilValue(detailsAtom)
+    const details = useRecoilValue(detailsAtom);
+    // const [follow, setFollow] = useRecoilState(followAtom);
 
-    const [userIdStored, setUserId] = useState();
+    const setPosts = useSetRecoilState(postAtom);
+    const setDP = useSetRecoilState(imageAtom);
+    const setDetails = useSetRecoilState(detailsAtom);
+    const { userId } = useParams();
+    const [ownProfile, setOwnProfile] = useState(false);
 
     useEffect(() => {
       const storedUserId = localStorage.getItem('userId');
-      if (storedUserId) {
-        setUserId(storedUserId);
+      
+      if( storedUserId != userId){ 
+        setOwnProfile(false);
+      } else {
+        setOwnProfile(true);
       }
     }, []);
 
-    var ownProfile = false;
-    if( userIdStored == details.userId ) ownProfile = true;
+    function handleClick() {
+      const loggedUser = localStorage.getItem('userId');
+
+      const data = {
+        loggedUser: loggedUser,
+        userId: userId,
+      }
+
+      fetch(`${BASE_URL}/follow`, {
+        method: "POST",
+        headers: {
+          "Content-type": 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then( async function (res) {
+          const json = await res.json();
+
+          if (res.status == 200) {
+            fetch(`${BASE_URL}/profile`, {
+              method: "POST",
+              headers: {
+                "Content-type": 'application/json',
+              },
+              body: JSON.stringify(data),
+            })
+              .then(async function(res) {
+                const json = await res.json();
+                setDP(json.DP);
+                setDetails(json.details);
+                setPosts(json.posts);
+              })
+          }
+        })
+    }
 
     return(
         <>
@@ -36,8 +82,15 @@ function Bio(){
             
         </div>
         <div  className="profile-buttons-container">
-        <button type="button" className={ownProfile ? 'display-none' : (details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile')}>{details.isFollowing ? 'Unfollow' : 'Follow'}</button>
-        <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ?"message-button button-profile" : "message-button button-profile"}>Message</button> <br />
+          <button 
+          type="button" 
+          className={ownProfile ? 'display-none' : (details.isFollowing ? 'unfollow-button button-profile' : 'follow-button button-profile')}
+          onClick={ handleClick }
+          >
+            {details.isFollowing ? 'Unfollow' : 'Follow'}
+          </button>
+          <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ? "message-button button-profile" : "message-button button-profile"}>Message</button>
+          <br />
         </div>
         </>
     )
