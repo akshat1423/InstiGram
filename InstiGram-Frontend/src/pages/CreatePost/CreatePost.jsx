@@ -9,6 +9,7 @@ import { createPostAtom } from '../../store/createPostAtom';
 import { postAtom } from '../../store/postAtom';
 import { BASE_URL } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import { feedAtom } from '../../store/feedAtom';
 
 const mainVariant = {
     initial: {
@@ -40,6 +41,7 @@ const overlayVariant = {
 export default function CreatePost() {
     const setCreate = useSetRecoilState(createAtom);
     const createPost = useRecoilValue(createPostAtom);
+    const setPosts = useSetRecoilState(feedAtom);
     const [profilePosts, setProfilePosts] = useRecoilState(postAtom);
     const navigate = useNavigate();
 
@@ -77,7 +79,18 @@ export default function CreatePost() {
                             data,
                         ]);
                         
-                        navigate('/feed')
+                        navigate('/feed');
+                        fetch(`${BASE_URL}/feed`, {
+                            method: "POST",
+                            headers: {
+                            "Content-type": 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        })
+                            .then(async function(res) {
+                                const json = await res.json();
+                                setPosts(json);
+                            })
                     }
                 })
         }
