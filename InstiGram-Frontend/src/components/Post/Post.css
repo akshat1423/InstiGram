@@ -76,11 +76,11 @@
 }
 
 .post {
-    height: 900px;
+    height: fit-content;
     width: fit-content;
 }
 .post-comm{
-    height:1100px;
+    height:fit-content;
 }
 
 .bar {
@@ -217,6 +217,7 @@
     background-repeat: no-repeat;
 }
 .view-but{
+    background-color: black;
     position: relative;
     font-family: Mukta;
     color:rgb(204, 197, 197);
@@ -224,4 +225,18 @@
     top:-10px;
     height:30px;
     width:300px;
+}
+.large-comm{
+    color:white;
+    border: none;
+    font-family:Mukta;
+    position: relative;
+    top:-150px;
+    left:50px
+}
+.c{
+    height:fit-content;
+    width:fit-content;
+    position: relative
+
 }

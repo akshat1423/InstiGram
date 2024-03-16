@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 import { BASE_URL } from '../../App';
-
+import SearchShow from '../SearchShow/SearchShow'
+import { useRecoilState } from 'recoil';
+import { searchAtom } from '../../store/searchAtom';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  
+  const [searchResult,setSearchResult]=useRecoilState(searchAtom)
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -42,6 +45,8 @@ const SearchBar = () => {
         query: query,
     }
 
+  
+
     fetch(`${BASE_URL}/search`, {
       method: "POST",
       headers: {
@@ -51,10 +56,13 @@ const SearchBar = () => {
     })
       .then(async function(res) {
         const json = await res.json();
-        console.log(json);
+        setSearchResult(json);
+        <SearchShow result={searchResult}/>
       })
     
   }
+     
+  
 
   let timeout;
 

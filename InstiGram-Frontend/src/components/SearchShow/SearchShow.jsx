@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import './SearchBar.css';
+import './SearchShow.css';
 import { BASE_URL } from '../../App';
 
-export function SearchShow(){
+export default function SearchShow(props){
     <div className="below-search">
-        search result
+        
+        <ul className="search-res">
+        {props.searchResult.map(result => (
+             <li key={result.userId}>${result.userName} ${result.gradYear}</li>
+     ))}
+     </ul>
+        
     </div>
 }
