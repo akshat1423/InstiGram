@@ -63,6 +63,7 @@ def index(request):
     posts_array= [{
         '_id': post.id,
         'auth': post.user,
+        'authId': (User.objects.get(username=post.user)).id,
         'profileImage': (Profile.objects.get(user_id= (User.objects.get(username=post.user)).id)).profileimg,
         'likes':post.no_of_likes,
         'isLiked': LikePost.objects.filter(post_id=post.id, username=user_object.username).exists(),
