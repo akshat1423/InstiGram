@@ -23,6 +23,7 @@ return(
             
             </div>
             <Bio></Bio>
+            <hr className="profile-line"/>
             <Post></Post>
             
         </PopupCard>

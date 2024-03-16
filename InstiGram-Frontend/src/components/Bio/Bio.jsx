@@ -89,7 +89,8 @@ function Bio(){
           >
             {details.isFollowing ? 'Unfollow' : 'Follow'}
           </button>
-          <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ? "message-button button-profile" : "message-button button-profile"}>Message</button> <br />
+          <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ? "message-button button-profile" : "message-button button-profile"}>Message</button>
+          <br />
         </div>
         </>
     )

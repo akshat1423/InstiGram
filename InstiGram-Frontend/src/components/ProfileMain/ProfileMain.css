@@ -41,3 +41,11 @@
     background-color: rgb(76, 75, 75);
     cursor: pointer;
 }
+
+.profile-line {
+    position: relative;
+    left: -80px;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+}
