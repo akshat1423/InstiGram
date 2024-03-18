@@ -28,6 +28,7 @@ function Signup() {
 
             fetch(`${BASE_URL}/signup`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-type": "application/json"
                 },
