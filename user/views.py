@@ -3,21 +3,65 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments
+from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments, ChatMsg,CUser
 from itertools import chain
 from django.http import JsonResponse
 import json
 import base64
-import random
+import random 
+
+from .serializer import ChatMsgSerializer,ProfileSerializer, MyTokenObtainPairSerializer, RegisterSerializer
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import generics
+from rest_framework import status
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+
+from django.db.models import OuterRef, Subquery
+from django.db.models import Q
 
 
 # Create your views here.
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+class RegisterView(generics.CreateAPIView):
+    queryset = CUser.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+
+# Get All Routes
+
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        '/api/token/',
+        '/api/register/',
+        '/api/token/refresh/'
+    ]
+    return Response(routes)
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def testEndPoint(request):
+    if request.method == 'GET':
+        data = f"Congratulation {request.user}, your API just responded to GET request"
+        return Response({'response': data}, status=status.HTTP_200_OK)
+    elif request.method == 'POST':
+        text = "Hello buddy"
+        data = f'Congratulation your API just responded to POST request with text: {text}'
+        return Response({'response': data}, status=status.HTTP_200_OK)
+    return Response({}, status.HTTP_400_BAD_REQUEST)
 
 # @login_required(login_url='signin')
 def index(request):
     data = json.loads(request.body)
     user_auth= data.get('userId')
-    user_object= User.objects.get(id=user_auth)
+    user_object= CUser.objects.get(id=user_auth)
     user_profile= Profile.objects.get(user_id= int(user_auth))
 
     # user_following_list = []
@@ -36,15 +80,15 @@ def index(request):
 
     posts = Post.objects.all()
 
-    # all_users = User.objects.all()
+    # all_users = CUser.objects.all()
     # user_following_all = []
 
     # for user in user_following:
-    #     user_list = User.objects.get(username=user.user)
+    #     user_list = CUser.objects.get(username=user.user)
     #     user_following_all.append(user_list)
     
     # new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
-    # current_user = User.objects.filter(username=request.user.username)
+    # current_user = CUser.objects.filter(username=request.user.username)
     # final_suggestions_list = [x for x in list(new_suggestions_list) if ( x not in list(current_user))]
     # random.shuffle(final_suggestions_list)
 
@@ -63,8 +107,8 @@ def index(request):
     posts_array= [{
         '_id': post.id,
         'auth': post.user,
-        'authId': (User.objects.get(username=post.user)).id,
-        'profileImage': (Profile.objects.get(user_id= (User.objects.get(username=post.user)).id)).profileimg,
+        'authId': (CUser.objects.get(username=post.user)).id,
+        'profileImage': (Profile.objects.get(user_id= (CUser.objects.get(username=post.user)).id)).profileimg,
         'likes':post.no_of_likes,
         'isLiked': LikePost.objects.filter(post_id=post.id, username=user_object.username).exists(),
         'comments': post.no_of_comments,
@@ -79,7 +123,7 @@ def index(request):
 def edit(request):
     data = json.loads(request.body)
     user_auth= data.get('userId')
-    user_object = User.objects.get(id=user_auth)
+    user_object = CUser.objects.get(id=user_auth)
     user_profile= Profile.objects.get(user_id= int(user_auth))
     if request.method== 'POST':
         if data.get('profileImage')== None:
@@ -103,7 +147,7 @@ def edit(request):
             response_data = {'data': 'done'}
             return JsonResponse(response_data, status=200)
         
-        elif User.objects.filter(username=username).exists():
+        elif CUser.objects.filter(username=username).exists():
             response_data = {'data': 'username'}
             return JsonResponse(response_data, status=409)
     
@@ -177,7 +221,7 @@ def upload(request):
     if request.method=='POST':
         data = json.loads(request.body)
         user_auth = data.get('userId')
-        user_object = User.objects.get(id=user_auth)
+        user_object = CUser.objects.get(id=user_auth)
         user_profile= Profile.objects.get(user_id= user_auth)
         user = user_object.username
         image= data.get('postImage')
@@ -195,12 +239,12 @@ def upload(request):
 
 # @login_required(login_url='signin')
 def search(request):
-    # user_object = User.objects.get(username= request.user.username)
+    # user_object = CUser.objects.get(username= request.user.username)
     # user_profile= Profile.objects.get(user= user_object)
     if request.method=='POST':
         data = json.loads(request.body)
         username = data.get('query')
-        username_object= User.objects.filter(username__icontains= username)
+        username_object= CUser.objects.filter(username__icontains= username)
 
         username_profile= []
         username_profile_list= []
@@ -214,7 +258,7 @@ def search(request):
 
         username_profile_list= list(chain(*username_profile_list))
 
-    response_data = [{'data': (User.objects.get(id= suser.user_id)).username}
+    response_data = [{'data': (CUser.objects.get(id= suser.user_id)).username}
                     for suser in username_profile_list 
                     ]
     return JsonResponse(response_data, safe=False)
@@ -224,7 +268,7 @@ def search(request):
 def like_post(request):
     data = json.loads(request.body)
     user_auth = data.get('userId')
-    user_object = User.objects.get(id=user_auth)
+    user_object = CUser.objects.get(id=user_auth)
     user_profile= Profile.objects.get(user_id= user_auth)
     username= user_object.username
     post_id= data.get('postId')
@@ -267,7 +311,7 @@ def comment(request):
 #     data = json.loads(request.body)
 #     # data = json.loads(request.body)
 #     user_auth = data.get('userId')
-#     user_object = User.objects.get(id=user_auth)
+#     user_object = CUser.objects.get(id=user_auth)
 #     user_profile= Profile.objects.get(user_id= user_auth)
 #     pk= user_object.username
 #     user_posts= Post.objects.filter(user=pk)
@@ -326,7 +370,7 @@ def profile(request):
     # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
-        user_object = User.objects.get(id=user_auth)
+        user_object = CUser.objects.get(id=user_auth)
         user_profile = Profile.objects.get(user_id=user_auth)
         pk = user_object.username
         user_posts = Post.objects.filter(user=pk)
@@ -334,7 +378,7 @@ def profile(request):
 
         posts_array = [{'postId': post.id, 'postImage': post.image} for post in user_posts]
 
-        follower = data.get('loggedUser')
+        follower = data.get('loggedCUser')
 
         if FollowersCount.objects.filter(follower=follower, user=user_auth).exists():
             button_text = 'Unfollow'
@@ -363,8 +407,8 @@ def profile(request):
         }
         return JsonResponse(response_data, status=200)
     # else:
-    #     # User is not authenticated, return an error response
-    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     # CUser is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. CUser is not authenticated.'}
     #     return JsonResponse(error_data, status=401)
 
 
@@ -372,7 +416,7 @@ def profile(request):
 def follow(request):
     if request.method== 'POST':
         data = json.loads(request.body)
-        follower= data.get('loggedUser')
+        follower= data.get('loggedCUser')
         user= data.get('userId')
 
         if FollowersCount.objects.filter(follower=follower, user= user).first():
@@ -429,16 +473,16 @@ def signup(request):
                 # Handle case where one or more fields are missing
                 return HttpResponse(status=400)  # Bad Request
                 
-            if User.objects.filter(email=email).exists():
+            if CUser.objects.filter(email=email).exists():
                 messages.info(request, 'Email Taken')
                 response_data = {'data': 'roll'}  # Consider changing 'roll' to 'email'
                 return JsonResponse(response_data, status=409)
                 
-            elif User.objects.filter(username=username).exists():
+            elif CUser.objects.filter(username=username).exists():
                 response_data = {'data': 'username'}
                 return JsonResponse(response_data, status=409)
             else:
-                user = User.objects.create_user(username=username, email=email, password=password)
+                user = CUser.objects.create_user(username=username, email=email, password=password)
                 user.save()
 
                 
@@ -446,7 +490,7 @@ def signup(request):
                 auth.login(request, user_login)
 
                 # create a profile object for new user
-                user_model = User.objects.get(username=username)
+                user_model = CUser.objects.get(username=username)
                 new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
                 user_id= new_profile.id_user
                 new_profile.save()                
@@ -486,3 +530,67 @@ def logout(request):
     return redirect('signin')
 
 
+class MyInbox(generics.ListAPIView):
+    serializer_class = ChatMsgSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+
+        messages = ChatMsg.objects.filter(
+            id__in =  Subquery(
+                CUser.objects.filter(
+                    Q(sender__reciever=user_id) |
+                    Q(reciever__sender=user_id)
+                ).distinct().annotate(
+                    last_msg=Subquery(
+                        ChatMsg.objects.filter(
+                            Q(sender=OuterRef('id'),reciever=user_id) |
+                            Q(reciever=OuterRef('id'),sender=user_id)
+                        ).order_by('-id')[:1].values_list('id',flat=True) 
+                    )
+                ).values_list('last_msg', flat=True).order_by("-id")
+            )
+        ).order_by("-id")
+            
+        return messages
+    
+class GetMessages(generics.ListAPIView):
+    serializer_class = ChatMsgSerializer
+    
+    def get_queryset(self):
+        sender_id = self.kwargs['sender_id']
+        reciever_id = self.kwargs['reciever_id']
+        messages =  ChatMsg.objects.filter(sender__in=[sender_id, reciever_id], reciever__in=[sender_id, reciever_id])
+        return messages
+
+class SendMessages(generics.CreateAPIView):
+    serializer_class = ChatMsgSerializer
+
+
+
+class ProfileDetail(generics.RetrieveUpdateAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+    # permission_classes = [IsAuthenticated]  
+
+
+
+class SearchCUser(generics.ListAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+    # permission_classes = [IsAuthenticated]  
+
+    def list(self, request, *args, **kwargs):
+        username = self.kwargs['id_user']
+        logged_in_user = self.request.user
+        users = Profile.objects.filter(Q(user__username__icontains=username))
+
+        if not users.exists():
+            return Response(
+                {"detail": "No users found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = self.get_serializer(users, many=True)
+        return Response(serializer.data)
+    
