@@ -1,10 +1,10 @@
 .card {
     position: absolute;
 
-    width: 550.58px;
-    height: 754.47px;
-    top: 119px;
-    left: 222.42px;
+    width: 28.67vw;
+    height: 69.86vh;
+    top: 12.03vh;
+    left: 23.35vw;
 
     background: var(--card-background-color);
 
@@ -18,10 +18,10 @@
 .background-1 {
     position: absolute;
 
-    width: 557.77px;
-    height: 766.14px;
-    top: 124.39px;
-    left: 204.45px;
+    width: 29.05vw;
+    height: 70.94vh;
+    top: 12.536vh;
+    left: 22.395vw;
 
     background: var(--card-background-color);
 
@@ -31,10 +31,10 @@
 .background-2 {
     position: absolute;
 
-    width: 568.55px;
-    height: 774.23px;
-    top: 130.68px;
-    left: 182px;
+    width: 29.61vw;
+    height: 71.68vh;
+    top: 13.11vh;
+    left: 21.25vw;
 
     background: var(--card-background-color);
 }
