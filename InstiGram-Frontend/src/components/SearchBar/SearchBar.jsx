@@ -7,85 +7,49 @@ import { searchAtom } from '../../store/searchAtom';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [searchResult,setSearchResult]=useRecoilState(searchAtom)
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const query = e.target.value;
-
-    const data = {
-      query: query,
-    }
-
-    try {
-
-        fetch(`${BASE_URL}/search`, {
-            method: "POST",
-            headers: {
-                "Content-type": 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-          .then(async function (res) {
-            const data = await response.json();
-            console.log(data);
-          })
-    } catch (error) {
-        console.error('Error searching:', error);
-    }
-  }
+  const [searchResult, setSearchResult] = useRecoilState(searchAtom);
+  let timeoutId;
 
   function handleChange(e) {
-    e.preventDefault();
-
     const query = e.target.value;
-
-    const data = {
-        query: query,
-    }
-
-  
-
-    fetch(`${BASE_URL}/search`, {
-      method: "POST",
-      headers: {
-        "Content-type": 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(async function(res) {
-        const json = await res.json();
-        setSearchResult(json);
-        <SearchShow result={searchResult}/>
-      })
-    
+    setQuery(query);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      search(query);
+    }, 100); // Adjust the debounce time as needed
   }
-     
-  
 
-  let timeout;
-
-  function debouncedHandleChange(e) {
-
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      handleChange(e);
-    }, 100);
+  async function search(query) {
+    try {
+      const data = { query };
+      const response = await fetch(`${BASE_URL}/search`, {
+        method: "POST",
+        headers: {
+          "Content-type": 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const json = await response.json();
+      setSearchResult(json);
+    } catch (error) {
+      console.error('Error searching:', error);
+    }
   }
 
   return (
     <div>
-      <form id="search_bar" name="search_bar" onSubmit={(e) => handleSubmit(e)} onInput={(e) => debouncedHandleChange(e)}>
+      <form id="search_bar" name="search_bar">
         <input
           type="text"
           id="search"
           name="search"
           autoFocus={false}
-          onChange={(e) => setQuery(e.target.value)}
+          value={query}
+          onChange={handleChange}
         />
         <button type="submit" className='search_icon'></button>
       </form>
+      <SearchShow result={searchResult} />
     </div>
   );
 };

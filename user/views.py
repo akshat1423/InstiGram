@@ -14,6 +14,7 @@ import random
 # Create your views here.
 
 # @login_required(login_url='signin')
+
 def index(request):
     data = json.loads(request.body)
     user_auth= data.get('userId')
@@ -318,9 +319,6 @@ def comment(request):
 #     }
 #     return JsonResponse(response_data, status=200)
 
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-
 def profile(request):
     # Check if the user is authenticated
     # if request.user.is_authenticated:
@@ -457,6 +455,7 @@ def signup(request):
             return JsonResponse(response_data, status=200)  # Bad Request for invalid JSON
     else:
         return render(request, 'index.html')
+
 
 def signin(request):
 

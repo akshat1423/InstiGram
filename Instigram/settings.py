@@ -57,21 +57,31 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_COOKIE_SAMESITE = None
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+    # Whitelist the domains you want to allow requests from
+    'http://localhost:5173',
+]
+
 # CORS_ORIGIN_WHITELIST = (
 #     'localhost:3000'
 # )
 
-CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_HEADERS = [
-    'Accept',
-    'Accept-Encoding',
-    'Authorization',
-    'Content-Type',
-    'Origin',
-    'X-Requested-With',
-    'body',  # Add 'body' to the list of allowed headers
-]
+# CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOW_HEADERS = [
+#     'Accept',
+#     'Accept-Encoding',
+#     'Authorization',
+#     'Content-Type',
+#     'Origin',
+#     'X-Requested-With',
+#     'body',  # Add 'body' to the list of allowed headers
+# ]
 
 
 INTERNAL_IPS = [
