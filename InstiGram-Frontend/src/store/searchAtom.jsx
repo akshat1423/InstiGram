@@ -13,5 +13,29 @@ export const searchAtom = atom({
         userName:'getg',
         gradYear:2021,
         department:'ME'
+    },
+    {
+        userId:1,
+        userName:'getg',
+        gradYear:2021,
+        department:'ME'
+    },
+    {
+        userId:1,
+        userName:'getg',
+        gradYear:2021,
+        department:'ME'
+    },
+    {
+        userId:1,
+        userName:'getg',
+        gradYear:2021,
+        department:'ME'
+    },
+    {
+        userId:1,
+        userName:'getg',
+        gradYear:2021,
+        department:'ME'
     }]
 })
