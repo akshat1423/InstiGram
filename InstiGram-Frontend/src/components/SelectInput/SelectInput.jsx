@@ -26,11 +26,11 @@ export default function SelectInput({ placeholder, id, type, name, ...rootAttrib
             <>
                 <select name={ name } id={ id } className={darkMode ? "dark" : ""} defaultValue='' {...rootAttributes} >
                     <option value="" disabled >--{ placeholder }--</option>
-                    <option value="1">First Year</option>
-                    <option value="2">Second Year</option>
-                    <option value="3">Third Year</option>
-                    <option value="4">Fourth Year</option>
-                    <option value="5">Fifth Year</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
                 </select>
                 <label htmlFor={ id }>{ placeholder }</label>
             </>
