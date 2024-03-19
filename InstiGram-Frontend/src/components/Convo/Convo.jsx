@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Convo.css"
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import {BASE_URL} from "../../App" 
 
 
 function Convo() {
-    const baseURL = "backend-api-url";
+
     const [message, setMessage] = useState([]);
     const { id } = useParams();
     console.log(id)
@@ -21,7 +21,12 @@ function Convo() {
             try {
                 
                 
-                const response = await axios.get(baseURL + '/api-backend/' + user_id + '/' + id + '/');
+                const response = await fetch(BASE_URL + '/api-backend/' + user_id + '/' + id + '/',{
+                    method: "GET",
+                    credentials: "include",
+                    headers: {},
+                    body: {}
+                });
                 if(Array.isArray(response.data)){
                 console.log(response.data);
                 setMessage(response.data);
@@ -186,6 +191,7 @@ function Convo() {
               onChange={handleChange}
             />
             <button className="btn btn-primary" onClick={handleSend} >Send</button>
+          
           </div>
 //         </div>
 //       </div>

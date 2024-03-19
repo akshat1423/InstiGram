@@ -1,9 +1,8 @@
 import "./ChatContacts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import moment from 'moment';
-import axios from 'axios';
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../App";
 
 function ChatContacts() {
     const baseURL = "backend-api-url";
@@ -14,7 +13,12 @@ function ChatContacts() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(baseURL + 'api-backend' + user_id+ '/');
+                const response = await fetch(BASE_URL + 'api-backend' + user_id+ '/', {
+                    method: "GET",
+                    credentials: "include",
+                    headers: {},
+                    body: {}
+                });
                 if (Array.isArray(response.data)) {
                     setMessages(response.data);
                     console.log("working1");

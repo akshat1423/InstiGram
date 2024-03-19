@@ -2,9 +2,9 @@
 .container{
     display: flex;
     background: #1D1E1D;
-    width: 1036px;
-    height: 300px;
-    margin-top: 59px;
+    width: 53.958vw;
+    height: 15.625vw;
+    margin-top: 3.073vw;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 
@@ -22,11 +22,11 @@
 .profile-close-button-div {
     position: relative;
 
-    left: 800px;
-    bottom: 300px;
+    left: 41.667vw;
+    bottom: 15.625vw;
 
-    height: 48px;
-    width: 48px;
+    height: 2.5vw;
+    width: 2.5vw;
 
     background-image: url('../../assets/xmark-solid.svg');
     background-repeat: no-repeat;
@@ -47,5 +47,5 @@
     left: -0px;
     width: 100%;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 0.521vw;
 }

@@ -1,9 +1,9 @@
 
 .daughter-1{
     display: inline-block; 
-    margin-top: 63px;
-    margin-left: -127+63px;
-    height: 237px;
+    margin-top: 3.281vw;
+    margin-left: -3.333vw;
+    height: 12.344vw;
 }
 
 .daughter-1 img{
@@ -11,7 +11,9 @@
     background-image: url('../../assets/user-regular.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80px;
+    background-size: 4.167vw;
+    width:10.417vw;
+    height:10.417vw
 }
 
 
