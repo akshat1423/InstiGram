@@ -215,7 +215,7 @@ def search(request):
 
         username_profile_list= list(chain(*username_profile_list))
 
-    response_data = [{'data': (User.objects.get(id= suser.user_id)).username}
+    response_data = [{'data': (User.objects.get(id= suser.user_id)).username, 'userId': suser.user_id}
                     for suser in username_profile_list 
                     ]
     return JsonResponse(response_data, safe=False)
