@@ -67,6 +67,7 @@ function Profile() {
 
     fetch(`${BASE_URL}/profile`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-type": 'application/json',
       },

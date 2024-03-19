@@ -13,6 +13,8 @@ const Feed = React.lazy(() => import('./pages/Feed/Feed'));
 const Calendar = React.lazy(() => import('./pages/Calendar/Calendar'));
 const CreatePost = React.lazy(() => import('./pages/CreatePost/CreatePost'));
 const Error = React.lazy(() => import('./pages/Error/Error'));
+const Chat = React.lazy(() => import('./pages/Chat/Chat'));
+const Convo = React.lazy(() => import('./pages/Chat/Chat'));
 
 // import EditProfile from './pages/EditProfile/EditProfile';
 
@@ -25,6 +27,7 @@ export default function CustomRouter() {
         <>
             <Suspense fallback={ <Loading /> }>
                 <Routes location={background || location}>
+                    
                     <Route path='/' element={ <Signup /> } />
                     <Route path='/signin' element={ <Login /> } />
                     <Route path="/profile/:userId" element={ <Profile />} />
@@ -33,6 +36,8 @@ export default function CustomRouter() {
                     <Route path='/post/create' element={ <CreatePost />} />
                     <Route path='/feed' element={ <Feed />} />
                     <Route path="/calendar" element={ <Calendar />} />
+                    <Route path='/chat' element={ <Chat></Chat>} > {console.log("working")}</Route>
+                    <Route path='/chat/:id' element={ <Convo /> }></Route>
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>
                     <Route path='*' element={ <Navigate to='/redirect' />} />

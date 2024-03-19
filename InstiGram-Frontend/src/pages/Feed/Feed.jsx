@@ -23,6 +23,7 @@ export default function App() {
     
         fetch(`${BASE_URL}/feed`, {
             method: "POST",
+            credentials: "include",
             headers: {
             "Content-type": 'application/json',
             },
