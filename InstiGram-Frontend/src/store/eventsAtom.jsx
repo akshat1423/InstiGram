@@ -6,11 +6,11 @@ export const eventsAtom = atom({
         {
             date: 15,
             content: "Performing Arts Festival",
-            color: "blue",
+            color: " #56AEFF",
         }, {
             date: 17,
             content: "Nothing",
-            color: "green",
+            color: "#56FFC2",
         }
     ]
 })

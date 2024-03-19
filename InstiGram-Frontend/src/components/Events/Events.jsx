@@ -16,12 +16,12 @@ export default function Events() {
                 <hr className='line' />
                 { events.map((event) => {
                     return (
-                        <>
-                            <div key={ events.indexOf(event) } className="event" >
+                        <div key={ events.indexOf(event) } className="event" >
+                            <div className="event-content">
                                 <span className="event-date" style={{color: event.color}}>{event.date}th {format(currentDate, "MMMM")}:</span> {event.content}
                             </div>
                             <hr className='line' />
-                        </>
+                        </div>
                     )
                 })}
             </div>

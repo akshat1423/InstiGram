@@ -15,7 +15,7 @@
 
     display: grid;
     grid-template-columns: 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw;
-    grid-template-rows: 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw;
+    grid-template-rows: 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw 3.33vw;
     /* gap: 1px; */
 
     font-family: "Inter";
@@ -55,4 +55,16 @@
     border: 1px #d5d4df solid;
 
     font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+.date:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px black;
+    border: black solid 1px;
+}
+
+.today {
+    background-color: rgb(234, 250, 87);
 }
