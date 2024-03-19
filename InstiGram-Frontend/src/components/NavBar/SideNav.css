@@ -3,8 +3,9 @@
     font-size: large;
     list-style-type: none;
     margin: 0;
-    padding: 0 10px;
-    width: 288px;
+    margin-top: 1px;
+    padding: 0 0.521vw;
+    width: 15vw;
     background-color:#12180F;
     position: fixed;
     height: 100%;
@@ -18,27 +19,27 @@
 }
 
 .sidenav li {
-    padding-top: 8px;
+    padding-top: 0.417vw;
 }
 
 .heading-instigram {
-    width: 251px;
-    height: 62px;
+    width: 13.073vw;
+    height: 3.229vw;
     font-family: "PoorStory"; 
     color: white;
-    margin:38px 8px;
+    margin:1.979vw 0.417vw;
     text-align: center;
     font-weight: 400;
     font-size: 40px;
-    line-height: 50px;
+    line-height: 2.604vw;
 }
 
 ul {
-    margin-top: 50px;
+    margin-top: 2.604vw;
 }
 
 li {
-    height: 50px;
+    height: 2.604vw;
 }
 
 .nav-list-item {
@@ -47,7 +48,7 @@ li {
     color: #F8FFF6;
     display: flex;
     align-items: center;
-    margin-left: 24px;
+    margin-left: 1.25vw;
     font-weight: 400;
     font-size: 22px;
     line-height: 36.56px;
@@ -55,9 +56,9 @@ li {
 }
 
 .navbar-icon-calendar {
-    width: 24px;
-    height: 24px; 
-    margin-right: 8px;
+    width: 1.25vw;
+    height: 1.25vw; 
+    margin-right: 0.417vw;
     
     background-image: url("../../assets/calendar.svg");
     background-position: center;
@@ -67,9 +68,9 @@ li {
 }
 
 .navbar-icon-profile {
-    width: 24px;
-    height: 24px; 
-    margin-right: 8px;
+    width: 1.25vw;
+    height: 1.25vw; 
+    margin-right: 0.417vw;
     
     background-image: url("../../assets/user.svg");
     background-position: center;
@@ -94,9 +95,9 @@ li {
 }
 
 .navbar-icon-search {
-    width: 24px;
-    height: 24px; 
-    margin-right: 8px;
+    width: 1.25vw;
+    height: 1.25vw; 
+    margin-right: 0.417vw;
     
     background-image: url("../../assets/search.svg");
     background-position: center;
@@ -111,23 +112,23 @@ li {
     color: #003887;
     display: flex;
     align-items: center; 
-    padding-left: 24px;
+    padding-left: 1.25vw;
     font-weight: 400;
-    font-size: 29px;
-    line-height: 36.56px;
+    font-size: 1.51vw;
+    line-height: 1.904vw;
     justify-items: center;
     background-color: #F8FFF6;
-    padding-top: 14px;
-    padding-bottom: 16px;
-    margin: 10px;
+    padding-top: 0.729vw;
+    padding-bottom: 0.833vw;
+    margin: 0.521vw;
     border-radius: 10px;
 
 }
 
 .addpost-icon {
-    width: 45px;
-    height: 45px; 
-    margin-right: 8px;
+    width: 2.344vw;
+    height: 2.344vw; 
+    margin-right: 0.417vw;
     
     background-image: url("../../assets/plus-square.svg");
     background-position: center;
@@ -136,9 +137,9 @@ li {
 }
 
 .addpost-icon-open {
-    width: 45px;
-    height: 45px; 
-    margin-right: 8px;
+    width: 2.344vw;
+    height: 2.344vw; 
+    margin-right: 0.417vw;
     
     background-image: url("../../assets/plus-square-open.svg");
     background-position: center;

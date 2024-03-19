@@ -2,9 +2,9 @@
 .container{
     display: flex;
     background: #1D1E1D;
-    width: auto;
+    width: 1036px;
     height: 300px;
-    margin-top: 58px;
+    margin-top: 59px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 
@@ -44,7 +44,7 @@
 
 .profile-line {
     position: relative;
-    left: -80px;
+    left: -0px;
     width: 100%;
     color: white;
     margin-bottom: 10px;
