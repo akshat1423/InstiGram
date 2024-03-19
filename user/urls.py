@@ -16,4 +16,5 @@ urlpatterns = [
     path('profile/details', views.settings, name= 'settings'),
     path('profile/edit', views.edit, name= 'edit'), 
     path('feed', views.index, name= 'feed'),
+    path('events', views.events, name= 'events'),
 ]
