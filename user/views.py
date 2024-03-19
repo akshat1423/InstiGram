@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments
+from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments, Events
 from itertools import chain
 from django.http import JsonResponse
 import json
@@ -14,6 +14,7 @@ import random
 # Create your views here.
 
 # @login_required(login_url='signin')
+
 def index(request):
     data = json.loads(request.body)
     user_auth= data.get('userId')
@@ -214,7 +215,7 @@ def search(request):
 
         username_profile_list= list(chain(*username_profile_list))
 
-    response_data = [{'data': (User.objects.get(id= suser.user_id)).username}
+    response_data = [{'data': (User.objects.get(id= suser.user_id)).username, 'userId': suser.user_id}
                     for suser in username_profile_list 
                     ]
     return JsonResponse(response_data, safe=False)
@@ -317,9 +318,6 @@ def comment(request):
 #         }
 #     }
 #     return JsonResponse(response_data, status=200)
-
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
 
 def profile(request):
     # Check if the user is authenticated
@@ -458,6 +456,7 @@ def signup(request):
     else:
         return render(request, 'index.html')
 
+
 def signin(request):
 
     if request.method== 'POST':
@@ -486,3 +485,11 @@ def logout(request):
     return redirect('signin')
 
 
+def events(request):
+    if request.method== 'POST':
+        events= Events.objects.all()
+        events_array= [{           
+            'date': event.event_date,
+            'content': event.event_name,
+        } for event in events]
+        return JsonResponse(events_array, safe=False)

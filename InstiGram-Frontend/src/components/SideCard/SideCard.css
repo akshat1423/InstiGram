@@ -1,10 +1,10 @@
 .side-card {
     position: fixed;
 
-    width: 484.24px;
-    height: 697px;
-    top: 150px;
-    left: 777px;
+    width: 25.22vw;
+    height: 64.537vh;
+    top: 14.9vh;
+    left: 52.33vw;
     border-radius: 0 35px 35px 0;
 
     background: #0D190D;
@@ -20,7 +20,7 @@
     color: #F1FCFF;
 
     font-family: Mukta;
-    font-size: 83px;
+    font-size: 4rem;
     font-weight: 700;
     line-height: 138px;
     letter-spacing: 0.03em;

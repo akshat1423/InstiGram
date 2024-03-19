@@ -28,6 +28,7 @@ export default function ProfileSetup() {
 
         fetch(`${BASE_URL}/profile/details`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-type": "application/json",
             },

@@ -27,7 +27,7 @@ input {
     position: relative;
     left: 0;
     top: 0;
-    margin: 5px 0;
+    margin: 0 0;
     padding: 5px;
     box-sizing: border-box;
 
@@ -70,7 +70,7 @@ input:valid + label {
 
     position: absolute;
 
-    left: 450px;
+    left: 350px;
 
     z-index: 2;
 }
@@ -97,7 +97,7 @@ input:valid + label {
     font-size: 1rem;
 
     position: absolute;
-    transform: translateY(2.5rem);
+    transform: translateY(1.7rem);
 }
 
 

@@ -76,3 +76,15 @@ body.darkMode {
     src: local("Mukta-Regular"),
     url("./assets/fonts/Mukta/Mukta-Regular.ttf") format("truetype");
 }  
+
+@font-face {
+    font-family: "Inter";
+    src: local("Inter-Regular"),
+    url('./assets/fonts/Inter/Inter-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Inter Bold";
+    src: local("Inter-Bold"),
+    url('./assets/fonts/Inter/Inter-Bold.ttf') format("truetype");
+}

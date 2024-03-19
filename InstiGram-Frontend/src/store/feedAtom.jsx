@@ -65,6 +65,47 @@ export const feedAtom=atom({
             ],
             caption: 'string',
             postImage: null,
+        },
+        {
+            _id: 22,
+            auth: 'Paul',
+            authId: 5,
+            profileImage: null,
+            likes: 3,
+            isLiked: false,
+            comments: [,
+                {    commentId:3,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:4,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:5,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:6,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:7,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+            ],
+            caption: 'string',
+            postImage: null,
         }
     ]
 })

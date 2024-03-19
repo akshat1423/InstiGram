@@ -1,0 +1,21 @@
+.below-search{
+    position: relative;
+    top:20px;
+    left:25px;
+    background-color: white;
+    color:black;
+    font-family: Mukta;
+    width:730px;
+    height:fit-content;
+    z-index:5;
+    
+}
+.search-res{
+    list-style-type:none;
+    
+    
+}
+.res{
+    text-decoration: none;
+    color: black;
+}

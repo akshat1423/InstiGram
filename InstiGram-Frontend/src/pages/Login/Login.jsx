@@ -23,6 +23,7 @@ function Login() {
 
         fetch(`${BASE_URL}/signin`, {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-type": "application/json"
             },
