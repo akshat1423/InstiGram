@@ -28,7 +28,7 @@ select.dark {
 select + label {
     position: relative;
     bottom: 2.5rem;
-    left: -20rem;
+    left: -13rem;
 
     font-family: "Mukta";
     font-size: 25px;

@@ -19,7 +19,7 @@ export default function EditForm({ handleSubmit }) {
                     Edit Profile
                 </div>
                 <div className="edit-close-button-div" onClick={() => navigate(-1)}></div>
-                <form className="setup-form" onSubmit={(e) => handleSubmit(e)}>
+                <form className="edit-form" onSubmit={(e) => handleSubmit(e)}>
                     <label htmlFor="image" className="image-edit-label">Edit picture</label>
                     <ImageInput name="image" id="image" />
                     <div className="edit-form-inputs">
