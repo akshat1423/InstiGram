@@ -17,4 +17,5 @@ urlpatterns = [
     path('profile/edit', views.edit, name= 'edit'), 
     path('feed', views.index, name= 'feed'),
     path('events', views.events, name= 'events'),
+    path('cookie', views.cookie, name= 'cookie'),
 ]
