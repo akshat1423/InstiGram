@@ -75,12 +75,12 @@ function SideNav(){
                 <li >
                     <Link className="nav-list-item" to="/chat" >
                         <div className=" navbar-icon-search" />
-                        Search
+                        Chat
                     </Link>
                     <br />
                 </li>
                 <li>
-                    <div className="nav-list-item" onClick={ handleLogout }>
+                    <div className="nav-list-item" id="logout-button" onClick={ handleLogout }>
                         <div className=" navbar-icon-logout" />
                         Logout
                     </div>

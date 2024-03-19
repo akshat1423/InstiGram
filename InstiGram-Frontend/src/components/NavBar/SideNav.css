@@ -112,7 +112,7 @@ li {
     height: 1.25vw; 
     margin-right: 0.417vw;
     
-    background-image: url("../../assets/search.svg");
+    background-image: url("../../assets/message-circle.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -158,4 +158,8 @@ li {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#logout-button:hover {
+    cursor: pointer;
 }
