@@ -35,27 +35,18 @@ function CommentBox({ onSubmit, comments }) {
 
     return (
         <div className="c">
-        { !showAllComm ?
-        <div className="comm">
-            <ul className="all-comments">
-               {comments.slice(0, 3).map(comment => (
-                    <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
-            ))}
-            </ul>
-                <button onClick={openComments} className="view-but">View all comments</button>
+            <div className="comm">
+                <div className="comm-head">Comments</div>
+                    <ul className="all-comments">
+                        {comments.map(comment => (
+                            <li key={comment.commentId}><span class="cauth">{comment.commentAuth}:</span> {comment.commentContent}</li>
+                        ))}
+                    </ul>
+            </div>
             <form onSubmit={handleSubmit} className="comment_box">
                 <input type="text" placeholder="Enter your Comment" value={comment} onChange={handleChange} required className="comment_field" />
                 <button type="submit" className="send-btn"></button>
             </form>
-        </div>:
-        <div className="large-comm">
-        <ul className="all-comments">
-            <div className="close-but" onClick={closeComm}>Close</div>
-        {comments.map(comment => (
-             <li key={comment.commentId}><b>{comment.commentAuth}:</b> {comment.commentContent}</li>
-     ))}
-     </ul>
-        </div>}
         </div>
     );
 }
@@ -128,7 +119,7 @@ export default function Post(props) {
     };
 
     return (
-        <div className={{showCommentBox}?"post-comm":"post"}>
+        <div className="post">
             <div className="post_det">
                 <div className="post-profile-image-div">
                     <img src={props.profileImage} alt="" className="post-profile-image" />
