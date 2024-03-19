@@ -1,3 +1,4 @@
+
 .post_content {
     background-color: #FFFFFF;
     height:660.86px;
@@ -79,9 +80,7 @@
     height: fit-content;
     width: fit-content;
 }
-.post-comm{
-    height:fit-content;
-}
+
 
 .bar {
     position: relative;
@@ -185,58 +184,79 @@
     height: 50px;
     border-radius: 50%;
 }
-
+.c{
+    color:white;
+    height:fit-content;
+    width:fit-content;
+    position: relative;
+    top:-870px;
+    left:850px
+}
 .comm {
     position: relative;
-    top:-180px;
-    left:30px;
-    font-size: 22px;
-    color:white;
-    font-family: Mukta;
+    top:0;
+    left:0;
 }
+.all-comments{
+    position: relative;
+    top:0px;
+    left:10px;
+    height:400px;
+    font-family: Mukta;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 39.6px;
+    text-align: left;
+    color:white;
+    list-style-type:none;
+    overflow-y: auto;
 
+}
+.cauth{
+    font-family: Poor Story;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 39.6px;
+    text-align: left;
+
+}
 .comment_box {
-    width:70%;
-    height:30px;
+    position: relative;
+    top:0px;
+    width:400px;
+    height:40px;
 }
 
 .comment_field {
     position: relative;
+    top:-13px;
     width:90%;
-    height: 30px;
+    height: 40px;
 }
 
 .send-btn {
     position: relative;
-    height: 30px;
-    width: 30px;
-    top:9px;
+    height: 40px;
+    width: 40px;
+    top:0px;
     background-image: url('../../assets/send.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.view-but{
-    background-color: black;
-    position: relative;
-    font-family: Mukta;
-    color:rgb(204, 197, 197);
-    font-weight: 14px;
-    top:-10px;
-    height:30px;
-    width:300px;
-}
-.large-comm{
-    color:white;
-    border: none;
-    font-family:Mukta;
-    position: relative;
-    top:-150px;
-    left:50px
-}
-.c{
-    height:fit-content;
-    width:fit-content;
-    position: relative
 
+.comm-head{
+    position: relative;
+    width: 157px;
+    height: 53px;
+    top:0px;
+    left: 0px;
+    border-radius: 10px;
+    background: #106EE8;
+    color:white;
+    font-family: Mukta;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 52px;
+    text-align: center;
 }
