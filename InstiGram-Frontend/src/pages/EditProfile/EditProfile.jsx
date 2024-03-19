@@ -59,6 +59,7 @@ export default function EditProfile() {
 
         fetch(`${BASE_URL}/profile/edit`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-type": "application/json",
             },

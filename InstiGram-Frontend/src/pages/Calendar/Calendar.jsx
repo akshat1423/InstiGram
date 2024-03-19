@@ -17,6 +17,7 @@ export default function Calendar() {
     useEffect(() => {
         fetch(`${BASE_URL}/events`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-type": 'application/json',
             },

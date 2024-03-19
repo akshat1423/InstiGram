@@ -63,6 +63,7 @@ export default function CreatePost() {
         if (createPost != null) {
             fetch(`${BASE_URL}/post/create`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-type": "application/json",
                 },
@@ -82,6 +83,7 @@ export default function CreatePost() {
                         navigate('/feed');
                         fetch(`${BASE_URL}/feed`, {
                             method: "POST",
+                            credentials: "include",
                             headers: {
                             "Content-type": 'application/json',
                             },

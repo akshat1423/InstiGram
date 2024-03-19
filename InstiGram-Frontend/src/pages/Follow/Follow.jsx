@@ -45,6 +45,7 @@ const Follow = () => {
         try{
         fetch(`${BASE_URL}/followers`, {
             method: "POST",
+            credentials: "include",
             headers: {
             "Content-type": 'application/json',
             },
