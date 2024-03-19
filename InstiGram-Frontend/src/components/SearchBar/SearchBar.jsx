@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './SearchBar.css';
 import { BASE_URL } from '../../App';
 import SearchShow from '../SearchShow/SearchShow'
@@ -9,6 +9,7 @@ const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [searchResult, setSearchResult] = useRecoilState(searchAtom);
   const [searchClicked, setSearchClicked] = useState(false);
+  const searchBarRef = useRef(null);
   let timeoutId;
 
   async function search(query) {
@@ -24,7 +25,7 @@ const SearchBar = () => {
       const json = await response.json();
       setSearchResult(json);
     } catch (error) {
-      console.error('Error searching:', error);
+      console.error(error);
     }
   }
 
@@ -34,31 +35,45 @@ const SearchBar = () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       search(query);
-    }, 300); 
+    }, 300);
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); 
-    setSearchClicked(true); 
+    e.preventDefault();
+    setSearchClicked(true);
   }
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+        setSearchClicked(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <div ref={searchBarRef}>
       <form id="search_bar" name="search_bar" onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
           name="search"
           autoFocus={false}
+          autoComplete="off"
           value={query}
           onChange={handleChange}
           onClick={() => setSearchClicked(true)}
         />
         <button type="submit" className='search_icon'></button>
       </form>
-      {searchClicked && <SearchShow result={searchResult} />} 
+      {searchClicked && <SearchShow result={searchResult} />}
     </div>
   );
 };
 
 export default SearchBar;
+

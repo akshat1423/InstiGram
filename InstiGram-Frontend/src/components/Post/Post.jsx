@@ -109,6 +109,7 @@ export default function Post(props) {
 
     const handleCommentSubmit = async (comment) => {
         try {
+            
             //post comments to api
         } catch(error) {
             console.error('Error submitting comment:', error);

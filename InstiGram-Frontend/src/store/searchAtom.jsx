@@ -9,31 +9,31 @@ export const searchAtom = atom({
         department:'CSE'
     },
     {
-        userId:1,
+        userId:4,
         userName:'getg',
         gradYear:2021,
         department:'ME'
     },
     {
-        userId:1,
+        userId:2,
         userName:'getg',
         gradYear:2021,
         department:'ME'
     },
     {
-        userId:1,
+        userId:3,
         userName:'getg',
         gradYear:2021,
         department:'ME'
     },
     {
-        userId:1,
+        userId:15,
         userName:'getg',
         gradYear:2021,
         department:'ME'
     },
     {
-        userId:1,
+        userId:6,
         userName:'getg',
         gradYear:2021,
         department:'ME'

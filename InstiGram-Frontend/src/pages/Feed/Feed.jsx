@@ -40,7 +40,7 @@ export default function App() {
             <NavBar className="fixed" />
             <div className="scrollable-container-feed">
                 <div className="header">
-                    <SearchBar className="fixed"/>
+                    <SearchBar className="fixed" />
                 </div>
                 <div className="posts">
                     
