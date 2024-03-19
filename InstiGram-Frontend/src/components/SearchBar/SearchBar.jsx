@@ -8,16 +8,8 @@ import { searchAtom } from '../../store/searchAtom';
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [searchResult, setSearchResult] = useRecoilState(searchAtom);
+  const [searchClicked, setSearchClicked] = useState(false);
   let timeoutId;
-
-  function handleChange(e) {
-    const query = e.target.value;
-    setQuery(query);
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      search(query);
-    }, 100); // Adjust the debounce time as needed
-  }
 
   async function search(query) {
     try {
@@ -36,9 +28,23 @@ const SearchBar = () => {
     }
   }
 
+  function handleChange(e) {
+    const query = e.target.value;
+    setQuery(query);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      search(query);
+    }, 300); 
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault(); 
+    setSearchClicked(true); 
+  }
+
   return (
     <div>
-      <form id="search_bar" name="search_bar">
+      <form id="search_bar" name="search_bar" onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
@@ -46,13 +52,13 @@ const SearchBar = () => {
           autoFocus={false}
           value={query}
           onChange={handleChange}
+          onClick={() => setSearchClicked(true)}
         />
         <button type="submit" className='search_icon'></button>
       </form>
-      <SearchShow result={searchResult} />
+      {searchClicked && <SearchShow result={searchResult} />} 
     </div>
   );
 };
 
 export default SearchBar;
-
