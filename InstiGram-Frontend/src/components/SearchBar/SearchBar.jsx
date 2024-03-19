@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './SearchBar.css';
 import { BASE_URL } from '../../App';
 import SearchShow from '../SearchShow/SearchShow'
@@ -8,16 +8,9 @@ import { searchAtom } from '../../store/searchAtom';
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [searchResult, setSearchResult] = useRecoilState(searchAtom);
+  const [searchClicked, setSearchClicked] = useState(false);
+  const searchBarRef = useRef(null);
   let timeoutId;
-
-  function handleChange(e) {
-    const query = e.target.value;
-    setQuery(query);
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      search(query);
-    }, 100); // Adjust the debounce time as needed
-  }
 
   async function search(query) {
     try {
@@ -32,24 +25,52 @@ const SearchBar = () => {
       const json = await response.json();
       setSearchResult(json);
     } catch (error) {
-      console.error('Error searching:', error);
+      console.error(error);
     }
   }
 
+  function handleChange(e) {
+    const query = e.target.value;
+    setQuery(query);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      search(query);
+    }, 300);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSearchClicked(true);
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+        setSearchClicked(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
-      <form id="search_bar" name="search_bar">
+    <div ref={searchBarRef}>
+      <form id="search_bar" name="search_bar" onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
           name="search"
           autoFocus={false}
+          autoComplete="off"
           value={query}
           onChange={handleChange}
+          onClick={() => setSearchClicked(true)}
         />
         <button type="submit" className='search_icon'></button>
       </form>
-      <SearchShow result={searchResult} />
+      {searchClicked && <SearchShow result={searchResult} />}
     </div>
   );
 };

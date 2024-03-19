@@ -39,6 +39,7 @@ function Bio(){
 
       fetch(`${BASE_URL}/follow`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-type": 'application/json',
         },
@@ -50,6 +51,7 @@ function Bio(){
           if (res.status == 200) {
             fetch(`${BASE_URL}/profile`, {
               method: "POST",
+              credentials: "include",
               headers: {
                 "Content-type": 'application/json',
               },

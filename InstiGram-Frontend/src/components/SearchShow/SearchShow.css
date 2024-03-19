@@ -1,21 +1,21 @@
 .below-search{
-    position: relative;
-    top:20px;
-    left:25px;
-    background-color: white;
-    color:black;
+    position: fixed;
+    top:7%;
+    left:16.3%;
     font-family: Mukta;
-    width:730px;
+    width:38%;
     height:fit-content;
-    z-index:5;
-    
+    z-index:3;
+    background: #000000D1;
+    border: 1px solid #106EE8;
+    border-radius: 0px 0px 10px 10px;
+    color:#106EE8;
 }
 .search-res{
     list-style-type:none;
     
-    
 }
 .res{
     text-decoration: none;
-    color: black;
+    color:#106EE8;
 }

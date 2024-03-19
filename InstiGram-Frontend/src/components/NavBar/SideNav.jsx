@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SideNav.css"
 import { useRecoilValue } from "recoil";
 import { calendarAtom, createAtom, profileAtom } from "../../store/pageAtoms";
+import { BASE_URL } from "../../App";
 
 
 
@@ -18,6 +19,30 @@ function SideNav(){
     const calendar = useRecoilValue(calendarAtom);
     const create = useRecoilValue(createAtom);
     const location = useLocation();
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        
+        const data = {
+            userId: userId,
+        }
+
+        fetch(`${BASE_URL}/logout`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-type": 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then( async function(res) {
+                const json = await res.json();
+
+                if (res.status == 200) {
+                    navigate('/signin');
+                }
+            })
+    }
 
     return(
         <>
@@ -50,9 +75,15 @@ function SideNav(){
                 <li >
                     <Link className="nav-list-item" to="/chat" >
                         <div className=" navbar-icon-search" />
-                        Search
+                        Chat
                     </Link>
                     <br />
+                </li>
+                <li>
+                    <div className="nav-list-item" id="logout-button" onClick={ handleLogout }>
+                        <div className=" navbar-icon-logout" />
+                        Logout
+                    </div>
                 </li>
                 <li>
                     {!create ? <Link className="nav-newpost-button" to='/post/create' state={{background: location}} >
@@ -64,6 +95,7 @@ function SideNav(){
                         New Post
                     </div>}
                 </li>
+                
             </ul>
         </div>
 
