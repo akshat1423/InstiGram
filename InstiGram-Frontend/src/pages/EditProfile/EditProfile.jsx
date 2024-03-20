@@ -41,7 +41,7 @@ export default function EditProfile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`${BASE_URL}/profile/edit`, {
+        fetch(`${BASE_URL}/cookie`, {
             method: "POST",
             credentials: "include",
             headers: {

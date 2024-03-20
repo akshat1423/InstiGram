@@ -1,8 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SideNav.css"
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { calendarAtom, createAtom, profileAtom } from "../../store/pageAtoms";
 import { BASE_URL } from "../../App";
+import { feedAtom } from "../../store/feedAtom";
 
 
 
@@ -20,6 +21,33 @@ function SideNav(){
     const create = useRecoilValue(createAtom);
     const location = useLocation();
     const navigate = useNavigate();
+    const setPosts = useSetRecoilState(feedAtom);
+
+    function handleRedirect() {
+        const userId = localStorage.getItem('userId');
+
+        const data = {
+            userId: userId
+        }
+    
+        fetch(`${BASE_URL}/feed`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+            "Content-type": 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(async function(res) {
+                const json = await res.json();
+                if (res.status == 200) {
+                    setPosts(json);
+                    navigate('/feed');
+                } else if (res.status == 401) {
+                    navigate('/signin');
+                }
+            })
+    }
 
     function handleLogout() {
         
@@ -80,7 +108,7 @@ function SideNav(){
                     <br />
                 </li>
                 <li>
-                    <div className="nav-list-item" id="logout-button" onClick={() => navigate('/feed') }>
+                    <div className="nav-list-item" id="logout-button" onClick={ handleRedirect }>
                         <div className=" navbar-icon-feed" />
                         Home
                     </div>

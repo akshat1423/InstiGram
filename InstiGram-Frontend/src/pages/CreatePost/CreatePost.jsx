@@ -46,7 +46,7 @@ export default function CreatePost() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`${BASE_URL}/post/create`, {
+        fetch(`${BASE_URL}/cookie`, {
             method: "POST",
             credentials: "include",
             headers: {

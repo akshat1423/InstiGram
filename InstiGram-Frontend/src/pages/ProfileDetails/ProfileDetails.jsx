@@ -12,7 +12,7 @@ export default function ProfileSetup() {
     const image = useRecoilValue(imageAtom);
 
     useEffect(() => {
-        fetch(`${BASE_URL}/profile/details`, {
+        fetch(`${BASE_URL}/cookie`, {
             method: "POST",
             credentials: "include",
             headers: {
