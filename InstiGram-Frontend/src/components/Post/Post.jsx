@@ -147,8 +147,14 @@ export default function Post(props) {
                 })
                     .then(async function(res) {
                         const json = await res.json();
-                        setPosts(json);
+                        if (res.status == 200) {
+                            setPosts(json);
+                        } else if (res.status == 401) {
+                            navigate('/signin');
+                        }
                     })
+            } else if (res.status == 401) {
+                navigate('/signin');
             }
             //post comments to api
         } catch(error) {
