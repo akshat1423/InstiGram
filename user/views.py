@@ -45,7 +45,8 @@ def index(request):
         
         # feed_list = list(chain(*feed))
 
-        posts = Post.objects.all()
+        # posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-created_at')
 
         posts_array= [{
             '_id': post.id,
