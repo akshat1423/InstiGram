@@ -84,6 +84,11 @@
 
 }
 
+.edit-profile-button:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .display-none{
     display: none;
 }

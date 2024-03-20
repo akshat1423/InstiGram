@@ -25,7 +25,7 @@ export default function EditForm({ handleSubmit }) {
                     <div className="edit-form-inputs">
                         <label htmlFor="username-edit" className="username-label">Username: </label>
                         <input type="text" id="username-edit" className="username-edit" name="username" defaultValue={details.username} required/>
-                        <label htmlFor='bio' className='bio-label dark'>Bio: </label>
+                        <label htmlFor='bio' className='bio-label dark' id="edit-bio-label">Bio: </label>
                         <textarea name='bio' id='bio' cols="30" rows="10" className='edit-bio dark' defaultValue={details.bio} />
                         <SelectInput placeholder="Department: " name="department" id="department" type="text" defaultValue={details.department} />
                         <div className="details">
