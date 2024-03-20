@@ -443,7 +443,49 @@ def cookie(request):
     
     else:
         response = JsonResponse({'data': 'NotAuth'}, status=401)
-    
+
+def followers(request):
+    if request.user.is_authenticated:
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        pk = user_object.username
+        user_followers = FollowersCount.objects.filter(user=user_auth)
+        user_followers_list = []
+
+        for followers in user_followers:
+            user_followers_list.append(followers.follower)
+
+        response_data = [{'userName': (User.objects.get(username=follower)).username, 'userId': (User.objects.get(username=follower)).id}
+                        for follower in user_followers_list
+                        ]
+        return JsonResponse(response_data, safe=False)
+    else:
+        error_data = {'error': 'Access denied. User is not authenticated.'}
+        return JsonResponse(error_data, status=401)
+
+def following(request):
+    if request.user.is_authenticated:
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        pk = user_object.username
+        user_following = FollowersCount.objects.filter(follower=user_auth)
+        user_following_list = []
+
+        for following in user_following:
+            user_following_list.append(following.user)
+
+        response_data = [{'userName': (User.objects.get(username=following)).username, 'userId': (User.objects.get(username=following)).id}
+                        for following in user_following_list
+                        ]
+        return JsonResponse(response_data, safe=False)
+    else:
+        error_data = {'error': 'Access denied. User is not authenticated.'}
+        return JsonResponse(error_data, status=401)
+
 class MyInbox(generics.ListAPIView):
     serializer_class = ChatMsgSerializer
 
