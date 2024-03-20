@@ -121,8 +121,9 @@ export default function Post(props) {
                 commentContent:commentContent
             }
 
-            const res = await fetch(`${BASE_URL}/liked`, {
+            const res = await fetch(`${BASE_URL}/comment`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-type": 'application/json',
                 },
@@ -131,10 +132,10 @@ export default function Post(props) {
 
             const json = await res.json();
             if (res.status == 200) {
-               
 
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
+                    credentials: 'include',
                     headers: {
                     "Content-type": 'application/json',
                     },
@@ -142,15 +143,21 @@ export default function Post(props) {
                 })
                     .then(async function(res) {
                         const json = await res.json();
-                        setPosts(json);
+                        if (res.status == 200) {
+                            setPosts(json);
+                        } else if (res.status == 401) {
+                            navigate('/signin');
+                        }
                     })
+            } else if (res.status == 401) {
+                navigate('/signin');
             }
             //post comments to api
         } catch(error) {
             console.error('Error submitting comment:', error);
         }
         finally {
-            setShowCommentBox(false);
+            // setShowCommentBox(false);
         }
     };
 
@@ -200,7 +207,7 @@ export default function Post(props) {
             </div>        
                 
             
-             {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={props.comments} />} 
+            {showCommentBox && <CommentBox onSubmit={handleCommentSubmit} comments={props.comments} />} 
         </div>
     );
 }
