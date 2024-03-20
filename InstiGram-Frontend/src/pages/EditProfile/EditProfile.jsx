@@ -6,6 +6,7 @@ import './EditProfile.css';
 import { motion } from 'framer-motion';
 import { detailsAtom } from "../../store/detailsAtom";
 import { BASE_URL } from "../../App";
+import { useEffect } from "react";
 
 const mainVariant = {
     initial: {
@@ -38,6 +39,25 @@ export default function EditProfile() {
     const image = useRecoilValue(imageAtom);
     const setDetails = useSetRecoilState(detailsAtom);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch(`${BASE_URL}/profile/edit`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-type": "application/json",
+            },
+        })
+            .then(async function(res) {
+                const status = res.status;
+                const json = await res.json();
+
+                if (status == 401) {
+                    navigate('/signin')
+                }
+            })
+        
+    }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -76,6 +96,8 @@ export default function EditProfile() {
                     navigate('/feed');
                 } else if (status == 409) {
                     alert("Username Taken");
+                } else if (status == 401) {
+                    navigate('/signin');
                 }
             })
     }

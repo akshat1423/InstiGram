@@ -107,7 +107,7 @@ li {
     color: white;
 }
 
-.navbar-icon-search {
+.navbar-icon-chat {
     width: 1.25vw;
     height: 1.25vw; 
     margin-right: 0.417vw;
@@ -117,6 +117,17 @@ li {
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+
+.navbar-icon-feed {
+    width: 1.25vw;
+    height: 1.25vw; 
+    margin-right: 0.417vw;
+    
+    background-image: url("../../assets/house-solid.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .nav-newpost-button {
