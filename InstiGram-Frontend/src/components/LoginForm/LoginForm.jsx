@@ -11,7 +11,7 @@ export default function LoginForm({ handleSubmit }) {
     return (
         <div className={ darkMode ? "login darkMode" : "login"}>
             <div className="clip"></div>
-            <div className="header">
+            <div className="login-header">
                 <div className="logo"></div>
                 <div className="title">
                     <div className="slot1"></div>

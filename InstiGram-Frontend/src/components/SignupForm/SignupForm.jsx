@@ -21,7 +21,7 @@ export default function SignupForm({ handleSubmit }) {
     return (
         <div className={ darkMode ? "signup darkMode" : "signup"}>
             <div className="clip"></div>
-            <div className="header">
+            <div className="signup-header">
                 <div className="logo"></div>
                 <div className="title">
                     <div className="slot1"></div>

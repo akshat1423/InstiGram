@@ -133,13 +133,17 @@ export default function Post(props) {
             const json = await res.json();
             if (res.status == 200) {
 
+                const feedData = {
+                    userId: userId,
+                }
+
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
                     credentials: 'include',
                     headers: {
                     "Content-type": 'application/json',
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(feedData),
                 })
                     .then(async function(res) {
                         const json = await res.json();

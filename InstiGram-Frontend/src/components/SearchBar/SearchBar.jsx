@@ -35,7 +35,11 @@ const SearchBar = () => {
     setQuery(query);
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
-      search(query);
+      if (query != '') {
+        search(query);
+      } else {
+        setSearchResult([]);
+      }
     }, 300);
   }
 

@@ -40,7 +40,7 @@ def index(request):
             'profileImage': (Profile.objects.get(user_id= (User.objects.get(username=post.user)).id)).profileimg,
             'likes':post.no_of_likes,
             'isLiked': LikePost.objects.filter(post_id=post.id, username=user_object.username).exists(),
-            'comments': post.no_of_comments,
+            'comments':[{'commentAuth': comm.username, 'commentContent': comm.text } for comm in comments.objects.filter(post_id=post.id)],
             'caption': post.caption,
             'postImage': post.image} 
             for post in posts
@@ -219,7 +219,7 @@ def like_post(request):
 def comment(request):
     if request.user.is_authenticated:
         data = json.loads(request.body)
-        user_auth = data.get('userId')
+        user_auth = data.get('commentAuth')
         user_object = User.objects.get(id=user_auth)
         user_profile = Profile.objects.get(user_id=user_auth)
         username= user_object.username
