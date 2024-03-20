@@ -3,28 +3,33 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../App";
+import { useParams } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 
 function ChatContacts() {
-    const baseURL = "backend-api-url";
-    const user_id = localStorage.getItem("user_id");
+
+    const user_id = localStorage.getItem("userId");
+    console.log(user_id);
 
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(BASE_URL + 'api-backend' + user_id+ '/', {
+                const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
                     method: "GET",
                     credentials: "include",
-                    headers: {},
-                    body: {}
+                    // headers: {},
+                    // body: {}
                 });
-                if (Array.isArray(response.data)) {
-                    setMessages(response.data);
+                const result = await response.json();
+                console.log(result);
+                if (Array.isArray(result)) {
+                    setMessages(result);
                     console.log("working1");
-                    console.log(response.data);
+                    console.log(result);
                 } else {
-                    console.error("API response is not an array:", response.data);
+                    console.error("API response is not an array:", error);
                 }
             } catch (error) {
                 console.error(error);
@@ -35,35 +40,61 @@ function ChatContacts() {
         fetchData();
     }, []);
 
+    function fetchAgain(){
+
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
+                        method: "GET",
+                        credentials: "include",
+                        // headers: {},
+                        // body: {}
+                    });
+                    const result = await response.json();
+                    console.log(result);
+                    if (Array.isArray(result)) {
+                        setMessages(result);
+                        console.log("working1");
+                        console.log(result);
+                    } else {
+                        console.error("API response is not an array:", error);
+                    }
+                } catch (error) {
+                    console.error(error);
+                    console.log("working2");
+                }
+            };
+    
+            fetchData();
+        }, []);
+    }
+
     return (
-        <div className="col-12 col-lg-5 col-xl-3 border-right">
+        <div className="col-12 col-lg-5 col-xl-3 border-right div1">
             <div className="px-4 d-none d-md-block">
                 <div className="d-flex align-items-center">
-                    <div className="flex-grow-1">
-                        <input
-                            type="text"
-                            className="form-control my-3"
-                            placeholder="Search..."
-                        />
+                    <div className="flex-grow-1 search-bar-chat ">
+                        <SearchBar></SearchBar>
                     </div>
                 </div>
             </div>
             {messages.map((message) => (
-                <Link to={ '/chat/' + (message.sender === user_id ? message.reciever : message.sender) } className="list-group-item list-group-item-action border-0"
+                <Link onClick = {fetchAgain}to={ '/chat/' + (message.sender == user_id ? message.reciever_profile.id_user : message.sender_profile.id_user) } className="list-group-item list-group-item-action border-0"
                     key={message.id} 
                 >
-                    <div className="d-flex align-items-start">
+                    <div className="d-flex align-items-start chat-person">
                         <img
-                            src={message.sender.id === user_id ? message.sender_profile.image : message.receiver_profile.image}
-                            className="rounded-circle mr-1"
-                            alt="profilepic"
+                            src={message.sender_profile.id_user == user_id ? message.sender_profile.profileimg : message.reciever_profile.profileimg}
+                            className="rounded-circle mr-1 chat-pfp"
+                            
                             width={40}
                             height={40}
                         />
                         <div className="flex-grow-1 ml-3">
-                            {message.reciever_profile.full_name}
+                            { message.sender_profile.id_user != user_id ? message.sender_profile.id_user : message.reciever_profile.id_user}
                             <div className="small">
-                                {message.message}
+                                {message.msg}
                             </div>
                         </div>
                     </div>

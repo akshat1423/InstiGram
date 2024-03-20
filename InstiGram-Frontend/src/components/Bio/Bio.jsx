@@ -7,17 +7,21 @@ import { followAtom } from "../../store/followAtom.jsx";
 import { BASE_URL } from "../../App.jsx";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
+import { Link } from "react-router-dom";
 
 
 function Bio(){
     const details = useRecoilValue(detailsAtom);
     // const [follow, setFollow] = useRecoilState(followAtom);
+    const { id } = useParams();
+    
 
     const setPosts = useSetRecoilState(postAtom);
     const setDP = useSetRecoilState(imageAtom);
     const setDetails = useSetRecoilState(detailsAtom);
     const { userId } = useParams();
     const [ownProfile, setOwnProfile] = useState(false);
+    console.log(userId)
 
     useEffect(() => {
       const storedUserId = localStorage.getItem('userId');
@@ -91,7 +95,7 @@ function Bio(){
           >
             {details.isFollowing ? 'Unfollow' : 'Follow'}
           </button>
-          <button type="button" className={ownProfile ? 'display-none' : details.isFollowing ? "message-button button-profile" : "message-button button-profile"}>Message</button>
+          <Link to={'/chat/' + userId} className={ownProfile ? 'display-none' : details.isFollowing ? "message-button button-profile" : "message-button button-profile"}>Message</Link>
           <br />
         </div>
         </>
