@@ -1,27 +1,26 @@
-import './Chat.css'
+ import './ChatDefault.css'
 import React from "react";
 import NavBar from "../../components/NavBar/SideNav.jsx"
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChatContacts from "../../components/ChatContacts/ChatContacts.jsx"
-import Convo from "../../components/Convo/Convo.jsx"
 
-function Chat(){
+
+function ChatDefault(){
     
 
     return(
-        <div className='chat-container' >
+        <div className='chat-default-container' >
             <NavBar></NavBar>
             
-            <div className='container-main-chat'>
+            <div className='container-main-chat-default'>
             
                 <main className="content" style={{marginTop:"0px"}}>
-                    <div className="container">
-                        <h1 className='heading-chat' >
+                    <div className="container-default">
+                        <h1 className='heading-chat-default' >
                             Messages
                         </h1>
-                            <div className="card1 row">
+                            <div className="card1-default row">
                                 <ChatContacts></ChatContacts>
-                                <Convo />
 
 
                             </div>
@@ -35,4 +34,4 @@ function Chat(){
 
 }
 
-export default Chat;
+export default ChatDefault;
