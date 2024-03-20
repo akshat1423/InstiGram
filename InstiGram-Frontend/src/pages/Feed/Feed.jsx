@@ -8,8 +8,10 @@ import { feedAtom } from "../../store/feedAtom.jsx";
 
 import NavBar from "../../components/NavBar/SideNav.jsx"
 import { BASE_URL } from "../../App.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
+    const navigate = useNavigate();
     const [posts, setPosts] = useRecoilState(feedAtom);
 
 
@@ -31,7 +33,11 @@ export default function App() {
         })
             .then(async function(res) {
                 const json = await res.json();
-                setPosts(json);
+                if (res.status == 200) {
+                    setPosts(json);
+                } else if (res.status == 401) {
+                    navigate('/signin');
+                }
             })
     }, []);
 

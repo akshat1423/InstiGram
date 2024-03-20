@@ -45,6 +45,25 @@ export default function CreatePost() {
     const [profilePosts, setProfilePosts] = useRecoilState(postAtom);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        fetch(`${BASE_URL}/post/create`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-type": "application/json",
+            },
+        })
+            .then(async function(res) {
+                const status = res.status;
+                const json = await res.json();
+
+                if (status == 401) {
+                    navigate('/signin')
+                }
+            })
+        
+    }, [])
+
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -91,7 +110,12 @@ export default function CreatePost() {
                         })
                             .then(async function(res) {
                                 const json = await res.json();
-                                setPosts(json);
+                                
+                                if (res.status == 200) {
+                                    setPosts(json);
+                                } else if (res.status == 401) {
+                                    navigate('/signin');
+                                }
                             })
                     }
                 })

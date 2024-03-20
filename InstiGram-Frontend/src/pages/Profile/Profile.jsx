@@ -75,9 +75,13 @@ function Profile() {
     })
       .then(async function(res) {
         const json = await res.json();
-        setDP(json.DP);
-        setDetails(json.details);
-        setPosts(json.posts);
+        if (res.status == 200) {
+          setDP(json.DP);
+          setDetails(json.details);
+          setPosts(json.posts);
+        } else if (res.status == 401) {
+          navigate('/signin');
+        }
       })
   }, []);
 

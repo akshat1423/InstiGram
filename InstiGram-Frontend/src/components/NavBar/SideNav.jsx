@@ -74,10 +74,16 @@ function SideNav(){
                 </li>
                 <li >
                     <Link className="nav-list-item" to="/chat" >
-                        <div className=" navbar-icon-search" />
+                        <div className=" navbar-icon-chat" />
                         Chat
                     </Link>
                     <br />
+                </li>
+                <li>
+                    <div className="nav-list-item" id="logout-button" onClick={() => navigate('/feed') }>
+                        <div className=" navbar-icon-feed" />
+                        Home
+                    </div>
                 </li>
                 <li>
                     <div className="nav-list-item" id="logout-button" onClick={ handleLogout }>
