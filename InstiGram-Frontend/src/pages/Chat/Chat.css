@@ -1,13 +1,4 @@
 
-
-.chat-online {
-    color: #34ce57
-}
-
-.chat-offline {
-    color: #e4606d
-}
-
 .chat-messages {
     display: flex;
     flex-direction: column;
@@ -57,7 +48,7 @@
 }
 
 .container-main-chat {
-    margin-left: 300px; /* Adjust this value based on your side nav width */
+    margin-left: 300px;
   }
 
 ul{
