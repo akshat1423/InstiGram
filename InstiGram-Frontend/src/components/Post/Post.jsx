@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { BASE_URL } from "../../App";
 import { feedAtom } from "../../store/feedAtom";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AllComments } from "../AllComments/AllComments";
+
 
 // import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
 
@@ -34,7 +34,7 @@ function CommentBox({ onSubmit, comments }) {
                 <div className="comm-head">Comments</div>
                     <ul className="all-comments">
                         {comments.map(comment => (
-                            <li key={comment.commentId}><span class="cauth">{comment.commentAuth}:</span> {comment.commentContent}</li>
+                            <li key={comment.commentId}><span className="cauth">{comment.commentAuth}:</span> {comment.commentContent}</li>
                         ))}
                     </ul>
             </div>
