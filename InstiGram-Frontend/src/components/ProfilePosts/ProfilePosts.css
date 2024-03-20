@@ -4,19 +4,19 @@
     text-align: center;
     display: inline-block;
     background-color: black;
-    margin-left: 42px;
-    margin-bottom: 42px;
+    margin-left: 2.188vw;
+    margin-bottom: 2.188vw;
 }
 
 .posts-container{
     text-align: left;
-    width: 1036px;
-    margin-left: -127px;
+    width: 53.958vw;
+    margin-left: -8.5vw;
 }
 
 .single-post img{
-    width: 455px;
-    height: 455px;
+    width: 23.698vw;
+    height: 23.698vw;
     margin: 2px;
 
 }

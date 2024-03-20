@@ -3,7 +3,7 @@ import './Post.css';
 import { useRecoilState, useRecoilValue } from "recoil";
 import { BASE_URL } from "../../App";
 import { feedAtom } from "../../store/feedAtom";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AllComments } from "../AllComments/AllComments";
 
 // import { selectedPostId, selectedPostSelector } from "../../store/feedAtom";
@@ -57,6 +57,7 @@ export default function Post(props) {
     const [liked,setLiked]=useState(props.isLiked);
     const [showCommentBox,setShowCommentBox]=useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
     
     const likeClick = async () => {
         try {
@@ -73,6 +74,7 @@ export default function Post(props) {
             //post likes to api
             const res = await fetch(`${BASE_URL}/liked`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-type": 'application/json',
                 },
@@ -86,6 +88,7 @@ export default function Post(props) {
 
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                     "Content-type": 'application/json',
                     },
@@ -93,7 +96,11 @@ export default function Post(props) {
                 })
                     .then(async function(res) {
                         const json = await res.json();
-                        setPosts(json);
+                        if (res.status == 200) {
+                            setPosts(json);
+                        } else if (res.status == 401) {
+                            navigate('/signin');
+                        }
                     })
             }
             

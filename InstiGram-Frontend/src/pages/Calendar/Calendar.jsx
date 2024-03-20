@@ -26,6 +26,8 @@ export default function Calendar() {
                 const json = await res.json();
                 if (res.status == 200) {
                     setEvents(json);
+                } else if (res.status == 401) {
+                    navigate('/signin');
                 }
             })
     }, [])

@@ -15,7 +15,7 @@ function Pic(){
 
     return(
         <div className="daughter-1">
-        <img src={ DP } width="200px" height="200px" alt="Profile image" ></img>
+        <img src={ DP } width="10.417vw" height="10.417vw" onError={(e) => {e.style.display = "none"}}></img>
         </div>
     );
 }

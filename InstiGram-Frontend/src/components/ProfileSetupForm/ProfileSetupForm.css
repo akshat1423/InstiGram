@@ -55,7 +55,7 @@ form {
 
 .bio-label {
     position: absolute;
-    top: 210px;
+    top: 175px;
     left: 0;
 
     height: fit-content;
@@ -70,7 +70,7 @@ form {
     justify-content: center;
     align-items: center;
 
-    margin: 5rem;
+    margin: 3rem 5rem;
 }
 
 .submit {

@@ -17,6 +17,7 @@ const SearchBar = () => {
       const data = { query };
       const response = await fetch(`${BASE_URL}/search`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-type": 'application/json',
         },

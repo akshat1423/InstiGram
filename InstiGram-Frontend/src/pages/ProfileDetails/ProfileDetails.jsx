@@ -5,10 +5,30 @@ import { useRecoilValue } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
 import './ProfileDetails.css'
 import { BASE_URL } from "../../App";
+import { useEffect } from "react";
 
 export default function ProfileSetup() {
     const navigate = useNavigate();
     const image = useRecoilValue(imageAtom);
+
+    useEffect(() => {
+        fetch(`${BASE_URL}/cookie`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-type": "application/json",
+            },
+        })
+            .then(async function(res) {
+                const status = res.status;
+                const json = await res.json();
+
+                if (status == 401) {
+                    navigate('/signin')
+                }
+            })
+        
+    }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -37,8 +57,6 @@ export default function ProfileSetup() {
             .then(async function(res) {
                 const status = res.status;
                 const json = await res.json();
-                // console.log(data)
-                console.log(json);
 
                 if(status == 200) {
                     navigate('/feed');

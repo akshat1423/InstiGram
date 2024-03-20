@@ -1,37 +1,37 @@
 .bio{
-    height: 100px;
+    height: 5.208vw;
     display: flex;
     flex-direction: column;
     background: #1D1E1D;
-    width: 1036px;
-    margin-top: 0px;
-    margin-left: -127px;
+    width: 53.958vw;
+    margin-top: 0;
+    margin-left: -6.615vw;
     color: white;
-    width: 400px;
+    width: 20.833vw;
 }
 
 .name{
     display: block;
     font-family: Mukta;
-font-size: 30px;
+font-size: 1.563vw;
 font-weight: 600;
-line-height: 50px;
+line-height: 2.604vw;
 letter-spacing: 0em;
-margin-left: 63px;
-height: 50px;
+margin-left: 3.281vw;
+height: 2.604vw;
 
 }
 
 .user-bio{
-    height: 50px;
+    height: 2.604vw;
     display: block;
     font-family: Mukta;
-font-size: 24px;
+font-size: 1.25vw;
 font-weight: 400;
-line-height: 40px;
+line-height: 2.083vw;
 letter-spacing: 0em;
 text-align: left;
-margin-left: 63px;
+margin-left: 3.281vw;
 
 
 }
@@ -39,7 +39,7 @@ margin-left: 63px;
 .acad-details{
     display: inline-flex;
     background-color: #1D1E1D;
-    width: 636px;
+    width: 33.125vw;
 }
 .bada-bio{
     display: inline-flex;
@@ -49,36 +49,36 @@ margin-left: 63px;
 border-radius: 6px;
 border: 1px solid #106EE8;
 color: #106EE8;
-height: 40px;
+height: 2.083vw;
 font-family: Mukta;
-font-size: 24px;
+font-size: 1.25vw;
 font-weight: 400;
-line-height: 40px;
+line-height: 2.083vw;
 letter-spacing: 0em;
 text-align: center;
-padding: 0 13px;
+padding: 0 0.677vw;
 
 
 }
 
 .degree{
-    margin-right: 80px;
+    margin-right: 4.167vw;
 }
 
 .subject{
-    margin-right: 80px;
+    margin-right: 4.127vw;
 }
 
 .button-profile{
     background-color: aliceblue;
-    width: 459px;
-    height: 59px;
+    width: 23.906vw;
+    height: 3.073vw;
     border: 0;
     border-radius: 10px;
 font-family: Mukta;
-font-size: 30px;
+font-size: 1.563vw;
 font-weight: 200;
-line-height: 50px;
+line-height: 2.604vw;
 letter-spacing: 0em;
 text-align: center;
 background-color: transparent;
@@ -98,14 +98,14 @@ cursor: pointer;
 
 .profile-buttons-container{
     position: relative;
-    margin-top: 100px;
+    margin-top: 5.208vw;
     display: inline-flex;
-    margin-left: -82px;
-    margin-bottom: 52.5px;
+    margin-left: -5.85vw;
+    margin-bottom: 2.734vw;
 }
 
 .message-button{
-    margin-left: 39px;
+    margin-left: 2.031vw;
 }
 
 

@@ -3,6 +3,8 @@
 
     width: 28.67vw;
     height: 69.86vh;
+    min-height: 595px;
+
     top: 12.03vh;
     left: 23.35vw;
 
@@ -20,6 +22,8 @@
 
     width: 29.05vw;
     height: 70.94vh;
+    min-height: 605px;
+
     top: 12.536vh;
     left: 22.395vw;
 
@@ -33,6 +37,8 @@
 
     width: 29.61vw;
     height: 71.68vh;
+    min-height: 610px;
+
     top: 13.11vh;
     left: 21.25vw;
 

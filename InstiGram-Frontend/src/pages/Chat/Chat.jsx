@@ -6,9 +6,6 @@ import ChatContacts from "../../components/ChatContacts/ChatContacts.jsx"
 import Convo from "../../components/Convo/Convo.jsx"
 
 function Chat(){
-
-    const baseURL = "backend-api-url"
-    const user_id = localStorage.getItem("user_id")
     
 
     return(
