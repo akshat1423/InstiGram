@@ -1,7 +1,7 @@
 .below-search{
     position: fixed;
     top:7%;
-    left:16.3%;
+    left:18%;
     font-family: Mukta;
     width:38%;
     height:fit-content;
@@ -13,9 +13,21 @@
 }
 .search-res{
     list-style-type:none;
-    
+    margin:0;
 }
-.res{
+a{
+    text-decoration: none;
+}
+a .res{
+    display: block;
+    height:5vh;
     text-decoration: none;
     color:#106EE8;
+    padding-left:1.5vw;
+    font-family: Mukta;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 44px;
+    text-align: left;
 }
+

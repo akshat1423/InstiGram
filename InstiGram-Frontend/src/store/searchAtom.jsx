@@ -20,22 +20,5 @@ export const searchAtom = atom({
         gradYear:2021,
         department:'ME'
     },
-    {
-        userId:3,
-        userName:'getg',
-        gradYear:2021,
-        department:'ME'
-    },
-    {
-        userId:15,
-        userName:'getg',
-        gradYear:2021,
-        department:'ME'
-    },
-    {
-        userId:6,
-        userName:'getg',
-        gradYear:2021,
-        department:'ME'
-    }]
+   ]
 })

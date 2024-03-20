@@ -11,12 +11,7 @@ import { AllComments } from "../AllComments/AllComments";
 function CommentBox({ onSubmit, comments }) {
     const [comment, setComment] = useState('');
     const [showAllComm,setShowAllComm]=useState(false)
-    const openComments=()=>{
-        setShowAllComm(true)
-    }
-    const closeComm=()=>{
-        setShowAllComm(false)
-    }
+    
     const handleChange = (e) => {
         setComment(e.target.value); 
     };
@@ -110,7 +105,8 @@ export default function Post(props) {
     };
 
     const commentClick = () => {
-        setShowCommentBox(true);
+        
+        setShowCommentBox(!showCommentBox);
     };
 
     const handleCommentSubmit = async (comment) => {

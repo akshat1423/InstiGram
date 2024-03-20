@@ -125,7 +125,10 @@
     cursor: pointer;
     transform: scale(1.1);
 }
-
+.comment_but:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
 .comment_but {
     width:29.02px;
     height: 29.02px;
@@ -208,6 +211,7 @@
     color:white;
     list-style-type:none;
     overflow-y: auto;
+    margin-bottom: 10px;
 
 }
 .cauth{

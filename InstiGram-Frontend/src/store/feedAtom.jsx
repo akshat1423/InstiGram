@@ -32,7 +32,123 @@ export const feedAtom=atom({
             profileImage: null,
             likes: 3,
             isLiked: false,
-            comments: [,
+            comments: [
+                {    commentId:3,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:4,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:5,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:6,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:7,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                },
+                {    commentId:3,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:4,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:5,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:6,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:7,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                },
+                {    commentId:3,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:4,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:5,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:6,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:7,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                },
+                {    commentId:3,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:4,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:5,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {   commentId:6,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                }
+                ,
+                {    commentId:7,
+                    commentAuth:'paul',
+                    commentContent:'bonjour',
+    
+                },
                 {    commentId:3,
                     commentAuth:'paul',
                     commentContent:'bonjour',
