@@ -8,10 +8,10 @@
 
 .daughter-1 img{
     border-radius: 50%;
-    background-image: url('../../assets/user-regular.svg');
+    background-image: url('../../assets/user-regular-dark.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 4.167vw;
+    background-size: 70%;
     width:10.417vw;
     height:10.417vw
 }
