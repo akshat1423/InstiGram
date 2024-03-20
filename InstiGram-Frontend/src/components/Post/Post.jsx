@@ -34,7 +34,7 @@ function CommentBox({ onSubmit, comments }) {
                 <div className="comm-head">Comments</div>
                     <ul className="all-comments">
                         {comments.map(comment => (
-                            <li key={comment.commentId}><span class="cauth">{comment.commentAuth}:</span> {comment.commentContent}</li>
+                            <li key={comment.commentId}><span className="cauth">{comment.commentAuth}:</span> {comment.commentContent}</li>
                         ))}
                     </ul>
             </div>
@@ -133,13 +133,17 @@ export default function Post(props) {
             const json = await res.json();
             if (res.status == 200) {
 
+                const feedData = {
+                    userId: userId,
+                }
+
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
                     credentials: 'include',
                     headers: {
                     "Content-type": 'application/json',
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(feedData),
                 })
                     .then(async function(res) {
                         const json = await res.json();

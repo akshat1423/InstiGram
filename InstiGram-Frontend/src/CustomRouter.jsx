@@ -8,7 +8,7 @@ const Signup = React.lazy(() => import('./pages/Signup/Signup'));
 const ProfileDetails = React.lazy(() => import('./pages/ProfileDetails/ProfileDetails'));
 const Login = React.lazy(() => import('./pages/Login/Login'));
 const Profile = React.lazy(() => import('./pages/Profile/Profile'));
-const EditProfile = React.lazy(() => import('./pages/EditProfile/EditProfile'))
+const EditProfile = React.lazy(() => import('./pages/EditProfile/EditProfile'));
 const Feed = React.lazy(() => import('./pages/Feed/Feed'));
 const Calendar = React.lazy(() => import('./pages/Calendar/Calendar'));
 const CreatePost = React.lazy(() => import('./pages/CreatePost/CreatePost'));
