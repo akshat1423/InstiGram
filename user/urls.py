@@ -18,4 +18,5 @@ urlpatterns = [
     path('feed', views.index, name= 'feed'),
     path('events', views.events, name= 'events'),
     path('cookie', views.cookie, name= 'cookie'),
+    path('logout', views.logout, name= 'logout'),
 ]
