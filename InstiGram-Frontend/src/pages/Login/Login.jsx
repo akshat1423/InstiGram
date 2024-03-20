@@ -6,11 +6,12 @@ import DarkModeSwitch from "../../components/DarkModeSwitch/DarkModeSwitch";
 import { validAtom } from "../../store/validAtom";
 import SideCard from '../../components/SideCard/SideCard';
 import { BASE_URL } from '../../App';
+import { useEffect } from 'react';
 
 function Login() {
     const navigate = useNavigate();
     const [valid, setValid] = useRecoilState(validAtom);
-    
+
     useEffect(() => {
         fetch(`${BASE_URL}/cookie`, {
             method: "POST",
