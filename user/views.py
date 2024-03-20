@@ -218,9 +218,13 @@ def like_post(request):
 
 def comment(request):
     if request.user.is_authenticated:
-        username= request.user.username
-        post_id= data.get('post_id')
-        text= data.get['text']
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        username= user_object.username
+        post_id= data.get('postId')
+        text= data.get('commentContent')
 
         post = Post.objects.get(id= post_id)
 
@@ -228,7 +232,9 @@ def comment(request):
         new_comment.save()
         post.no_of_comments= post.no_of_comments+1
         post.save()
-        return redirect('/')
+        
+        response_data = {'data': 'done'}
+        return JsonResponse(response_data, status=200)   
 
     else:
         # User is not authenticated, return an error response
