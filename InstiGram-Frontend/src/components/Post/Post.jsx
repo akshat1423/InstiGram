@@ -52,8 +52,7 @@ function CommentBox({ onSubmit, comments }) {
 }
 
 export default function Post(props) {
-    // const post=useRecoilValue(feedAtom)
-    //how to implement a post with specific post id
+
     const [posts, setPosts] = useRecoilState(feedAtom);
     const [liked,setLiked]=useState(props.isLiked);
     const [showCommentBox,setShowCommentBox]=useState(false);
@@ -109,7 +108,40 @@ export default function Post(props) {
 
     const handleCommentSubmit = async (comment) => {
         try {
-            
+            const userId = localStorage.getItem('userId');
+            const postId = props.id;
+            const commentContent=comment
+
+            const data={
+                commentAuth:userId,
+                postId:postId,
+                commentContent:commentContent
+            }
+
+            const res = await fetch(`${BASE_URL}/liked`, {
+                method: "POST",
+                headers: {
+                    "Content-type": 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const json = await res.json();
+            if (res.status == 200) {
+               
+
+                fetch(`${BASE_URL}/feed`, {
+                    method: "POST",
+                    headers: {
+                    "Content-type": 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(async function(res) {
+                        const json = await res.json();
+                        setPosts(json);
+                    })
+            }
             //post comments to api
         } catch(error) {
             console.error('Error submitting comment:', error);
