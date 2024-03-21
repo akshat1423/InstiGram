@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 export const searchChatAtom = atom({
-    key: "searchAtom",
+    key: "searchChatAtom",
     default: [{
         userId:1,
         userName:'fwsaw',
