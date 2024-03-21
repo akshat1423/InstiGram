@@ -2,6 +2,9 @@ import React from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followersAtom } from '../../store/followersAtom'
+import { useState, useEffect } from 'react';
+import SideNav from '../../components/NavBar/SideNav';
+import { BASE_URL } from "../../App";
 
 const mainVariant = {
     initial: {
@@ -56,7 +59,7 @@ const Followers = () => {
                 setFollowerData(json);
             })}
             catch(error){
-                console.log("Error fetching followers")
+                console.log(error)
             }
     }, []);
   return (

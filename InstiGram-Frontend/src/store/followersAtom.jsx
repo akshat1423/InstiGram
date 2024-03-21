@@ -5,15 +5,15 @@ export const followersAtom = atom({
     default: [
             {
                  userId:5,
-                 userName:gaurav
+                 userName:'gaurav'
             },
             {
                 userId:3,
-                userName:gaurav
+                userName:'gaurav'
            },
            {
                 userId:9,
-                userName:gaurav
+                userName:'gaurav'
        }
         ]
     })
