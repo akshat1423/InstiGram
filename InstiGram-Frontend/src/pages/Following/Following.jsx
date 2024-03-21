@@ -6,7 +6,7 @@ import SideNav from '../../components/NavBar/SideNav';
 import { BASE_URL } from "../../App";
 import PopupCard from '../../components/PopupCard/PopupCard';
 import './Following.css'
-import { Link,useNavigate,useLocation  } from "react-router-dom";
+import { Link,useNavigate,useLocation, useParams  } from "react-router-dom";
 
 const mainVariant = {
     initial: {
@@ -39,9 +39,10 @@ const Following = () => {
     const [followingData,setFollowingData]=useRecoilState(followingAtom)
     const navigate = useNavigate();
     const location = useLocation();
+    let {userId} = useParams();
     useEffect(() => {
 
-        const userId = localStorage.getItem('userId');
+        
 
         const data = {
             userId: userId
@@ -92,6 +93,9 @@ const Following = () => {
             <ul className='l1'>
                 {followingData.map(follower=>(
                   <Link to={`/profile/${follower.userId}`} state={{background: location}} className="follower">
+                    <div className="profile-image-div">
+                    <img src={follower.profileImage} alt="" className="profile-image" />
+                    </div>
                     <li key={follower.userId}>{follower.userName}</li>
                   </Link>
                 ))}
