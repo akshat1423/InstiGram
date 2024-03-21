@@ -92,3 +92,8 @@
 .display-none{
     display: none;
 }
+
+.list a{
+    text-decoration: none;
+    color: white;
+}
