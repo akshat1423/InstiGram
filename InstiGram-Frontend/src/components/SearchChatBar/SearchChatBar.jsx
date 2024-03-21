@@ -4,7 +4,7 @@ import { BASE_URL } from '../../App';
 import SearchShowChat from '../SearchShowChat/SearchShowChat'
 import { useRecoilState } from 'recoil';
 //import { searchChatAtom } from '../../store/searchChatAtom.jsx';
-import {searchChatAtom } from '../../store/searchChatAtom.jsx'
+import { searchChatAtom } from '../../store/searchChatAtom.jsx'
 
 const SearchChatBar = () => {
   const [query, setQuery] = useState('');
