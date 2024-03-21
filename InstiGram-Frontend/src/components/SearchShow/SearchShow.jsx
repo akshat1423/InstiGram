@@ -9,8 +9,9 @@ export default function SearchShow(props) {
     <div className="below-search">      
       <ul className="search-res">
         {props.result.map(result => (
+            
             <Link to={`/profile/${result.userId}`} state={{background: location}}>
-              <li key={result.userId} className='res'>{result.userName}</li>
+              <li key={result.userId} className='res'>{result.data}</li>
             </Link>
         ))}
       </ul>        

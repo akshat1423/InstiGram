@@ -25,6 +25,7 @@ const SearchBar = () => {
       });
       const json = await response.json();
       setSearchResult(json);
+      console.log({searchResult})
     } catch (error) {
       console.error(error);
     }
@@ -75,6 +76,7 @@ const SearchBar = () => {
         />
         <button type="submit" className='search_icon'></button>
       </form>
+      
       {searchClicked && <SearchShow result={searchResult} />}
     </div>
   );

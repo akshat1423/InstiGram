@@ -1,0 +1,33 @@
+.below-search{
+    position: fixed;
+    top:7%;
+    left:18%;
+    font-family: Mukta;
+    width:38%;
+    height:fit-content;
+    z-index:3;
+    background: #000000D1;
+    border: 1px solid #106EE8;
+    border-radius: 0px 0px 10px 10px;
+    color:#106EE8;
+}
+.search-res{
+    list-style-type:none;
+    margin:0;
+}
+a{
+    text-decoration: none;
+}
+a .res{
+    display: block;
+    height:5vh;
+    text-decoration: none;
+    color:#106EE8;
+    padding-left:1.5vw;
+    font-family: Mukta;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 44px;
+    text-align: left;
+}
+
