@@ -74,7 +74,7 @@ def edit(request):
         user_object = User.objects.get(id=user_auth)
         user_profile= Profile.objects.get(user_id= int(user_auth))
         if request.method== 'POST':
-            if data.get('profileImage')== None:
+            if data.get('profileImage')== "":
                 image= user_profile.profileimg
             else:
                 image= data.get('profileImage')
@@ -123,7 +123,7 @@ def settings(request):
         user_auth= data.get('userId')
         user_profile= Profile.objects.get(user_id= int(user_auth))
         if request.method== 'POST':
-            if data.get('profileImage')== None:
+            if data.get('profileImage')== "":
                 image= user_profile.profileimg
             else:
                 image= data.get('profileImage')
