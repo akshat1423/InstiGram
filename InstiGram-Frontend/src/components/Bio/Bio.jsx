@@ -2,7 +2,7 @@ import "./Bio.css"
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import {detailsAtom} from "../../store/detailsAtom.jsx"
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { followAtom } from "../../store/followAtom.jsx";
 import { BASE_URL } from "../../App.jsx";
 import { postAtom } from "../../store/postAtom.jsx";
