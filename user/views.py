@@ -100,6 +100,21 @@ def edit(request):
                 return JsonResponse(response_data, status=409)
         
             else:
+                post_user= Post.objects.filter(user= user_object.username)
+                for posts in post_user:
+                    posts.user= username
+                    posts.save()
+                
+                likepost_user= LikePost.objects.filter(username= user_object.username)
+                for likes in likepost_user:
+                    likes.username= username
+                    likes.save()
+                
+                comment_user= comments.objects.filter(username= user_object.username)
+                for comm in comment_user:
+                    comm.username= username
+                    comm.save()
+
                 user_object.username= username
                 user_profile.profileimg= image
                 user_profile.bio= bio
