@@ -458,6 +458,7 @@ def cookie(request):
     
     else:
         response = JsonResponse({'data': 'NotAuth'}, status=401)
+        return response
 
 def followers(request):
     if request.user.is_authenticated:
