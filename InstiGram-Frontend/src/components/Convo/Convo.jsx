@@ -141,7 +141,7 @@ function Convo() {
             {message.map((message, index) => 
             <>
             {console.log(message.sender_profile.id_user, user_id)}
-               {message.sender_profile.id_user  == user_id &&
+              {message.sender_profile.id_user  == user_id &&
             <div className="chat-message-right pb-4">
               <div>
                 <img
@@ -177,7 +177,7 @@ function Convo() {
               </div>
               <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
                 <div className="font-weight-bold mb-1">{message.sender_profile.id_user}</div>
-               {message.msg}
+                {message.msg}
               </div>
             </div>
 }
