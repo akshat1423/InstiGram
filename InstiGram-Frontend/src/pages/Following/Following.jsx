@@ -2,7 +2,9 @@ import React from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followingAtom } from '../../store/followingAtom'
-
+import { useState, useEffect } from 'react';
+import SideNav from '../../components/NavBar/SideNav';
+import { BASE_URL } from "../../App";
 const mainVariant = {
     initial: {
       y: '100vh',
