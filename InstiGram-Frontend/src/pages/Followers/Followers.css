@@ -12,6 +12,7 @@
     overflow: hidden;
 
     z-index: 2;
+    color:white
 }
 
 .scrollable-container {
@@ -30,10 +31,10 @@
     z-index: 200;
 }
 .follow-close-button-div {
-    position: relative;
+    position:relative;
 
-    left: 41.667vw;
-    bottom: 15.625vw;
+    left: 40vw;
+    top:-2vh;
 
     height: 2.5vw;
     width: 2.5vw;
@@ -51,3 +52,23 @@
     cursor: pointer;
 }
 
+.head{
+    height: 8vh;
+}
+.heading{
+    position:relative;
+    top:1vh;
+    font-size:35px;
+    padding-top:2vh;
+}
+.l1{
+    list-style-type:none;
+    color: #106EE8;
+    font-size: 22px;
+}
+.follower{
+    text-decoration: none;
+}
+.follower:visited{
+    color: #106EE8;
+}

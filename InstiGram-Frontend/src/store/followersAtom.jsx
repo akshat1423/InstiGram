@@ -4,7 +4,7 @@ export const followersAtom = atom({
     key: "followersAtom",
     default: [
             {
-                 userId:5,
+                 userId:1,
                  userName:'gaurav'
             },
             {

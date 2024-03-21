@@ -1,9 +1,12 @@
-import {React,useState,useEffect} from 'react'
+import {React,useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followersAtom } from '../../store/followersAtom'
 import SideNav from '../../components/NavBar/SideNav';
+import { BASE_URL } from "../../App";
 import PopupCard from '../../components/PopupCard/PopupCard';
+import './Followers.css'
+import { Link,useNavigate,useLocation  } from "react-router-dom";
 
 const mainVariant = {
     initial: {
@@ -34,7 +37,8 @@ const mainVariant = {
 const Followers = () => {
   
     const [followerData,setFollowerData]=useRecoilState(followersAtom)
-    
+    const navigate = useNavigate();
+    const location = useLocation();
     useEffect(() => {
 
         const userId = localStorage.getItem('userId');
@@ -58,7 +62,7 @@ const Followers = () => {
                 setFollowerData(json);
             })}
             catch(error){
-                console.log("Error fetching followers")
+                console.log(error)
             }
     }, []);
   return (
@@ -75,18 +79,21 @@ const Followers = () => {
         variants={mainVariant}
         >
           <PopupCard>
-          
-          <div className="scrollable-container">
-            <div className="head">
-                Followers
+          <div className="head">
+              <div className="heading">Followers</div>
+                
                 <div className="follow-close-button-div" onClick={() => navigate(-1)}></div>
             </div>
+          <div className="scrollable-container">
+            
           
           
           <div className="followersList">
             <ul className='l1'>
                 {followerData.map(follower=>(
+                  <Link to={`/profile/${follower.userId}`} state={{background: location}} className="follower">
                     <li key={follower.userId}>{follower.userName}</li>
+                  </Link>
                 ))}
             </ul>
           </div>

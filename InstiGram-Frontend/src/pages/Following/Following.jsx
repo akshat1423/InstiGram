@@ -1,8 +1,12 @@
-import {React,useState,useEffect} from 'react'
+import {React,useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followingAtom } from '../../store/followingAtom'
 import SideNav from '../../components/NavBar/SideNav';
+import { BASE_URL } from "../../App";
+import PopupCard from '../../components/PopupCard/PopupCard';
+import './Following.css'
+import { Link,useNavigate,useLocation  } from "react-router-dom";
 
 const mainVariant = {
     initial: {
@@ -33,7 +37,8 @@ const mainVariant = {
 const Following = () => {
   
     const [followingData,setFollowingData]=useRecoilState(followingAtom)
-    
+    const navigate = useNavigate();
+    const location = useLocation();
     useEffect(() => {
 
         const userId = localStorage.getItem('userId');
@@ -57,39 +62,47 @@ const Following = () => {
                 setFollowingData(json);
             })}
             catch(error){
-                console.log("Error fetching followers")
+                console.log(error)
             }
     }, []);
   return (
     <div>
-      <motion.div className="profile-overlay" 
+      
+      <motion.div className="followers-overlay" 
       variants={overlayVariant}
       initial='initial'
       animate='animate'
       exit='exit'
       >
-        <SideNav className='profile-sidebar'></SideNav>
-        <motion.div className="profile-animate-container" 
+        <SideNav className='followers-sidebar'></SideNav>
+        <motion.div className="followers-animate-container" 
         variants={mainVariant}
         >
-           
-          <div className="scrollable-container">
-            <div className="head">
-                Following
+          <PopupCard>
+          <div className="head">
+              <div className="heading">Following</div>
+                
+                <div className="follow-close-button-div" onClick={() => navigate(-1)}></div>
             </div>
+          <div className="scrollable-container">
+            
           
           
-          <div className="followerList">
+          <div className="followersList">
             <ul className='l1'>
                 {followingData.map(follower=>(
+                  <Link to={`/profile/${follower.userId}`} state={{background: location}} className="follower">
                     <li key={follower.userId}>{follower.userName}</li>
+                  </Link>
                 ))}
             </ul>
           </div>
           
           </div>
+          </PopupCard>
         </motion.div>
       </motion.div>
+      
     </div>
   )
 }
