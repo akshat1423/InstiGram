@@ -35,18 +35,16 @@ const mainVariant = {
     }
   }
 const Followers = () => {
-    let {userId} = useParams()
+    let { userId } = useParams()
     const [followerData,setFollowerData]=useRecoilState(followersAtom)
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
 
-       
-
         const data = {
-            userId: userId
-          
+            userId: userId,
         }
+        
         try{
         fetch(`${BASE_URL}/followers`, {
             method: "POST",

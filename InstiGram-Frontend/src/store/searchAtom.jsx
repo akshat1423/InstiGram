@@ -20,5 +20,5 @@ export const searchAtom = atom({
         gradYear:2021,
         department:'ME'
     },
-   ]
+    ]
 })

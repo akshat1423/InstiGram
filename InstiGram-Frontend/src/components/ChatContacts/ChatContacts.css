@@ -1,5 +1,9 @@
-.div1{
-    color: white
+.div1-chat{
+    color: white;
+    height: 80vh;
+    overflow-y: scroll;
+
+    
 }
 
 .heading-chat{

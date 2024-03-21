@@ -506,6 +506,9 @@ class MyInbox(generics.ListAPIView):
 
     def get_queryset(self):
         user_id = self.kwargs['user_id']
+        user_object = User.objects.get(id=user_id)
+        name=user_object.username
+        print(name)
 
         messages = ChatMsg.objects.filter(
             id__in =  Subquery(
@@ -553,9 +556,9 @@ class SearchUser(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         
-        username = self.kwargs['username']
+        id = self.kwargs['id']
         logged_in_user = self.request.user
-        users = Profile.objects.filter(Q(user__username__icontains=username))
+        users = Profile.objects.filter(Q(user__id__icontains=id))
 
         if not users.exists():
             return Response(
