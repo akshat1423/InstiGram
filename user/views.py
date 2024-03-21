@@ -472,7 +472,7 @@ def followers(request):
         for followers in user_followers:
             user_followers_list.append(followers.follower)
 
-        response_data = [{'userName': (User.objects.get(username=follower)).username, 'userId': (User.objects.get(username=follower)).id}
+        response_data = [{'userName': (User.objects.get(id=follower)).username, 'userId': (User.objects.get(id=follower)).id, 'profileImage': (Profile.objects.get(user_id=follower)).profileimg}
                         for follower in user_followers_list
                         ]
         return JsonResponse(response_data, safe=False)
@@ -493,7 +493,7 @@ def following(request):
         for following in user_following:
             user_following_list.append(following.user)
 
-        response_data = [{'userName': (User.objects.get(username=following)).username, 'userId': (User.objects.get(username=following)).id}
+        response_data = [{'userName': (User.objects.get(id=following)).username, 'userId': (User.objects.get(id=following)).id, 'profileImage': (Profile.objects.get(user_id=following)).profileimg}
                         for following in user_following_list
                         ]
         return JsonResponse(response_data, safe=False)
