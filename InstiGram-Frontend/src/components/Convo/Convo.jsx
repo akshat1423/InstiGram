@@ -12,6 +12,7 @@ function Convo() {
     console.log(id)
     const user_id = localStorage.getItem("userId");
     let [newMessage, setNewMessage] = useState({message: ""})
+    const [name, setName] = useState();
     //console.log("newMessage == ", newMessage.message)
 
     useEffect(() => {
@@ -28,9 +29,9 @@ function Convo() {
                     // body: {}
                 });
                 const result = await response.json();
-                console.log(result);
+
                 if(Array.isArray(result)){
-                console.log(result);
+
                 setMessage(result);
                 }
                 else{
@@ -40,11 +41,35 @@ function Convo() {
                 console.log("Errorrrrrrrrrrrr", error); 
             }
         };
+        
 
         const interval = setInterval(fetchData, 1000);
         return () => clearInterval(interval);
     }, []);
+    useEffect(() => {
+        
+      const fetchName = async () => {
+          
+          try {
+              
+              
+              const response = await fetch(BASE_URL + '/search/'  + id  + '/',{
+                  method: "GET",
+                  credentials: "include",
+                  // headers: {},
+                  // body: {}
+              });
+              const respo = await response.json();
+              console.log('Name:', respo);
 
+              setName(respo);
+          } catch (error) {
+              console.log("Errorrrrrrrrrrrr", error); 
+          }
+      };
+
+      fetchName();
+  }, []);
 
     const handleChange = (event) => {
         setNewMessage({
@@ -71,7 +96,7 @@ function Convo() {
                 body: formdata
             })
             .then(response => {
-                console.log(response.json())
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -94,20 +119,21 @@ function Convo() {
  
 
   return(
-        <div className="parent-chat-div col-12 col-lg-7 col-xl-9">
+        <div className="parent-chat-div col-12 col-lg-7 col-xl-9 chatbox">
         <div className="py-2 px-4 border-bottom d-none d-lg-block">
           <div className="d-flex align-items-center py-1">
             <div className="position-relative">
-              {/* <img
-                src="https://bootdey.com/img/Content/avatar/avatar3.png"
+              {name && <img
+                src= {name[0].profileimg}
                 className="rounded-circle mr-1"
                 alt="pfp"
                 width={40}
                 height={40}
-              /> */}
+              />}
             </div>
+            
             <div className="flex-grow-1 pl-3">
-              <strong>{id}</strong>
+            {name && <strong>{name[0].user}</strong>}
               <div className="  small">
                 {/* <em>Online</em> */}
               </div>
@@ -136,6 +162,7 @@ function Convo() {
             </div>
           </div>
         </div>
+        
         <div className="position-relative  ">
           <div className="chat-messages p-4">
             {message.map((message, index) => 
@@ -176,7 +203,7 @@ function Convo() {
                 </div> */}
               </div>
               <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">{message.sender_profile.id_user}</div>
+                <div className="font-weight-bold mb-1">{message.sender_profile.user}</div>
                 {message.msg}
               </div>
             </div>

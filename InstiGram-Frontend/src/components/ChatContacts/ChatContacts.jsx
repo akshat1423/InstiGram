@@ -71,7 +71,7 @@ function ChatContacts() {
     }
 
     return (
-        <div className="col-12 col-lg-5 col-xl-3 border-right div1">
+        <div className="col-12 col-lg-5 col-xl-3 border-right div1-chat">
             <div className="px-4 d-none d-md-block">
                 <div className="d-flex align-items-center">
                     <div className="flex-grow-1 search-bar-chat ">
@@ -84,15 +84,17 @@ function ChatContacts() {
                     key={message.id} 
                 >
                     <div className="d-flex align-items-start chat-person">
+                    {console.log("aa" ,message.sender_profile.id_user, user_id)}
                         <img
-                            src={message.sender_profile.id_user == user_id ? message.sender_profile.profileimg : message.reciever_profile.profileimg}
+                        
+                            src={message.sender_profile.id_user != user_id ? message.sender_profile.profileimg : message.reciever_profile.profileimg}
                             className="rounded-circle mr-1 chat-pfp"
                             
                             width={40}
                             height={40}
                         />
                         <div className="flex-grow-1 ml-3">
-                            { message.sender_profile.id_user != user_id ? message.sender_profile.id_user : message.reciever_profile.id_user}
+                            { message.sender_profile.id_user != user_id ? message.sender_profile.user : message.reciever_profile.user}
                             <div className="small">
                                 {message.msg}
                             </div>
