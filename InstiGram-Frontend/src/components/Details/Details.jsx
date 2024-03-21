@@ -38,8 +38,8 @@ function Details(){
               <div className="list">
                 <ul>
                   <li className='show-posts'> {details.posts} <br /> <p className='key-details'> Posts </p></li>
-                  <li className='show-followers' > {details.followers} <br /> <p className='key-details'>Followers</p> </li>
-                  <li className="show-following"> {details.following} <br /><p className='key-details' >Following</p></li>
+                  <Link to={'/followers/'}><li className='show-followers' >  {details.followers}  <br /> <p className='key-details'>Followers</p> </li></Link>
+                  <Link to={'/following/'} ><li className="show-following">  {details.following}  <br /><p className='key-details' >Following</p></li></Link>
                 </ul>
               </div>
             </div>
