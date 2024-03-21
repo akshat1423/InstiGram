@@ -40,8 +40,8 @@ export default function CustomRouter() {
                     <Route path="/calendar" element={ <Calendar />} />
                     <Route path='/chat/' element={ <ChatDefault></ChatDefault>} > </Route>
                     <Route path='/chat/:id' element={ <Chat /> }></Route>
-                    <Route path="/followers" element={ <Followers />} />
-                    <Route path="/following" element={ <Following />} />
+                    <Route path="/followers/:userId" element={ <Followers />} />
+                    <Route path="/following/:userId" element={ <Following />} />
 
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>

@@ -6,7 +6,7 @@ import SideNav from '../../components/NavBar/SideNav';
 import { BASE_URL } from "../../App";
 import PopupCard from '../../components/PopupCard/PopupCard';
 import './Followers.css'
-import { Link,useNavigate,useLocation  } from "react-router-dom";
+import { Link,useNavigate,useLocation, useParams  } from "react-router-dom";
 
 const mainVariant = {
     initial: {
@@ -35,18 +35,17 @@ const mainVariant = {
     }
   }
 const Followers = () => {
-  
+    let {userId} = useParams()
     const [followerData,setFollowerData]=useRecoilState(followersAtom)
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
 
-        const userId = localStorage.getItem('userId');
+       
 
         const data = {
             userId: userId
           
-            
         }
         try{
         fetch(`${BASE_URL}/followers`, {
@@ -92,6 +91,9 @@ const Followers = () => {
             <ul className='l1'>
                 {followerData.map(follower=>(
                   <Link to={`/profile/${follower.userId}`} state={{background: location}} className="follower">
+                    <div className="profile-image-div">
+                    <img src={follower.profileImage} alt="" className="profile-image" />
+                    </div>
                     <li key={follower.userId}>{follower.userName}</li>
                   </Link>
                 ))}

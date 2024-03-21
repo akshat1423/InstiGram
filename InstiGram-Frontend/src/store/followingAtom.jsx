@@ -5,15 +5,18 @@ export const followingAtom = atom({
     default: [
             {
                  userId:5,
-                 userName:'gaurav'
+                 userName:'gaurav',
+                 profileImage:null
             },
             {
                 userId:3,
-                userName:'gaurav'
+                userName:'gaurav',
+                profileImage:null
            },
            {
                 userId:9,
-                userName:'gaurav'
+                userName:'gaurav',
+                profileImage:null
        }
         ]
     })
