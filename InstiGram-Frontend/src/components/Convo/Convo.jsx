@@ -9,7 +9,6 @@ function Convo() {
 
     const [message, setMessage] = useState([]);
     const { id } = useParams();
-    console.log(id)
     const user_id = localStorage.getItem("userId");
     let [newMessage, setNewMessage] = useState({message: ""})
     const [name, setName] = useState();
@@ -60,7 +59,7 @@ function Convo() {
                   // body: {}
               });
               const respo = await response.json();
-              console.log('Name:', respo);
+              // console.log('Name:', respo);
 
               setName(respo);
           } catch (error) {
@@ -88,7 +87,6 @@ function Convo() {
         formdata.append("is_read", false)
 
 
-        console.log("Data being sent to backend:", Object.fromEntries(formdata));
 
         try {
             fetch(BASE_URL + '/sendmessages/', {
@@ -167,7 +165,7 @@ function Convo() {
           <div className="chat-messages p-4">
             {message.map((message, index) => 
             <>
-            {console.log(message.sender_profile.id_user, user_id)}
+
               {message.sender_profile.id_user  == user_id &&
             <div className="chat-message-right pb-4">
               <div>

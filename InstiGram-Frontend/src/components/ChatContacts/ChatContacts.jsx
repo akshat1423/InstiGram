@@ -9,7 +9,6 @@ import SearchChatBar from "../SearchChatBar/SearchChatBar";
 function ChatContacts() {
 
     const user_id = localStorage.getItem("userId");
-    console.log(user_id);
 
     const [messages, setMessages] = useState([]);
 
@@ -23,17 +22,15 @@ function ChatContacts() {
                     // body: {}
                 });
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
                 if (Array.isArray(result)) {
                     setMessages(result);
-                    console.log("working1");
-                    console.log(result);
+                   // console.log(result);
                 } else {
                     console.error("API response is not an array:", error);
                 }
             } catch (error) {
                 console.error(error);
-                console.log("working2");
             }
         };
 
@@ -52,17 +49,15 @@ function ChatContacts() {
                         // body: {}
                     });
                     const result = await response.json();
-                    console.log(result);
                     if (Array.isArray(result)) {
                         setMessages(result);
-                        console.log("working1");
-                        console.log(result);
+                        // console.log("working1");
+                        // console.log(result);
                     } else {
                         console.error("API response is not an array:", error);
                     }
                 } catch (error) {
                     console.error(error);
-                    console.log("working2");
                 }
             };
     
@@ -84,7 +79,6 @@ function ChatContacts() {
                     key={message.id} 
                 >
                     <div className="d-flex align-items-start chat-person">
-                    {console.log("aa" ,message.sender_profile.id_user, user_id)}
                         <img
                         
                             src={message.sender_profile.id_user != user_id ? message.sender_profile.profileimg : message.reciever_profile.profileimg}
