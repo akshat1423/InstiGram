@@ -3,12 +3,26 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments, Events
+from .models import Profile, Post, LikePost, FollowersCount, ShowInterest, comments, Events, ChatMsg
 from itertools import chain
 from django.http import JsonResponse
 import json
 import base64
 import random
+
+from .serializer import ChatMsgSerializer,ProfileSerializer
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import generics
+from rest_framework import status
+
+from django.db.models import OuterRef, Subquery
+from django.db.models import Q
+
+# Create your views here.
+
+# @login_required(login_url='signin')
 
 def index(request):
     if request.user.is_authenticated:
@@ -31,7 +45,8 @@ def index(request):
         
         # feed_list = list(chain(*feed))
 
-        posts = Post.objects.all()
+        # posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-created_at')
 
         posts_array= [{
             '_id': post.id,
@@ -428,4 +443,111 @@ def cookie(request):
     
     else:
         response = JsonResponse({'data': 'NotAuth'}, status=401)
-        return response
+
+def followers(request):
+    if request.user.is_authenticated:
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        pk = user_object.username
+        user_followers = FollowersCount.objects.filter(user=user_auth)
+        user_followers_list = []
+
+        for followers in user_followers:
+            user_followers_list.append(followers.follower)
+
+        response_data = [{'userName': (User.objects.get(username=follower)).username, 'userId': (User.objects.get(username=follower)).id}
+                        for follower in user_followers_list
+                        ]
+        return JsonResponse(response_data, safe=False)
+    else:
+        error_data = {'error': 'Access denied. User is not authenticated.'}
+        return JsonResponse(error_data, status=401)
+
+def following(request):
+    if request.user.is_authenticated:
+        data = json.loads(request.body)
+        user_auth = data.get('userId')
+        user_object = User.objects.get(id=user_auth)
+        user_profile = Profile.objects.get(user_id=user_auth)
+        pk = user_object.username
+        user_following = FollowersCount.objects.filter(follower=user_auth)
+        user_following_list = []
+
+        for following in user_following:
+            user_following_list.append(following.user)
+
+        response_data = [{'userName': (User.objects.get(username=following)).username, 'userId': (User.objects.get(username=following)).id}
+                        for following in user_following_list
+                        ]
+        return JsonResponse(response_data, safe=False)
+    else:
+        error_data = {'error': 'Access denied. User is not authenticated.'}
+        return JsonResponse(error_data, status=401)
+
+class MyInbox(generics.ListAPIView):
+    serializer_class = ChatMsgSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+
+        messages = ChatMsg.objects.filter(
+            id__in =  Subquery(
+                User.objects.filter(
+                    Q(sender__reciever=user_id) |
+                    Q(reciever__sender=user_id)
+                ).distinct().annotate(
+                    last_msg=Subquery(
+                        ChatMsg.objects.filter(
+                            Q(sender=OuterRef('id'),reciever=user_id) |
+                            Q(reciever=OuterRef('id'),sender=user_id)
+                        ).order_by('-id')[:1].values_list('id',flat=True) 
+                    )
+                ).values_list('last_msg', flat=True).order_by("-id")
+            )
+        ).order_by("-id")
+            
+        return messages
+    
+class GetMessages(generics.ListAPIView):
+    serializer_class = ChatMsgSerializer
+    
+    def get_queryset(self):
+        sender_id = self.kwargs['sender_id']
+        reciever_id = self.kwargs['reciever_id']
+        messages =  ChatMsg.objects.filter(sender__in=[sender_id, reciever_id], reciever__in=[sender_id, reciever_id])
+        return messages
+
+class SendMessages(generics.CreateAPIView):
+    serializer_class = ChatMsgSerializer
+
+
+
+class ProfileDetail(generics.RetrieveUpdateAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+
+
+
+class SearchUser(generics.ListAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+ 
+
+    def list(self, request, *args, **kwargs):
+        
+        username = self.kwargs['username']
+        logged_in_user = self.request.user
+        users = Profile.objects.filter(Q(user__username__icontains=username))
+
+        if not users.exists():
+            return Response(
+                {"detail": "No users found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = self.get_serializer(users, many=True)
+        return Response(serializer.data)
+    

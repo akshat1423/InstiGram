@@ -36,7 +36,7 @@ export default function CustomRouter() {
                     <Route path='/post/create' element={ <CreatePost />} />
                     <Route path='/feed' element={ <Feed />} />
                     <Route path="/calendar" element={ <Calendar />} />
-                    <Route path='/chat' element={ <ChatDefault></ChatDefault>} > {console.log("working")}</Route>
+                    <Route path='/chat/' element={ <ChatDefault></ChatDefault>} > {console.log("working")}</Route>
                     <Route path='/chat/:id' element={ <Chat /> }></Route>
                     <Route path='/loading' element={ <Loading /> } />
                     <Route path='/redirect' element={ <Error /> }/>

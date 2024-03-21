@@ -12,11 +12,19 @@ urlpatterns = [
     path('liked', views.like_post, name= 'like-post'),
     path('comment', views.comment, name= 'comment'),
     path('signin', views.signin, name= 'signin'),
-    path('logout', views.logout, name= 'logout'),
     path('profile/details', views.settings, name= 'settings'),
     path('profile/edit', views.edit, name= 'edit'), 
     path('feed', views.index, name= 'feed'),
     path('events', views.events, name= 'events'),
     path('cookie', views.cookie, name= 'cookie'),
     path('logout', views.logout, name= 'logout'),
+    path('followers', views.followers, name= 'followers'),
+    path('following', views.following, name= 'following'),
+
+    path("messages/<user_id>/", views.MyInbox.as_view()),
+    path("getmessages/<sender_id>/<reciever_id>/", views.GetMessages.as_view()),
+    path("sendmessages/", views.SendMessages.as_view()),
+
+    path("profile/<int:pk>/", views.ProfileDetail.as_view()),
+    path("search/<username>/", views.SearchUser.as_view())
 ]

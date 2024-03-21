@@ -1,0 +1,17 @@
+.div1{
+    color: white
+}
+
+.heading-chat{
+    margin-top: 5vh;
+}
+
+.chat-person{
+    margin-top: 15px;
+}
+
+.chat-pfp{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

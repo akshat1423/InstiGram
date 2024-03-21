@@ -16,9 +16,10 @@ function Chat(){
             
                 <main className="content" style={{marginTop:"0px"}}>
                     <div className="container">
+                        <span>
                         <h1 className='heading-chat' >
                             Messages
-                        </h1>
+                        </h1></span>
                             <div className="card1 row">
                                 <ChatContacts></ChatContacts>
                                 <Convo />
