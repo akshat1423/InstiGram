@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../App";
 import { useParams } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchChatBar from "../SearchChatBar/SearchChatBar";
 
 function ChatContacts() {
 
@@ -75,7 +75,7 @@ function ChatContacts() {
             <div className="px-4 d-none d-md-block">
                 <div className="d-flex align-items-center">
                     <div className="flex-grow-1 search-bar-chat ">
-                        <SearchBar></SearchBar>
+                        <SearchChatBar></SearchChatBar>
                     </div>
                 </div>
             </div>
