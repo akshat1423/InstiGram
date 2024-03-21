@@ -15,7 +15,7 @@ function Chat(){
             <div className='container-main-chat'>
             
                 <main className="content" style={{marginTop:"0px"}}>
-                    <div className="container">
+                    <div className="container-extra">
                         <span>
                         <h1 className='heading-chat' >
                             Messages

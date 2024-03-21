@@ -123,7 +123,7 @@
 }
 
 .username-label, .password-label{
-    color: var(--text-color);
+    color: black;
     font-family: Mukta;
     font-size: 25px;
     font-weight: 400;

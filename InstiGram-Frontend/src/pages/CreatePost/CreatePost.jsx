@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './CreatePost.css';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { createAtom } from '../../store/pageAtoms';
 import { motion } from 'framer-motion';
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
@@ -40,7 +40,7 @@ const overlayVariant = {
 
 export default function CreatePost() {
     const setCreate = useSetRecoilState(createAtom);
-    const createPost = useRecoilValue(createPostAtom);
+    const [createPost, setCreatePost] = useRecoilState(createPostAtom);
     const setPosts = useSetRecoilState(feedAtom);
     const [profilePosts, setProfilePosts] = useRecoilState(postAtom);
     const navigate = useNavigate();
@@ -124,6 +124,7 @@ export default function CreatePost() {
 
     useEffect(() => {
         setCreate(true);
+        setCreatePost(null);
     
         return () => {
             setCreate(false);
