@@ -1,7 +1,9 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followersAtom } from '../../store/followersAtom'
+import SideNav from '../../components/NavBar/SideNav';
+import PopupCard from '../../components/PopupCard/PopupCard';
 
 const mainVariant = {
     initial: {
@@ -61,20 +63,23 @@ const Followers = () => {
     }, []);
   return (
     <div>
-      <motion.div className="profile-overlay" 
+      
+      <motion.div className="followers-overlay" 
       variants={overlayVariant}
       initial='initial'
       animate='animate'
       exit='exit'
       >
-        <SideNav className='profile-sidebar'></SideNav>
-        <motion.div className="profile-animate-container" 
+        <SideNav className='followers-sidebar'></SideNav>
+        <motion.div className="followers-animate-container" 
         variants={mainVariant}
         >
+          <PopupCard>
           
           <div className="scrollable-container">
             <div className="head">
                 Followers
+                <div className="follow-close-button-div" onClick={() => navigate(-1)}></div>
             </div>
           
           
@@ -87,8 +92,10 @@ const Followers = () => {
           </div>
           
           </div>
+          </PopupCard>
         </motion.div>
       </motion.div>
+      
     </div>
   )
 }

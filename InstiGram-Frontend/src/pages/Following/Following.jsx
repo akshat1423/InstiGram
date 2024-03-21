@@ -1,7 +1,8 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followingAtom } from '../../store/followingAtom'
+import SideNav from '../../components/NavBar/SideNav';
 
 const mainVariant = {
     initial: {

@@ -1,4 +1,4 @@
-.profile-overlay {
+.followers-overlay {
     position: absolute;
 
     top: 0;
@@ -26,8 +26,28 @@
 
     overflow-y: scroll;
 }
-.profile-sidebar {
+.followers-sidebar {
     z-index: 200;
 }
+.follow-close-button-div {
+    position: relative;
 
+    left: 41.667vw;
+    bottom: 15.625vw;
+
+    height: 2.5vw;
+    width: 2.5vw;
+
+    background-image: url('../../assets/xmark-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 62.5%;
+    background-position: center;
+
+    border-radius: 50%;
+    z-index: 3;
+}
+.follow-close-button-div:hover {
+    background-color: rgb(76, 75, 75);
+    cursor: pointer;
+}
 

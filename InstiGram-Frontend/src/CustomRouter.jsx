@@ -15,6 +15,7 @@ const CreatePost = React.lazy(() => import('./pages/CreatePost/CreatePost'));
 const Error = React.lazy(() => import('./pages/Error/Error'));
 const Chat = React.lazy(() => import('./pages/Chat/Chat'));
 const ChatDefault = React.lazy(() => import('./pages/ChatDefault/ChatDefault'));
+const Followers = React.lazy(() => import('./pages/Followers/Followers'));
 
 // import EditProfile from './pages/EditProfile/EditProfile';
 
@@ -32,6 +33,7 @@ export default function CustomRouter() {
                     <Route path='/signin' element={ <Login /> } />
                     <Route path="/profile/:userId" element={ <Profile />} />
                     <Route path='/profile/details' element={ <ProfileDetails />} />
+                    <Route path='/profile/followers' element={<Followers />} />
                     <Route path='/profile/edit' element={ <EditProfile />} />
                     <Route path='/post/create' element={ <CreatePost />} />
                     <Route path='/feed' element={ <Feed />} />
