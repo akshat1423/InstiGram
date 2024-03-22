@@ -6,11 +6,11 @@ export default function SearchShowChat(props) {
   const location = useLocation();
 
   return (
-    <div className="below-search">      
-      <ul className="search-res">
+    <div className="below-search-chat">      
+      <ul className="search-res-chat">
         {props.result.map(result => (
             <Link to={`/chat/${result.userId}`} state={{background: location}}>
-              <li key={result.userId} className='res'>{result.data}</li>
+              <li key={result.userId} className='res-chat' >{result.data}  </li>
             </Link>
         ))}
       </ul>        

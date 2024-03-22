@@ -1,9 +1,9 @@
-.below-search{
+.below-search-chat{
     position: fixed;
     top:7%;
     left:18%;
     font-family: Mukta;
-    width:38%;
+    width:20%;
     height:fit-content;
     z-index:3;
     background: #000000D1;
@@ -11,19 +11,19 @@
     border-radius: 0px 0px 10px 10px;
     color:#106EE8;
 }
-.search-res{
+.search-res-chat{
     list-style-type:none;
     margin:0;
 }
 a{
     text-decoration: none;
 }
-a .res{
+a .res-chat{
     display: block;
     height:5vh;
     text-decoration: none;
     color:#106EE8;
-    padding-left:1.5vw;
+    padding-left:1vw;
     font-family: Mukta;
     font-size: 22px;
     font-weight: 400;

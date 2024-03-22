@@ -1,6 +1,6 @@
-#search_bar{
+#search_bar_chat{
     position:fixed;
-    width: 38%;
+    width: 20%;
     height: 4%;
     top: 2.8%;
     left: 18%;
@@ -9,11 +9,11 @@
     border-radius: 7px;
 }
 
-#search{
+#search-chat{
     
     position:fixed;
     border:none;
-    width: 35.41%;
+    width: 17.41%;
     height: 2.77%;
     top: 3.2%;
     left: 20%;
@@ -23,7 +23,7 @@
     font-size: 1.2rem;
 }
 
-#search:focus{
+#search-chat:focus{
     outline: none;
 }
 

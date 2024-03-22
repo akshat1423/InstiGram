@@ -63,11 +63,11 @@ const SearchChatBar = () => {
 
   return (
     <div ref={searchBarRef}>
-      <form id="search_bar" name="search_bar" onSubmit={handleSubmit}>
+      <form id="search_bar_chat" name="search_bar_chat" onSubmit={handleSubmit}>
         <input
           type="text"
-          id="search"
-          name="search"
+          id="search-chat"
+          name="search-chat"
           autoFocus={false}
           autoComplete="off"
           value={query}

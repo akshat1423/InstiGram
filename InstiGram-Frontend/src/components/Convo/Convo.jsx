@@ -164,7 +164,7 @@ function Convo() {
         <div className="position-relative  ">
           <div className="chat-messages p-4">
             {message.map((message, index) => 
-            <>
+            <div key={index}>
 
               {message.sender_profile.id_user  == user_id &&
             <div className="chat-message-right pb-4">
@@ -206,7 +206,7 @@ function Convo() {
               </div>
             </div>
 }
-            </>
+            </div>
 )}
           </div>
         </div>

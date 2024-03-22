@@ -34,7 +34,7 @@ function ChatDefault(){
             
             <div className='container-main-chat-default'>
             
-                <main className="content" style={{marginTop:"0px"}}>
+                <main className="content" >
                     <div className="container-default">
                         <h1 className='heading-chat-default' >
                             Messages
