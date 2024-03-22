@@ -23,23 +23,34 @@ export default function App() {
             userId: userId
         }
     
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        
+        const csrfToken = getCookie('csrftoken');
+        const sessionId = getCookie('sessionid');
+        
         fetch(`${BASE_URL}/feed`, {
             method: "POST",
             credentials: "include",
             headers: {
-            "Content-type": 'application/json',
+                "Content-type": 'application/json',
+                "Cookie": `csrftoken=${csrfToken}; sessionid=${sessionId}`
             },
             body: JSON.stringify(data),
         })
-            .then(async function(res) {
-                const json = await res.json();
-                if (res.status == 200) {
-                    setPosts(json);
-                } else if (res.status == 401) {
-                    navigate('/signin');
-                }
-            })
-    }, []);
+        .then(async function(res) {
+            const json = await res.json();
+            if (res.status == 200) {
+                setPosts(json);
+            } else if (res.status == 401) {
+                navigate('/signin');
+            }
+        });
+    }, []);        
+
 
     return (
         <div>

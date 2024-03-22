@@ -12,22 +12,22 @@ function Signup() {
     const navigate = useNavigate();
     const [valid, setValid] = useRecoilState(validAtom)
 
-    // useEffect(() => {
-    //     fetch(`${BASE_URL}/cookie`, {
-    //         method: "POST",
-    //         credentials: "include",
-    //         headers: {
-    //             "Content-type": 'application/json',
-    //         },
-    //     })
-    //         .then( async function(res) {
-    //             const json = await res.json();
+    useEffect(() => {
+        fetch(`${BASE_URL}/cookie`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-type": 'application/json',
+            },
+        })
+            .then( async function(res) {
+                const json = await res.json();
 
-    //             if (res.status == 200) {
-    //                 navigate("/feed")
-    //             }
-    //         })
-    // }, [])
+                if (res.status == 200) {
+                    navigate("/feed")
+                }
+            })
+    }, [])
 
     function handleSubmit(e) {
         const pass = document.getElementsByName('password')[0].value;
