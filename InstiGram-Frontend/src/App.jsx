@@ -23,4 +23,4 @@ function App() {
 export default App
 
 
-export const BASE_URL = 'https://instigramiitb.pythonanywhere.com/';
+export const BASE_URL = 'https://instigramiitb.pythonanywhere.com';
