@@ -39,7 +39,7 @@ export default function App() {
             credentials: "include",
             headers: {
                 "Content-type": 'application/json',
-                "Cookie": `csrftoken=${csrfToken}; sessionid=${sessionId}`
+                "Cookie": `sessionid=${getCookie('sessionid')}`,
             },
             body: JSON.stringify(data),
         })

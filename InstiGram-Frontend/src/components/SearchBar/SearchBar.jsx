@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './SearchBar.css';
-import { BASE_URL } from '../../App';
+import { BASE_URL, getCookie } from '../../App';
 import SearchShow from '../SearchShow/SearchShow'
 import { useRecoilState } from 'recoil';
 import { searchAtom } from '../../store/searchAtom';
@@ -20,6 +20,7 @@ const SearchBar = () => {
         credentials: "include",
         headers: {
           "Content-type": 'application/json',
+          "Cookie": `sessionid=${getCookie('sessionid')}`
         },
         body: JSON.stringify(data),
       });

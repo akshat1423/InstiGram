@@ -4,7 +4,7 @@ import {detailsAtom} from "../../store/detailsAtom.jsx"
 import { useState, useEffect } from "react";
 import { useParams} from "react-router-dom";
 import { followAtom } from "../../store/followAtom.jsx";
-import { BASE_URL } from "../../App.jsx";
+import { BASE_URL, getCookie } from "../../App.jsx";
 import { postAtom } from "../../store/postAtom.jsx";
 import { imageAtom } from "../../store/imageAtom.jsx";
 import { Link } from "react-router-dom";
@@ -46,6 +46,7 @@ function Bio(){
         credentials: "include",
         headers: {
           "Content-type": 'application/json',
+          "Cookie": `sessionid=${getCookie('sessionid')}`
         },
         body: JSON.stringify(data),
       })
@@ -58,6 +59,7 @@ function Bio(){
               credentials: "include",
               headers: {
                 "Content-type": 'application/json',
+                "Cookie": `sessionid=${getCookie('sessionid')}`
               },
               body: JSON.stringify(data),
             })

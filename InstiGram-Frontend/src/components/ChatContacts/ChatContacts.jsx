@@ -2,7 +2,7 @@ import "./ChatContacts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../App";
+import { BASE_URL, getCookie } from "../../App";
 import { useParams } from "react-router-dom";
 import SearchChatBar from "../SearchChatBar/SearchChatBar";
 
@@ -18,7 +18,10 @@ function ChatContacts() {
                 const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
                     method: "GET",
                     credentials: "include",
-                    // headers: {},
+                    headers: {
+                        "Content-type": 'appication/json',
+                        "Cookie": `sessionid=${getCookie('sessionid')}`,
+                    },
                     // body: {}
                 });
                 const result = await response.json();
@@ -45,7 +48,10 @@ function ChatContacts() {
                     const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
                         method: "GET",
                         credentials: "include",
-                        // headers: {},
+                        headers: {
+                            "Content-type": 'application/json',
+                            "Cookie": `sessionid=${getCookie('sessionid')}`
+                        },
                         // body: {}
                     });
                     const result = await response.json();

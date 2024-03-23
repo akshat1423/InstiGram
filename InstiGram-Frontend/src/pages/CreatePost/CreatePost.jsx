@@ -7,7 +7,7 @@ import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
 import SideNav from '../../components/NavBar/SideNav';
 import { createPostAtom } from '../../store/createPostAtom';
 import { postAtom } from '../../store/postAtom';
-import { BASE_URL } from '../../App';
+import { BASE_URL, getCookie } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import { feedAtom } from '../../store/feedAtom';
 
@@ -85,6 +85,7 @@ export default function CreatePost() {
                 credentials: "include",
                 headers: {
                     "Content-type": "application/json",
+                    "Cookie": `sessionid=${getCookie('sessionid')}`,
                 },
                 body: JSON.stringify(data),
             })
@@ -105,6 +106,7 @@ export default function CreatePost() {
                             credentials: "include",
                             headers: {
                             "Content-type": 'application/json',
+                            "Cookie": `sessionid=${getCookie('sessionid')}`
                             },
                             body: JSON.stringify(data),
                         })

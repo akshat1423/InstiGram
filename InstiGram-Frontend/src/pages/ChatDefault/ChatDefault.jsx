@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import NavBar from "../../components/NavBar/SideNav.jsx"
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChatContacts from "../../components/ChatContacts/ChatContacts.jsx"
-import { BASE_URL } from '../../App.jsx';
+import { BASE_URL, getCookie } from '../../App.jsx';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,6 +16,7 @@ function ChatDefault(){
             credentials: "include",
             headers: {
                 "Content-type": "application/json",
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
         })
             .then(async function(res) {

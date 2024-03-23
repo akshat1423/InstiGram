@@ -5,7 +5,7 @@ import EditForm from "../../components/EditForm/EditForm";
 import './EditProfile.css';
 import { motion } from 'framer-motion';
 import { detailsAtom } from "../../store/detailsAtom";
-import { BASE_URL } from "../../App";
+import { BASE_URL, getCookie } from "../../App";
 import { useEffect } from "react";
 
 const mainVariant = {
@@ -46,6 +46,7 @@ export default function EditProfile() {
             credentials: "include",
             headers: {
                 "Content-type": "application/json",
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
         })
             .then(async function(res) {
@@ -82,6 +83,7 @@ export default function EditProfile() {
             credentials: "include",
             headers: {
                 "Content-type": "application/json",
+                "Cookie": `sessionid=${getCookie('sessionid')}`,
             },
             body: JSON.stringify(data),
         })

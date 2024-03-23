@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CalendarView from '../../components/CalendarView/CalendarView';
 import Events from '../../components/Events/Events';
 import { eventsAtom } from '../../store/eventsAtom';
-import { BASE_URL } from '../../App';
+import { BASE_URL, getCookie } from '../../App';
 
 export default function Calendar() {
     const setEvents = useSetRecoilState(eventsAtom);
@@ -20,6 +20,7 @@ export default function Calendar() {
             credentials: "include",
             headers: {
                 "Content-type": 'application/json',
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
         })
             .then( async function (res) {

@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Convo.css"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {BASE_URL} from "../../App" 
+import {BASE_URL, getCookie} from "../../App" 
 
 
 function Convo() {
@@ -24,7 +24,10 @@ function Convo() {
                 const response = await fetch(BASE_URL + '/getmessages/' + user_id + '/' + id  + '/',{
                     method: "GET",
                     credentials: "include",
-                    // headers: {},
+                    headers: {
+                      "Content-type": 'application/json',
+                      "Cookie": `sessionid=${getCookie('sessionid')}`
+                    },
                     // body: {}
                 });
                 const result = await response.json();
@@ -55,7 +58,10 @@ function Convo() {
               const response = await fetch(BASE_URL + '/search/'  + id  + '/',{
                   method: "GET",
                   credentials: "include",
-                  // headers: {},
+                  headers: {
+                    "Content-type": 'application/json',
+                    "Cookie": `sessionid=${getCookie('sessionid')}`
+                  },
                   // body: {}
               });
               const respo = await response.json();
@@ -91,6 +97,11 @@ function Convo() {
         try {
             fetch(BASE_URL + '/sendmessages/', {
                 method: 'POST',
+                credentials: "include",
+                headers: {
+                  "Content-type": 'application/json',
+                  "Cookie": `sessionid=${getCookie('sessionid')}`,
+                },
                 body: formdata
             })
             .then(response => {
