@@ -9,8 +9,8 @@ export default function SearchShowChat(props) {
     <div className="below-search-chat">      
       <ul className="search-res-chat">
         {props.result.map(result => (
-            <Link to={`/chat/${result.userId}`} state={{background: location}}>
-              <li key={result.userId} className='res-chat' >{result.data}  </li>
+            <Link key={result.userId} to={`/chat/${result.userId}`} state={{background: location}}>
+              <li  className='res-chat' >{result.data}  </li>
             </Link>
         ))}
       </ul>        

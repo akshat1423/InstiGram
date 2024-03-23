@@ -15,6 +15,7 @@ function Convo() {
     //console.log("newMessage == ", newMessage.message)
 
     useEffect(() => {
+      console.log("yesss")
         
         const fetchData = async () => {
             
@@ -113,6 +114,12 @@ function Convo() {
         }
     }
 
+    const handleKeyPress = (event) => {
+      console.log("Key pressed");
+      if (event.key === "Enter" && newMessage.message.trim() !== "") {
+          handleSend();
+      }
+  };
 
  
 
@@ -220,6 +227,7 @@ function Convo() {
                         
               value={newMessage.message}
               onChange={handleChange}
+              onKeyDown={handleKeyPress}
             />
             <button className="btn btn-primary" onClick={handleSend} >Send</button>
           
