@@ -1,0 +1,1 @@
+import{b as e}from"./index-D9AcpMqu.js";const a=e({key:"detailsAtom",default:{userId:4,username:"username",name:"Vaibhav Singh",bio:"lorem ipsum iw",posts:"0",followers:"0",following:"0",isFollowing:!1,degree:"B.Tech",department:"CSE",gradYear:"2027"}});export{a as d};

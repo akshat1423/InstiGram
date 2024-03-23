@@ -5,7 +5,7 @@ import DarkModeSwitch from '../../components/DarkModeSwitch/DarkModeSwitch';
 import { useNavigate } from 'react-router-dom';
 import { validAtom } from '../../store/validAtom';
 import SideCard from '../../components/SideCard/SideCard';
-import { BASE_URL } from '../../App';
+import { BASE_URL, getCookie } from '../../App';
 import { useEffect } from 'react';
 
 function Signup() {
@@ -18,6 +18,7 @@ function Signup() {
             credentials: "include",
             headers: {
                 "Content-type": 'application/json',
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
         })
             .then( async function(res) {
@@ -48,7 +49,8 @@ function Signup() {
                 method: "POST",
                 credentials: "include",
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    "Cookie": `sessionid=${getCookie('sessionid')}`,
                 },
                 body: JSON.stringify(data),
             })

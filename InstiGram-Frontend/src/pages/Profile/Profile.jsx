@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 
 import './Profile.css';
 import { createAtom, profileAtom } from "../../store/pageAtoms.jsx";
-import { BASE_URL } from "../../App.jsx";
+import { BASE_URL, getCookie } from "../../App.jsx";
 import { followAtom } from "../../store/followAtom.jsx";
 
 const mainVariant = {
@@ -70,6 +70,7 @@ function Profile() {
       credentials: "include",
       headers: {
         "Content-type": 'application/json',
+        "Cookie": `sessionid=${getCookie('sessionid')}`
       },
       body: JSON.stringify(data),
     })

@@ -3,7 +3,7 @@ import {useRecoilState} from 'recoil'
 import { motion } from 'framer-motion';
 import { followingAtom } from '../../store/followingAtom'
 import SideNav from '../../components/NavBar/SideNav';
-import { BASE_URL } from "../../App";
+import { BASE_URL, getCookie } from "../../App";
 import PopupCard from '../../components/PopupCard/PopupCard';
 import './Following.css'
 import { Link,useNavigate,useLocation, useParams  } from "react-router-dom";
@@ -55,6 +55,7 @@ const Following = () => {
             credentials: "include",
             headers: {
             "Content-type": 'application/json',
+            "Cookie": `sessionid=${getCookie('sessionid')}`,
             },
             body: JSON.stringify(data),
         })

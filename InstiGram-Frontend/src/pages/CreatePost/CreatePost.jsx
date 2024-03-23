@@ -7,7 +7,7 @@ import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
 import SideNav from '../../components/NavBar/SideNav';
 import { createPostAtom } from '../../store/createPostAtom';
 import { postAtom } from '../../store/postAtom';
-import { BASE_URL } from '../../App';
+import { BASE_URL, getCookie } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import { feedAtom } from '../../store/feedAtom';
 
@@ -45,24 +45,24 @@ export default function CreatePost() {
     const [profilePosts, setProfilePosts] = useRecoilState(postAtom);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/cookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-type": "application/json",
-            },
-        })
-            .then(async function(res) {
-                const status = res.status;
-                const json = await res.json();
+    // useEffect(() => {
+    //     fetch(`${BASE_URL}/cookie`, {
+    //         method: "POST",
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-type": "application/json",
+    //         },
+    //     })
+    //         .then(async function(res) {
+    //             const status = res.status;
+    //             const json = await res.json();
 
-                if (status == 401) {
-                    navigate('/signin')
-                }
-            })
+    //             if (status == 401) {
+    //                 navigate('/signin')
+    //             }
+    //         })
         
-    }, [])
+    // }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -85,6 +85,7 @@ export default function CreatePost() {
                 credentials: "include",
                 headers: {
                     "Content-type": "application/json",
+                    "Cookie": `sessionid=${getCookie('sessionid')}`,
                 },
                 body: JSON.stringify(data),
             })
@@ -105,6 +106,7 @@ export default function CreatePost() {
                             credentials: "include",
                             headers: {
                             "Content-type": 'application/json',
+                            "Cookie": `sessionid=${getCookie('sessionid')}`
                             },
                             body: JSON.stringify(data),
                         })

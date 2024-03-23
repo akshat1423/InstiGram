@@ -4,7 +4,7 @@ import ProfileSetupForm from "../../components/ProfileSetupForm/ProfileSetupForm
 import { useRecoilValue } from "recoil";
 import { imageAtom } from "../../store/imageAtom";
 import './ProfileDetails.css'
-import { BASE_URL } from "../../App";
+import { BASE_URL, getCookie } from "../../App";
 import { useEffect } from "react";
 
 export default function ProfileSetup() {
@@ -17,6 +17,7 @@ export default function ProfileSetup() {
             credentials: "include",
             headers: {
                 "Content-type": "application/json",
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
         })
             .then(async function(res) {
@@ -51,6 +52,7 @@ export default function ProfileSetup() {
             credentials: "include",
             headers: {
                 "Content-type": "application/json",
+                "Cookie": `sessionid=${getCookie('sessionid')}`
             },
             body: JSON.stringify(data),
         })
