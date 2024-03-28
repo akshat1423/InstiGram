@@ -41,22 +41,22 @@ function Bio(){
         userId: userId,
       }
 
-      // fetch(`${BASE_URL}/follow`, {
-      //   method: "POST",
-      //   credentials: "include",
-      //   headers: {
-      //     "Content-type": 'application/json',
-      //     "Cookie": `sessionid=${getCookie('sessionid')}`
-      //   },
-      //   body: JSON.stringify(data),
-      // })
-      //   .then( async function (res) {
-      //     const json = await res.json();
+      fetch(`${BASE_URL}/follow`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-type": 'application/json',
+          "Cookie": `sessionid=${getCookie('sessionid')}`
+        },
+        body: JSON.stringify(data),
+      })
+        .then( async function (res) {
+          const json = await res.json();
 
-      //     if (res.status == 200) {
+          if (res.status == 200) {
             fetch(`${BASE_URL}/profile`, {
               method: "POST",
-              // credentials: "include",
+              credentials: "include",
               headers: {
                 "Content-type": 'application/json',
                 "Cookie": `sessionid=${getCookie('sessionid')}`
@@ -70,8 +70,8 @@ function Bio(){
                 setPosts(json.posts);
               })
           }
-    //     })
-    // }
+        })
+    }
 
     return(
         <>

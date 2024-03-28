@@ -69,7 +69,7 @@ export default function Post(props) {
             //post likes to api
             const res = await fetch(`${BASE_URL}/liked`, {
                 method: "POST",
-                credentials: "include",
+                // credentials: "include",
                 headers: {
                     "Content-type": 'application/json',
                 },
@@ -83,7 +83,7 @@ export default function Post(props) {
 
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
-                    credentials: "include",
+                    // credentials: "include",
                     headers: {
                     "Content-type": 'application/json',
                     },
@@ -123,7 +123,7 @@ export default function Post(props) {
 
             const res = await fetch(`${BASE_URL}/comment`, {
                 method: "POST",
-                credentials: "include",
+                // credentials: "include",
                 headers: {
                     "Content-type": 'application/json',
                 },
@@ -139,7 +139,7 @@ export default function Post(props) {
 
                 fetch(`${BASE_URL}/feed`, {
                     method: "POST",
-                    credentials: 'include',
+                    // credentials: 'include',
                     headers: {
                     "Content-type": 'application/json',
                     },
