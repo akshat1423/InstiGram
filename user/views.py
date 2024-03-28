@@ -25,7 +25,7 @@ from django.db.models import Q
 # @login_required(login_url='signin')
 
 def index(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth= data.get('userId')
         user_object= User.objects.get(id=user_auth)
@@ -62,13 +62,13 @@ def index(request):
             ]
 
         return JsonResponse(posts_array, safe=False)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def edit(request):
-    if request.user.is_authenticated:    
+    # if request.user.is_authenticated:    
         data = json.loads(request.body)
         user_auth= data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -127,18 +127,18 @@ def edit(request):
                 response_data = {'data': 'done'}
                 return JsonResponse(response_data, status=200)
 
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)        
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)        
 
 def settings(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth= data.get('userId')
         user_profile= Profile.objects.get(user_id= int(user_auth))
         if request.method== 'POST':
-            if data.get('profileImage')== "":
+            if data.get('profileImage')== None:
                 image= user_profile.profileimg
             else:
                 image= data.get('profileImage')
@@ -157,13 +157,13 @@ def settings(request):
         
         response_data = {'data': 'done'}
         return JsonResponse(response_data, status=200)    
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def upload(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         if request.method=='POST':
             data = json.loads(request.body)
             user_auth = data.get('userId')
@@ -181,13 +181,13 @@ def upload(request):
         else:
             response_data = {'data': 'done'}
             return JsonResponse(response_data, status=200)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def search(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         if request.method=='POST':
             data = json.loads(request.body)
             username = data.get('query')
@@ -209,13 +209,13 @@ def search(request):
                         for suser in username_profile_list 
                         ]
         return JsonResponse(response_data, safe=False)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def like_post(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -241,13 +241,13 @@ def like_post(request):
             response_data = {'data': 'done'}
             return JsonResponse(response_data, status=200)
 
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def comment(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('commentAuth')
         user_object = User.objects.get(id=user_auth)
@@ -266,14 +266,14 @@ def comment(request):
         response_data = {'data': 'done'}
         return JsonResponse(response_data, status=200)   
 
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def profile(request):
     # Check if the user is authenticated
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -312,13 +312,13 @@ def profile(request):
             }
         }
         return JsonResponse(response_data, status=200)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def follow(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         if request.method== 'POST':
             data = json.loads(request.body)
             follower= data.get('loggedUser')
@@ -336,13 +336,13 @@ def follow(request):
 
                 response_data = {'data': 'done'}
                 return JsonResponse(response_data, status=200)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def interest(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         if request.method== 'POST':
             interesties= data.get['interesties']
             user= data.get['user']
@@ -365,10 +365,10 @@ def interest(request):
         else:
             return redirect('/')
 
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 def signup(request):
     if request.method == 'POST':
         try:
@@ -437,7 +437,7 @@ def logout(request):
 
 
 def events(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         if request.method== 'POST':
             events= Events.objects.all()
             events_array= [{           
@@ -446,10 +446,10 @@ def events(request):
                 'color': event.event_color,
             } for event in events]
             return JsonResponse(events_array, safe=False)
-    else:
-        # User is not authenticated, return an error response
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     # User is not authenticated, return an error response
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def cookie(request):
     if request.user.is_authenticated:
@@ -461,7 +461,7 @@ def cookie(request):
         return response
 
 def followers(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -477,12 +477,12 @@ def followers(request):
                         for follower in user_followers_list
                         ]
         return JsonResponse(response_data, safe=False)
-    else:
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 def following(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         data = json.loads(request.body)
         user_auth = data.get('userId')
         user_object = User.objects.get(id=user_auth)
@@ -498,9 +498,9 @@ def following(request):
                         for following in user_following_list
                         ]
         return JsonResponse(response_data, safe=False)
-    else:
-        error_data = {'error': 'Access denied. User is not authenticated.'}
-        return JsonResponse(error_data, status=401)
+    # else:
+    #     error_data = {'error': 'Access denied. User is not authenticated.'}
+    #     return JsonResponse(error_data, status=401)
 
 class MyInbox(generics.ListAPIView):
     serializer_class = ChatMsgSerializer

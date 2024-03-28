@@ -64,6 +64,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     # Whitelist the domains you want to allow requests from
     'http://localhost:5173',
+    'https://instigram.vercel.app',
 ]
 
 # CORS_ORIGIN_WHITELIST = (
