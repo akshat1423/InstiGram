@@ -12,23 +12,23 @@ function Signup() {
     const navigate = useNavigate();
     const [valid, setValid] = useRecoilState(validAtom)
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/cookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-type": 'application/json',
-                "Cookie": `sessionid=${getCookie('sessionid')}`
-            },
-        })
-            .then( async function(res) {
-                const json = await res.json();
+    // useEffect(() => {
+    //     fetch(`${BASE_URL}/cookie`, {
+    //         method: "POST",
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-type": 'application/json',
+    //             "Cookie": `sessionid=${getCookie('sessionid')}`
+    //         },
+    //     })
+    //         .then( async function(res) {
+    //             const json = await res.json();
 
-                if (res.status == 200) {
-                    navigate("/feed")
-                }
-            })
-    }, [])
+    //             if (res.status == 200) {
+    //                 navigate("/feed")
+    //             }
+    //         })
+    // }, [])
 
     function handleSubmit(e) {
         const pass = document.getElementsByName('password')[0].value;
@@ -47,7 +47,7 @@ function Signup() {
 
             fetch(`${BASE_URL}/signup`, {
                 method: "POST",
-                credentials: "include",
+                // credentials: "include",
                 headers: {
                     "Content-type": "application/json",
                     "Cookie": `sessionid=${getCookie('sessionid')}`,

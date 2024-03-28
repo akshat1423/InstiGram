@@ -24,7 +24,7 @@ function Convo() {
                 
                 const response = await fetch(BASE_URL + '/getmessages/' + user_id + '/' + id  + '/',{
                     method: "GET",
-                    credentials: "include",
+                    // credentials: "include",
                     headers: {
                       "Content-type": 'application/json',
                       "Cookie": `sessionid=${getCookie('sessionid')}`
@@ -58,7 +58,7 @@ function Convo() {
               
               const response = await fetch(BASE_URL + '/search/'  + id  + '/',{
                   method: "GET",
-                  credentials: "include",
+                  // credentials: "include",
                   headers: {
                     "Content-type": 'application/json',
                     "Cookie": `sessionid=${getCookie('sessionid')}`
@@ -98,7 +98,7 @@ function Convo() {
         try {
             fetch(BASE_URL + '/sendmessages/', {
                 method: 'POST',
-                credentials: "include",
+                // credentials: "include",
                 headers: {
                   "Content-type": 'application/json',
                   "Cookie": `sessionid=${getCookie('sessionid')}`,

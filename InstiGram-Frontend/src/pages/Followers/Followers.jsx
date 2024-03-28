@@ -48,7 +48,7 @@ const Followers = () => {
         try{
         fetch(`${BASE_URL}/followers`, {
             method: "POST",
-            credentials: "include",
+            // credentials: "include",
             headers: {
             "Content-type": 'application/json',
             "Cookie": `sessionid=${getCookie('sessionid')}`,

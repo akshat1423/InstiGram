@@ -52,7 +52,7 @@ const Following = () => {
         try{
         fetch(`${BASE_URL}/following`, {
             method: "POST",
-            credentials: "include",
+            // credentials: "include",
             headers: {
             "Content-type": 'application/json',
             "Cookie": `sessionid=${getCookie('sessionid')}`,

@@ -17,7 +17,7 @@ function ChatContacts() {
             try {
                 const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
                     method: "GET",
-                    credentials: "include",
+                    // credentials: "include",
                     headers: {
                         "Content-type": 'appication/json',
                         "Cookie": `sessionid=${getCookie('sessionid')}`,
@@ -47,7 +47,7 @@ function ChatContacts() {
                 try {
                     const response = await fetch(BASE_URL + '/messages/' + user_id+ '/', {
                         method: "GET",
-                        credentials: "include",
+                        // credentials: "include",
                         headers: {
                             "Content-type": 'application/json',
                             "Cookie": `sessionid=${getCookie('sessionid')}`

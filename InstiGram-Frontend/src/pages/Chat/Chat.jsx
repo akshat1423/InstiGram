@@ -10,24 +10,24 @@ import { BASE_URL, getCookie } from '../../App.jsx';
 function Chat(){
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/cookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-type": "application/json",
-                "Cookie": `sessionid=${getCookie('sessionid')}`
-            },
-        })
-            .then(async function(res) {
-                const status = res.status;
-                const json = await res.json();
+    // useEffect(() => {
+    //     fetch(`${BASE_URL}/cookie`, {
+    //         method: "POST",
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-type": "application/json",
+    //             "Cookie": `sessionid=${getCookie('sessionid')}`
+    //         },
+    //     })
+    //         .then(async function(res) {
+    //             const status = res.status;
+    //             const json = await res.json();
 
-                if (status == 401) {
-                    navigate('/signin')
-                }
-            })
-    },[])
+    //             if (status == 401) {
+    //                 navigate('/signin')
+    //             }
+    //         })
+    // },[])
 
     return(
         <div className='chat-container' >

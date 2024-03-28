@@ -67,7 +67,7 @@ function Profile() {
 
     fetch(`${BASE_URL}/profile`, {
       method: "POST",
-      credentials: "include",
+      // credentials: "include",
       headers: {
         "Content-type": 'application/json',
         "Cookie": `sessionid=${getCookie('sessionid')}`

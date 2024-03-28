@@ -12,23 +12,23 @@ function Login() {
     const navigate = useNavigate();
     const [valid, setValid] = useRecoilState(validAtom);
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/cookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-type": 'application/json',
-                "Cookie": `sessionid=${getCookie('sessionid')}`
-            },
-        })
-            .then( async function(res) {
-                const json = await res.json();
+    // useEffect(() => {
+    //     fetch(`${BASE_URL}/cookie`, {
+    //         method: "POST",
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-type": 'application/json',
+    //             "Cookie": `sessionid=${getCookie('sessionid')}`
+    //         },
+    //     })
+    //         .then( async function(res) {
+    //             const json = await res.json();
 
-                if (res.status == 200) {
-                    navigate("/feed")
-                }
-            })
-    }, [])
+    //             if (res.status == 200) {
+    //                 navigate("/feed")
+    //             }
+    //         })
+    // }, [])
 
     function handleSubmit(e) {
         const formData = new FormData(e.target);
@@ -42,7 +42,7 @@ function Login() {
 
         fetch(`${BASE_URL}/signin`, {
             method: "POST",
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 "Content-type": "application/json",
                 "Cookie": `sessionid=${getCookie('sessionid')}`

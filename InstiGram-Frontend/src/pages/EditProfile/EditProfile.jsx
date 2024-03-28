@@ -40,25 +40,25 @@ export default function EditProfile() {
     const setDetails = useSetRecoilState(detailsAtom);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/cookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-type": "application/json",
-                "Cookie": `sessionid=${getCookie('sessionid')}`
-            },
-        })
-            .then(async function(res) {
-                const status = res.status;
-                const json = await res.json();
+    // useEffect(() => {
+    //     fetch(`${BASE_URL}/cookie`, {
+    //         method: "POST",
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-type": "application/json",
+    //             "Cookie": `sessionid=${getCookie('sessionid')}`
+    //         },
+    //     })
+    //         .then(async function(res) {
+    //             const status = res.status;
+    //             const json = await res.json();
 
-                if (status == 401) {
-                    navigate('/signin')
-                }
-            })
+    //             if (status == 401) {
+    //                 navigate('/signin')
+    //             }
+    //         })
         
-    }, [])
+    // }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -80,7 +80,7 @@ export default function EditProfile() {
 
         fetch(`${BASE_URL}/profile/edit`, {
             method: "POST",
-            credentials: "include",
+            // credentials: "include",
             headers: {
                 "Content-type": "application/json",
                 "Cookie": `sessionid=${getCookie('sessionid')}`,

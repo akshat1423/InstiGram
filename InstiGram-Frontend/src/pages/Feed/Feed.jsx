@@ -36,7 +36,7 @@ export default function App() {
         
         fetch(`${BASE_URL}/feed`, {
             method: "POST",
-            credentials: "include",
+            // credentials: "include",
             headers: {
                 "Content-type": 'application/json',
                 "Cookie": `sessionid=${getCookie('sessionid')}`,
