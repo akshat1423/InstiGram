@@ -85,13 +85,22 @@ function Convo() {
     };
 
     const handleSend = () => {
-        const formdata = new FormData()
-        formdata.append("user", user_id)
-        formdata.append("sender", user_id)
-        formdata.append("reciever", id)
+        // const formdata = new FormData()
+        // formdata.append("user", user_id)
+        // formdata.append("sender", user_id)
+        // formdata.append("reciever", id)
         
-        formdata.append("msg", newMessage.message)
-        formdata.append("is_read", false)
+        // formdata.append("msg", newMessage.message)
+        // formdata.append("is_read", false)
+        const data = {
+          user: user_id,
+          sender: user_id,
+          reciever: id,
+          msg: newMessage.message,
+          is_read: false
+      };
+        console.log(user_id, id, newMessage.message)
+        console.log(data)
 
 
 
@@ -103,7 +112,7 @@ function Convo() {
                   "Content-type": 'application/json',
                   "Cookie": `sessionid=${getCookie('sessionid')}`,
                 },
-                body: formdata
+                body: JSON.stringify(data)
             })
             .then(response => {
 
